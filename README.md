@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="center">
+  <img src="./assets/amaru-logo.png" alt="Amaru Logo" width="200"/>
+</p>
 
-## Getting Started
+<h1 align="center">Amaru – AI Email Agent</h1>
+<p align="center">
+  <strong>Language:</strong> 
+  <a href="README.md">🇬🇧 English</a> | 
+  <a href="README_es.md">🇪🇸 Español</a>
+</p>
 
-First, run the development server:
+<p align="center">
+  <strong>Amaru</strong> is an intelligent email assistant inspired by the Andean mythological serpent. It optimizes inbox management using AI, integrating with Gmail and Google Calendar to automate tasks and improve productivity.
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📌 Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Amaru helps users manage their inbox efficiently by:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Reading emails and classifying them into categories
+- Suggesting actions that users can confirm, modify, or ignore
+- Providing an intuitive dashboard for quick review
 
-## Learn More
+<p align="center">
+  <img src="./assets/dashboard.png" alt="Dashboard Placeholder" width="600"/>
+</p>
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔑 Key Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Secure Gmail connection via **OAuth 2.0**  
+- Email reading and storage in **PostgreSQL**  
+- Automatic classification into categories:
+  - Meetings
+  - Newsletters
+  - Spam
+  - General
+  - And much more...
+- Minimal automatic actions:
+  - Create calendar events
+  - Archive irrelevant emails
+- Dashboard for reviewing and confirming suggested actions  
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠 Technologies
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Layer              | Tech Stack                          |
+|-------------------|-----------------------------------|
+| Frontend/Backend  | Next.js + TypeScript               |
+| UI                | Tailwind CSS + Shadcn UI           |
+| Database          | PostgreSQL (ACID + JSONB)         |
+| Authentication    | OAuth 2.0 with Better Auth        |
+| Task Queues       | BullMQ                             |
+| Containers        | Docker & Docker Compose            |
+| CI/CD             | GitHub Actions                     |
