@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="./assets/amaru-logo.png" alt="Logotipo de Amaru" width="200"/>
+  <img src="../../assets/amaru-logo.png" alt="Logotipo de Amaru" width="200"/>
 </p>
 
 <h1 align="center">Amaru – Agente de Correo AI</h1>
 <p align="center">
   <strong>Idioma:</strong> 
-  <a href="README.md">🇬🇧 English</a> | 
-  <a href="./docs/es/README.es.md">🇪🇸 Español</a>
+  <a href="../../README.md">🇬🇧 English</a> | 
+  <a href="./README.es.md">🇪🇸 Español</a>
 </p>
 
 <p align="center">
@@ -24,7 +24,7 @@ Amaru ayuda a los usuarios a gestionar su bandeja de entrada de manera eficiente
 - Proporcionar un panel intuitivo para una revisión rápida  
 
 <p align="center">
-  <img src="./assets/dashboard.png" alt="Panel de control" width="600"/>
+  <img src="../../assets/dashboard.png" alt="Panel de control" width="600"/>
 </p>
 
 
