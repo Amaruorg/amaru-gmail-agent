@@ -6,7 +6,7 @@
 <p align="center">
   <strong>Language:</strong> 
   <a href="README.md">🇬🇧 English</a> | 
-  <a href="README_es.md">🇪🇸 Español</a>
+  <a href="./docs/es/README.es.md">🇪🇸 Español</a>
 </p>
 
 <p align="center">
@@ -27,8 +27,6 @@ Amaru helps users manage their inbox efficiently by:
   <img src="./assets/dashboard.png" alt="Dashboard Placeholder" width="600"/>
 </p>
 
----
-
 ## 🔑 Key Features
 
 - Secure Gmail connection via **OAuth 2.0**  
@@ -43,8 +41,6 @@ Amaru helps users manage their inbox efficiently by:
   - Create calendar events
   - Archive irrelevant emails
 - Dashboard for reviewing and confirming suggested actions  
-
----
 
 ## 🛠 Technologies
 

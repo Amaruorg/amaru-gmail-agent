@@ -6,7 +6,7 @@
 <p align="center">
   <strong>Idioma:</strong> 
   <a href="README.md">🇬🇧 English</a> | 
-  <a href="README_es.md">🇪🇸 Español</a>
+  <a href="./docs/es/README.es.md">🇪🇸 Español</a>
 </p>
 
 <p align="center">
@@ -27,7 +27,7 @@ Amaru ayuda a los usuarios a gestionar su bandeja de entrada de manera eficiente
   <img src="./assets/dashboard.png" alt="Panel de control" width="600"/>
 </p>
 
----
+
 
 ## 🔑 Funcionalidades
 
@@ -43,8 +43,6 @@ Amaru ayuda a los usuarios a gestionar su bandeja de entrada de manera eficiente
   - Crear eventos en el calendario
   - Archivar correos irrelevantes
 - Panel para revisar y confirmar las acciones sugeridas  
-
----
 
 ## 🛠 Tecnologías
 
