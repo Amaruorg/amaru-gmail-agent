@@ -35,12 +35,12 @@ export default function GeminiPage() {
 	};
 
 	return (
-		<div className="dark flex min-h-screen w-full flex-col items-center justify-center bg-slate-950 p-4 font-sans">
+		<div className="dark flex min-h-screen w-full flex-col items-center justify-center p-4">
 			<div className="w-full max-w-2xl">
-				<div className="rounded-xl border border-slate-800 bg-slate-900 text-slate-50 shadow-lg">
+				<div className="rounded-xl bg-card-background text-text-primary shadow-lg">
 					<div className="flex flex-col space-y-1.5 p-6">
-						<h1 className="text-2xl font-semibold leading-none tracking-tight">Prototipo: Chat Gemini</h1>
-						<p className="text-sm text-slate-400">Escribe el prompt abajo.</p>
+						<h1 className="text-2xl leading-none tracking-tight">Prototipo: Chat Gemini</h1>
+						<p className="text-sm text-text-secondary">Escribe el prompt abajo.</p>
 					</div>
 
 					<div className="p-6 pt-0">
@@ -49,7 +49,7 @@ export default function GeminiPage() {
 								value={prompt}
 								onChange={(e) => setPrompt(e.target.value)}
 								placeholder="Ej: Hazme un resumen de este correo..."
-								className="min-h-[100px] w-full resize-none rounded-md border border-slate-700 bg-slate-800 px-3 py-2 text-sm shadow-sm placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+								className="min-h-[100px] w-full resize-none rounded-md border-text-secondary bg-input-background px-3 py-2 text-sm shadow-sm placeholder:text-text-secondary focus-visible:outline-none focus:border-1"
 							/>
 							<button
 								type="submit"
@@ -63,7 +63,7 @@ export default function GeminiPage() {
 				</div>
 
 				{response && (
-					<div className="mt-6 w-full rounded-xl border border-slate-800 bg-slate-900 p-6 shadow-lg">
+					<div className="mt-6 w-full rounded-xl bg-card-background p-6 shadow-lg">
 						<div className="flex items-start space-x-4">
 							<div className="flex-shrink-0">
 								<svg
@@ -76,14 +76,14 @@ export default function GeminiPage() {
 									strokeWidth="2"
 									strokeLinecap="round"
 									strokeLinejoin="round"
-									className="h-6 w-6 text-blue-400"
+									className="h-6 w-6 text-accent-blue"
 								>
 									<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
 								</svg>
 							</div>
 							<div className="flex-1 space-y-2">
-								<h2 className="font-semibold text-slate-200">Respuesta de Gemini</h2>
-								<p className="text-slate-300 whitespace-pre-wrap">{response}</p>
+								<h2 className="font-semibold text-text-primary">Respuesta de Gemini</h2>
+								<p className="text-text-secondary whitespace-pre-wrap">{response}</p>
 							</div>
 						</div>
 					</div>
