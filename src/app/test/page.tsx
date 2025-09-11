@@ -1,6 +1,8 @@
 "use client";
 
-import Button from "@/components/ui/Button";
+import { Button } from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
+
 import { Google } from "@/components/icons/Google";
 
 export default function TestPage() {
@@ -34,6 +36,16 @@ export default function TestPage() {
 					<Google className="text-white" />
 					Google
 				</Button>
+			</div>
+			<div className="p-2">
+				<Input
+					variant={"outline"}
+					buttonVariant={"solid"}
+					placeholder="Search..."
+					onChange={() => {
+						console.log("Search...");
+					}}
+				/>
 			</div>
 		</div>
 	);
