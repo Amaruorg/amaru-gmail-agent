@@ -86,7 +86,7 @@ type ButtonVariants = VariantProps<typeof buttonVariants>;
 // extend native button props with our custom props
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & ButtonVariants;
 
-export default function Button({
+function Button({
 	children,
 	onlyIcon,
 	size,
@@ -110,3 +110,5 @@ export default function Button({
 }
 
 Button.displayName = "Button";
+
+export { Button, type ButtonProps };
