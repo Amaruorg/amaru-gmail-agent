@@ -2,40 +2,24 @@
 
 import { Button } from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
+import Tag from "@/components/ui/Tag";
 
-import { Google } from "@/components/icons/Google";
+import { Google, Settings, Book, List, CheckList, Amaru, AmaruOutline } from "@/components/Icons";
 
 export default function TestPage() {
 	return (
 		<div className="flex-col">
 			<div className="p-2 flex items-center">
-				<Button style="danger" variant="solid" size="sm" onlyIcon>
-					<Google className="text-white" />
-				</Button>
-				<Button variant="outline" size="sm">
-					<Google className="text-white" />
-					Google
-				</Button>
-				<Button variant="ghost" size="sm">
-					Google
-				</Button>
-				<Button variant="link" size="sm">
-					Google
-				</Button>
+				<Button icon={Google} style="danger" variant="solid" size="sm" />
+
+				<Button text="Google" icon={Google} variant="outline" size="sm" />
+				<Button text="Google" variant="ghost" size="sm" />
+				<Button text="Google" variant="link" size="sm" />
 			</div>
 			<div>
-				<Button variant="solid" size="sm">
-					<Google className="text-white" />
-					Google
-				</Button>
-				<Button variant="solid">
-					<Google className="text-white" />
-					Google
-				</Button>
-				<Button variant="solid" size="lg">
-					<Google className="text-white" />
-					Google
-				</Button>
+				<Button text="Google" icon={Google} variant="solid" size="sm" />
+				<Button text="Google" icon={Google} variant="solid" />
+				<Button text="Google" icon={Google} variant="solid" size="lg" />
 			</div>
 			<div className="p-2">
 				<Input
@@ -46,6 +30,24 @@ export default function TestPage() {
 						console.log("Search...");
 					}}
 				/>
+			</div>
+			<div className="p-2 flex items-center gap-5">
+				<Tag icon={Book} size="sm" className="bg-red-700" />
+				<Tag icon={List} size="sm" className="bg-red-700" />
+				<Tag icon={CheckList} size="sm" className="bg-red-700" />
+				<Tag icon={Settings} size="sm" className="bg-red-700" />
+				<Tag icon={Amaru} size="lg" className="bg-red-700" />
+				<Tag text="Example Tag" size="sm" className="bg-sky-700" />
+				<Tag text="Example Tag" icon={Google} size="sm" className="bg-green-700" />
+			</div>
+			<div className="p-2 flex items-center gap-5">
+				<Tag text="Example Tag" size="sm" className="bg-purple-700" />
+				<Tag text="Example Tag" size="md" className="bg-purple-700" />
+				<Tag text="Example Tag" size="lg" className="bg-purple-700" />
+			</div>
+			<div className="">
+				<Amaru className="text-white" width={200} height={200} />
+				<AmaruOutline className="stroke-white" width={200} height={200} />
 			</div>
 		</div>
 	);
