@@ -3,7 +3,7 @@ import { InputHTMLAttributes } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { mergeClasses } from "@/lib/tailwindUtils";
 import { Button, type ButtonProps } from "@/components/ui/Button";
-import { Search } from "@/components/icons/Search";
+import { Search } from "@/components/Icons";
 
 const inputVariants = cva("flex items-center", {
 	variants: {
@@ -28,6 +28,14 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> &
 		buttonVariant?: ButtonProps["variant"];
 	};
 
+/**
+ * Variants:
+ * - variant: `solid` | `outline`
+ * - buttonVariant?: forwarded to inner `<Button>`
+ *
+ * Props:
+ * - Inherits all native <input> props.
+ */
 export default function Input({ variant, buttonVariant, ...props }: InputProps) {
 	const background = variant ? bgMap[variant] : bgMap.solid;
 	return (
@@ -40,10 +48,16 @@ export default function Input({ variant, buttonVariant, ...props }: InputProps) 
 				/>
 			</div>
 			<div className={mergeClasses(background, "rounded-r-xl")}>
-				<Button variant={buttonVariant} size="sm" className="rounded-r-xl rounded-l-none m-0">
-					<Search className="text-white" />
-				</Button>
+				<Button
+					variant={buttonVariant}
+					size="sm"
+					className="rounded-r-xl rounded-l-none m-0"
+					icon={Search}
+					onlyIcon
+				/>
 			</div>
 		</div>
 	);
 }
+
+Input.displayName = "Input";
