@@ -37,7 +37,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> &
  * - Inherits all native <input> props.
  */
 export default function Input({ variant, buttonVariant, ...props }: InputProps) {
-	const background = variant ? bgMap[variant] : bgMap.solid;
+	const background = bgMap[variant];
 	return (
 		<div className="flex w-full">
 			<div className={mergeClasses(inputVariants({ variant }), "px-4 flex-1 rounded-l-xl w-full")}>
@@ -48,13 +48,7 @@ export default function Input({ variant, buttonVariant, ...props }: InputProps) 
 				/>
 			</div>
 			<div className={mergeClasses(background, "rounded-r-xl")}>
-				<Button
-					variant={buttonVariant}
-					size="sm"
-					className="rounded-r-xl rounded-l-none m-0"
-					icon={Search}
-					onlyIcon
-				/>
+				<Button icon={Search} variant={buttonVariant} size="sm" className="rounded-r-xl rounded-l-none m-0" />
 			</div>
 		</div>
 	);
