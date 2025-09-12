@@ -25,9 +25,6 @@ const buttonVariants = cva(
 				true: "opacity-50 cursor-not-allowed",
 				false: "cursor-pointer",
 			},
-			onlyIcon: {
-				true: "p-2 aspect-square",
-			},
 		},
 		compoundVariants: [
 			{
@@ -76,7 +73,6 @@ const buttonVariants = cva(
 			variant: "solid",
 			style: "default",
 			disabled: false,
-			onlyIcon: false,
 		},
 	},
 );
@@ -84,11 +80,27 @@ const buttonVariants = cva(
 type ButtonVariants = VariantProps<typeof buttonVariants>;
 
 // extend native button props with our custom props
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & ButtonVariants;
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+	ButtonVariants & {
+		text?: string;
+		icon?: React.ElementType;
+	};
 
+/**
+ * Variants:
+ * - variant: `solid`, `outline`, `ghost`, `link`
+ * - style: `default`, `danger`
+ * - size: `sm`, `md`, `lg`
+ * - disabled: boolean
+ *
+ * Props:
+ * - text?: `string` — Button label.
+ * - icon?: `React.ElementType` — Optional icon component.
+ * - Inherits all native button props.
+ */
 function Button({
-	children,
-	onlyIcon,
+	text,
+	icon: Icon,
 	size,
 	variant,
 	style,
@@ -101,10 +113,12 @@ function Button({
 		<button
 			type={type}
 			disabled={disabled}
-			className={mergeClasses(buttonVariants({ size, variant, style, disabled, onlyIcon }), className)}
+			className={mergeClasses(buttonVariants({ size, variant, style, disabled }), className)}
 			{...rest}
 		>
-			{children}
+			{Icon && <Icon />}
+			{text && <span>{text}</span>}
+			{!text && !Icon ? <span>Button</span> : null}
 		</button>
 	);
 }
