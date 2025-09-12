@@ -2,7 +2,7 @@ import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { mergeClasses } from "@/lib/tailwindUtils";
 
-const tagVariants = cva("inline-flex items-center rounded-full font-medium w-auto gap-2 px-4 py-1 text-sm", {
+const tagVariants = cva("inline-flex items-center rounded-full font-medium w-auto gap-2", {
 	variants: {
 		variant: {
 			solid: "bg-primary text-white",
