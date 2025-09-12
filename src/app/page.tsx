@@ -37,7 +37,7 @@ export default function GeminiPage() {
 	return (
 		<div className="dark flex min-h-screen w-full flex-col items-center justify-center p-4">
 			<div className="w-full max-w-2xl">
-				<div className="rounded-xl bg-card-background text-text-primary shadow-lg">
+				<div className="rounded-xl bg-card-background text-foreground shadow-lg">
 					<div className="flex flex-col space-y-1.5 p-6">
 						<h1 className="text-2xl leading-none tracking-tight">Prototipo: Chat Gemini</h1>
 						<p className="text-sm text-text-secondary">Escribe el prompt abajo.</p>
@@ -82,7 +82,7 @@ export default function GeminiPage() {
 								</svg>
 							</div>
 							<div className="flex-1 space-y-2">
-								<h2 className="font-semibold text-text-primary">Respuesta de Gemini</h2>
+								<h2 className="font-semibold text-foreground">Respuesta de Gemini</h2>
 								<p className="text-text-secondary whitespace-pre-wrap">{response}</p>
 							</div>
 						</div>

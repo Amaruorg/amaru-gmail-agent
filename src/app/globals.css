@@ -7,11 +7,10 @@
 	--color-card-background: #3a3a3a;
 	--color-table-background: #3a3a3a;
 
-	--color-text-primary: #ffffff;
-	--color-text-secondary: #9ca3af;
+	--color-foreground: #ffffff;
+	--color-muted: #9ca3af;
 
-	--color-primary: #046689;
-	--color-primary-selected: #1988b0;
+	--color-primary: #1988b0;
 
 	--color-status-alert: #ff6262;
 	--color-status-success: #62ff77;
