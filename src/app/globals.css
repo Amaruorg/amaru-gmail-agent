@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+	--color-background: #333333;
+	--color-sidebar-background: #242424;
+	--color-input-background: #242424;
+	--color-card-background: #3a3a3a;
+	--color-table-background: #3a3a3a;
+
+	--color-foreground: #ffffff;
+	--color-muted: #9ca3af;
+
+	--color-primary: #1988b0;
+
+	--color-status-alert: #ff6262;
+	--color-status-success: #62ff77;
+	--color-accent-blue: #6291ff;
+	--color-accent-brown: #d08d63;
+
+	--color-neutral-gray: #646464;
+	--color-table-border: #7e7e7e;
+}
