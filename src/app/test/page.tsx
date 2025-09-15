@@ -1,9 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
-import Tag from "@/components/ui/Tag";
-
+import { Button, Input, Tag } from "@/components/ui/";
 import { Google, Settings, Book, List, CheckList, Amaru, AmaruOutline } from "@/components/Icons";
 
 export default function TestPage() {
