@@ -26,7 +26,7 @@ function TabGroup({ tabs }: TabGroupProps) {
 	const router = useRouter();
 	const pathname = usePathname();
 	const segments = pathname.split("/").filter(Boolean);
-	const currentPage = segments[segments.length - 1];
+	const currentPage = segments.pop();
 
 	return (
 		<div className={`flex border-b-2 border-option-line gap-5`}>
@@ -36,7 +36,10 @@ function TabGroup({ tabs }: TabGroupProps) {
 					<TabItem
 						key={tab.href}
 						variant={isSelected ? "selected" : "unselected"}
-						onClick={() => router.push(tab.href)}
+						onClick={() => {
+							console.log({ pathname, segments, currentPage });
+							router.push(`/${segments.join("/")}/${tab.href}`);
+						}}
 					>
 						{isSelected && (
 							<motion.div layoutId="active-tab" className="absolute inset-0 border-b-2 border-foreground" />
