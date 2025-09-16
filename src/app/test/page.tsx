@@ -1,7 +1,14 @@
 "use client";
 
 import { Button, Input, Tag } from "@/components/ui/";
+import { TabGroup } from "@/components/layout/TabGroup";
 import { Google, Settings, Book, List, CheckList, Amaru, AmaruOutline } from "@/components/Icons";
+
+const tabsContent = [
+	{ href: "home", label: "Home" },
+	{ href: "pricing", label: "Pricing" },
+	{ href: "about", label: "About" },
+];
 
 export default function TestPage() {
 	return (
@@ -41,6 +48,9 @@ export default function TestPage() {
 				<Tag text="Example Tag" size="sm" className="bg-purple-700" />
 				<Tag text="Example Tag" size="md" className="bg-purple-700" />
 				<Tag text="Example Tag" size="lg" className="bg-purple-700" />
+			</div>
+			<div className="flex">
+				<TabGroup tabs={tabsContent} />
 			</div>
 			<div className="">
 				<Amaru className="text-white" width={200} height={200} />
