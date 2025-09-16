@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import { Button, Input, Switch, Tag } from "@/components/ui/";
 import { TabGroup } from "@/components/layout/TabGroup";
 import { Google, Settings, Book, List, CheckList, Amaru, AmaruOutline } from "@/components/Icons";
@@ -11,6 +13,12 @@ const tabsContent = [
 ];
 
 export default function TestPage() {
+	const [switchState, setSwitchState] = useState(false);
+
+	useEffect(() => {
+		console.log("Switch state:", switchState);
+	}, [switchState]);
+
 	return (
 		<div className="flex-col">
 			<div className="p-2 flex items-center">
@@ -36,7 +44,7 @@ export default function TestPage() {
 				/>
 			</div>
 			<div className="p-2 flex items-center gap-5">
-				<Switch />
+				<Switch checked={switchState} onChange={setSwitchState} />
 				<Switch checked />
 				<Switch disabled />
 			</div>

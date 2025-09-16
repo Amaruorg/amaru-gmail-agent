@@ -5,11 +5,11 @@ import { cva, VariantProps } from "class-variance-authority";
 import { mergeClasses } from "@/lib/tailwindUtils";
 
 const switchVariants = cva(
-	"relative inline-flex h-6 w-12 rounded-full transition-colors border-2 focus:outline-none disabled:cursor-not-allowed",
+	"relative inline-flex h-6 w-12 rounded-full transition-colors border-2 items-center focus:outline-none disabled:cursor-not-allowed",
 	{
 		variants: {
 			state: {
-				checked: "bg-primary border-primary",
+				checked: "bg-primary border-switch-thumb",
 				unchecked: "bg-muted border-switch-thumb",
 				disabled: "bg-muted border-switch-thumb opacity-60 cursor-not-allowed",
 			},
@@ -54,7 +54,7 @@ function Switch({ className, ref, checked = false, disabled, onChange, ...props 
 				layout
 				transition={{ type: "spring", stiffness: 500, damping: 30 }}
 				className={mergeClasses(
-					"pointer-events-none block h-5 w-5 rounded-full shadow-lg ring-0",
+					"pointer-events-none block h-4 w-4 rounded-full shadow-lg ring-0 ml-0.5",
 					internalChecked ? "translate-x-6 bg-switch-thumb" : "translate-x-0 bg-switch-thumb",
 					disabled && "bg-switch-thumb",
 				)}
