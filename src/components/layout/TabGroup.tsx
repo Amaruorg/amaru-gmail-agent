@@ -12,7 +12,15 @@ type TabGroupProps = {
 };
 
 /**
- * A tab group component that displays a list of tabs and highlights the selected tab.
+ * Tab group component for navigation. Uses Next.js router for navigation.
+ *
+ * Props:
+ * - tabs: Array of tab objects with `href` and `label` properties. href is relative path, label is display text.
+ *
+ * Example:
+ * ```html
+ * <TabGroup tabs={[{ href: 'home', label: 'Home' }, { href: 'about', label: 'About' }]} />
+ * ```
  */
 function TabGroup({ tabs }: TabGroupProps) {
 	const router = useRouter();

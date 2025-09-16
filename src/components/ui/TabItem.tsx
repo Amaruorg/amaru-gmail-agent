@@ -21,6 +21,15 @@ type TabProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
 		children: React.ReactNode;
 	};
 
+/**
+ * Tab item component.
+ *
+ * Variants:
+ * - variant: `selected` | `unselected`
+ *
+ * Props:
+ * - Inherits all native button props.
+ */
 function TabItem({ variant, children, ...rest }: TabProps) {
 	return (
 		<button className="w-full flex items-center justify-center" {...rest}>
