@@ -36,8 +36,10 @@ function Switch({ className, ref, checked = false, disabled, onChange, ...props 
 
 	const toggle = () => {
 		if (disabled) return;
-		else setInternalChecked(!internalChecked);
-		onChange?.(!internalChecked);
+		else {
+			setInternalChecked(!internalChecked);
+			onChange?.(!internalChecked);
+		}
 	};
 
 	return (
@@ -54,9 +56,8 @@ function Switch({ className, ref, checked = false, disabled, onChange, ...props 
 				layout
 				transition={{ type: "spring", stiffness: 500, damping: 30 }}
 				className={mergeClasses(
-					"pointer-events-none block h-4 w-4 rounded-full shadow-lg ring-0 ml-0.5",
-					internalChecked ? "translate-x-6 bg-switch-thumb" : "translate-x-0 bg-switch-thumb",
-					disabled && "bg-switch-thumb",
+					"pointer-events-none block h-4 w-4 rounded-full shadow-lg ring-0 ml-0.5 bg-switch-thumb",
+					internalChecked ? "translate-x-6" : "translate-x-0",
 				)}
 			/>
 		</button>
