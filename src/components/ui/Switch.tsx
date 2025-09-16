@@ -1,6 +1,6 @@
 // components/ui/switch.tsx
 import { useState, ButtonHTMLAttributes } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { cva, VariantProps } from "class-variance-authority";
 import { mergeClasses } from "@/lib/tailwindUtils";
 
@@ -36,10 +36,8 @@ function Switch({ className, ref, checked = false, disabled, onChange, ...props 
 
 	const toggle = () => {
 		if (disabled) return;
-		else {
-			setInternalChecked(!internalChecked);
-			onChange?.(!internalChecked);
-		}
+		setInternalChecked(!internalChecked);
+		onChange?.(!internalChecked);
 	};
 
 	return (
@@ -54,7 +52,7 @@ function Switch({ className, ref, checked = false, disabled, onChange, ...props 
 		>
 			<motion.span
 				layout
-				transition={{ type: "spring", stiffness: 500, damping: 30 }}
+				transition={{ duration: 0.2 }}
 				className={mergeClasses(
 					"pointer-events-none block h-4 w-4 rounded-full shadow-lg ring-0 ml-0.5 bg-switch-thumb",
 					internalChecked ? "translate-x-6" : "translate-x-0",

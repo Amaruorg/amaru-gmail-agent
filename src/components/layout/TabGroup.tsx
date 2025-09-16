@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { TabItem } from "../ui";
 
 type TabGroupProps = {
