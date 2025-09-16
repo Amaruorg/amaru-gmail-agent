@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Input, Tag } from "@/components/ui/";
+import { Button, Input, Switch, Tag } from "@/components/ui/";
 import { TabGroup } from "@/components/layout/TabGroup";
 import { Google, Settings, Book, List, CheckList, Amaru, AmaruOutline } from "@/components/Icons";
 
@@ -34,6 +34,11 @@ export default function TestPage() {
 						console.log("Search...");
 					}}
 				/>
+			</div>
+			<div className="p-2 flex items-center gap-5">
+				<Switch />
+				<Switch checked />
+				<Switch disabled />
 			</div>
 			<div className="p-2 flex items-center gap-5">
 				<Tag icon={Book} size="sm" className="bg-red-700" />
