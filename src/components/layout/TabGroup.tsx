@@ -37,7 +37,6 @@ function TabGroup({ tabs }: TabGroupProps) {
 						key={tab.href}
 						variant={isSelected ? "selected" : "unselected"}
 						onClick={() => {
-							console.log({ pathname, segments, currentPage });
 							router.push(`/${segments.join("/")}/${tab.href}`);
 						}}
 					>
