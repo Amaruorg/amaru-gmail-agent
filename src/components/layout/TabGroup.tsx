@@ -29,7 +29,7 @@ function TabGroup({ tabs }: TabGroupProps) {
 	const currentPage = segments.pop();
 
 	return (
-		<div className={`flex border-b-2 border-option-line gap-5`}>
+		<div className={`flex border-b-2 border-tab-underline gap-5`}>
 			{tabs.map((tab) => {
 				const isSelected = currentPage === tab.href;
 				const nextPath = segments.length > 0 ? `/${segments.join("/")}/${tab.href}` : `/${tab.href}`;
