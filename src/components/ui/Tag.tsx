@@ -38,7 +38,7 @@ type TagProps = React.HTMLAttributes<HTMLSpanElement> &
  * - icon?: `React.ElementType` — Optional icon component.
  * - Inherits all native <span> props.
  */
-export default function Tag({ text, variant, size, className, icon: Icon, ...rest }: TagProps) {
+function Tag({ text, variant, size, className, icon: Icon, ...rest }: TagProps) {
 	return (
 		<span className={mergeClasses(tagVariants({ variant, size }), className)} {...rest}>
 			{Icon && <Icon className="w-4 h-4" />}
@@ -48,3 +48,5 @@ export default function Tag({ text, variant, size, className, icon: Icon, ...res
 }
 
 Tag.displayName = "Tag";
+
+export { Tag, type TagProps };
