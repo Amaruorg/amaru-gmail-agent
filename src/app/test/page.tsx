@@ -1,9 +1,24 @@
 "use client";
 
-import { Button, Input, Tag } from "@/components/ui/";
+import { useEffect, useState } from "react";
+
+import { Button, Input, Switch, Tag } from "@/components/ui/";
+import { TabGroup } from "@/components/layout/TabGroup";
 import { Google, Settings, Book, List, CheckList, Amaru, AmaruOutline } from "@/components/Icons";
 
+const tabsContent = [
+	{ href: "home", label: "Home" },
+	{ href: "pricing", label: "Pricing" },
+	{ href: "about", label: "About" },
+];
+
 export default function TestPage() {
+	const [switchState, setSwitchState] = useState(false);
+
+	useEffect(() => {
+		console.log("Switch state:", switchState);
+	}, [switchState]);
+
 	return (
 		<div className="flex-col">
 			<div className="p-2 flex items-center">
@@ -29,6 +44,11 @@ export default function TestPage() {
 				/>
 			</div>
 			<div className="p-2 flex items-center gap-5">
+				<Switch checked={switchState} onChange={setSwitchState} />
+				<Switch checked />
+				<Switch disabled />
+			</div>
+			<div className="p-2 flex items-center gap-5">
 				<Tag icon={Book} size="sm" className="bg-red-700" />
 				<Tag icon={List} size="sm" className="bg-red-700" />
 				<Tag icon={CheckList} size="sm" className="bg-red-700" />
@@ -41,6 +61,9 @@ export default function TestPage() {
 				<Tag text="Example Tag" size="sm" className="bg-purple-700" />
 				<Tag text="Example Tag" size="md" className="bg-purple-700" />
 				<Tag text="Example Tag" size="lg" className="bg-purple-700" />
+			</div>
+			<div className="flex">
+				<TabGroup tabs={tabsContent} />
 			</div>
 			<div className="">
 				<Amaru className="text-white" width={200} height={200} />
