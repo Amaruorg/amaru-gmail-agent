@@ -36,23 +36,18 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> &
  * Props:
  * - Inherits all native <input> props.
  */
-function Input({ variant = "solid", buttonVariant = "solid", ...props }: InputProps) {
+function Input({ variant = "solid", buttonVariant = "solid", ...rest }: InputProps) {
 	return (
 		<div className="flex w-full">
 			<div className={mergeClasses(inputVariants({ variant }), "px-4 flex-1 rounded-l-xl w-full")}>
 				<input
 					type="text"
 					className="bg-transparent outline-none text-foreground placeholder:text-muted w-full"
-					{...props}
+					{...rest}
 				/>
 			</div>
 			<div className={mergeClasses(inputVariants({ buttonVariant }), "rounded-r-xl")}>
-				<Button
-					icon={Search}
-					variant={buttonVariant}
-					size="sm"
-					className="rounded-r-xl rounded-l-none m-0"
-				/>
+				<Button icon={Search} variant={buttonVariant} size="sm" className="rounded-r-xl rounded-l-none m-0" />
 			</div>
 		</div>
 	);
