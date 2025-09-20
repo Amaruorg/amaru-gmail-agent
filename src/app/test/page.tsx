@@ -24,7 +24,7 @@ export default function TestPage() {
 			<div className="p-2 flex items-center">
 				<Button icon={Google} style="danger" variant="solid" size="sm" />
 
-				<Button text="Google" icon={Google} variant="outline" size="sm" />
+				<Button text="Google" icon={Google} variant="outline" size="md" />
 				<Button text="Google" variant="ghost" size="sm" />
 				<Button text="Google" variant="link" size="sm" />
 			</div>
