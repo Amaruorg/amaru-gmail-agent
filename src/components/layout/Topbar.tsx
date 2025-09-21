@@ -2,8 +2,7 @@
 
 import { signInSocial } from "@/lib/actions/auth-actions";
 import { Amaru, Google } from "@/components/Icons";
-import { Button } from "@/components/ui";
-import { TabGroup, type TabGroupProps } from "@/components/ui/TabGroup";
+import { Button, TabGroup, type TabGroupProps } from "@/components/ui";
 
 type TopbarProps = TabGroupProps;
 

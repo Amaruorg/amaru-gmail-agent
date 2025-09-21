@@ -2,8 +2,7 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { Button, Input, Switch, Tag } from "@/components/ui/";
-import { TabGroup } from "@/components/ui/TabGroup";
+import { Button, Input, Switch, Tag, TabGroup } from "@/components/ui";
 import { Google, Settings, Book, List, CheckList, Amaru, AmaruOutline } from "@/components/Icons";
 
 const tabsContent = [

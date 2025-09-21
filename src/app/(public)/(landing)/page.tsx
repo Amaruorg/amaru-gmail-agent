@@ -3,7 +3,7 @@ import { Button } from "@/components/ui";
 export default function HomePage() {
 	return (
 		<div className="flex min-h-screen w-full flex-col mt-40">
-			<div className="flex flex-col gap-2 w-1/2 items-center">
+			<div className="flex flex-col gap-2 w-full md:w-1/2 items-center">
 				<h1 className="text-4xl font-bold">Amaru</h1>
 				<h2 className="text-2xl">Gmail Agent</h2>
 				<p className="text-muted">
