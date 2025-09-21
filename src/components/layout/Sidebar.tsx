@@ -1,8 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { signOut } from "@/lib/actions/auth-actions";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { Button } from "@/components/ui";
 import { Amaru } from "@/components/Icons";
 

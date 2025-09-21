@@ -2,7 +2,7 @@ import React from "react";
 import { InputHTMLAttributes } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { mergeClasses } from "@/lib/tailwindUtils";
-import { Button, type ButtonProps } from "@/components/ui/";
+import { Button, type ButtonProps } from "@/components/ui";
 import { Search } from "@/components/Icons";
 
 const inputVariants = cva("flex items-center", {
