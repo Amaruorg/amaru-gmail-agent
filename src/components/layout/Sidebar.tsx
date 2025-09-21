@@ -23,17 +23,17 @@ function Sidebar({ sections }: SidebarProps) {
 	};
 	return (
 		<div className={`flex flex-col bg-sidebar-background h-full w-1/5`}>
-			<div className="border-2 border-blue-500">
+			<div>
 				<Amaru className="text-foreground w-50" width={50} height={50} />
 			</div>
-			<div className="flex flex-col justify-start items-start p-5 gap-3 border-2 border-blue-500">
+			<div className="flex flex-col justify-start items-start p-5 gap-3">
 				{sections.map((section) => (
 					<Link key={section.href} href={section.href}>
 						{section.label}
 					</Link>
 				))}
 			</div>
-			<div className="border-2 border-blue-500">
+			<div>
 				<Button text="Sign Out" onClick={handleSignOut} variant={"solid"} size={"sm"} />
 			</div>
 		</div>
