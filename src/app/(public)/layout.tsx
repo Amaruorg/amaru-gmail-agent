@@ -1,21 +1,21 @@
-import { ReactNode } from 'react';
-import { Inter } from 'next/font/google';
-import { Topbar } from '@/components/layout/Topbar';
-import '@/style/globals.css';
+import { ReactNode } from "react";
+import { Inter } from "next/font/google";
+import { Topbar } from "@/components/layout/Topbar";
+import "@/style/globals.css";
 
 const inter = Inter({
-	subsets: ['latin'],
-	weight: ['400'],
+	subsets: ["latin"],
+	weight: ["400"],
 });
 
 export const metadata = {
-	title: 'Amaru',
-	description: 'Amaru - Gmail Agent',
+	title: "Amaru",
+	description: "Amaru - Gmail Agent",
 };
 
 const tabsContent = [
-	{ href: '', label: 'Home' },
-	{ href: 'pricing', label: 'Pricing' },
+	{ href: "", label: "Home" },
+	{ href: "pricing", label: "Pricing" },
 ];
 
 export default function PublicLayout({ children }: { children: ReactNode }) {

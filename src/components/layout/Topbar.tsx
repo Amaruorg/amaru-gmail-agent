@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { signInSocial } from '@/lib/actions/auth-actions';
-import { Amaru, Google } from '@/components/Icons';
-import { Button, TabGroup, type TabGroupProps } from '@/components/ui';
+import { signInSocial } from "@/lib/actions/auth-actions";
+import { Amaru, Google } from "@/components/Icons";
+import { Button, TabGroup, type TabGroupProps } from "@/components/ui";
 
 type TopbarProps = TabGroupProps;
 
@@ -13,7 +13,7 @@ type TopbarProps = TabGroupProps;
  */
 function Topbar({ tabs }: TabGroupProps) {
 	const handleSignIn = async () => {
-		await signInSocial('google');
+		await signInSocial("google");
 	};
 	return (
 		<div className={`flex bg-transparent px-5 pt-5`}>

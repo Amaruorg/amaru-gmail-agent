@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { signOut } from '@/lib/actions/auth-actions';
-import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui';
-import { Amaru } from '@/components/Icons';
+import Link from "next/link";
+import { signOut } from "@/lib/actions/auth-actions";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui";
+import { Amaru } from "@/components/Icons";
 
 type SidebarProps = {
 	sections: { href: string; label: string }[];
@@ -19,7 +19,7 @@ function Sidebar({ sections }: SidebarProps) {
 	const router = useRouter();
 	const handleSignOut = async () => {
 		await signOut();
-		router.push('/');
+		router.push("/");
 	};
 	return (
 		<div className={`bg-sidebar-background flex h-full w-1/5 flex-col`}>
@@ -34,7 +34,7 @@ function Sidebar({ sections }: SidebarProps) {
 				))}
 			</div>
 			<div>
-				<Button text="Sign Out" onClick={handleSignOut} variant={'solid'} size={'sm'} />
+				<Button text="Sign Out" onClick={handleSignOut} variant={"solid"} size={"sm"} />
 			</div>
 		</div>
 	);

@@ -1,22 +1,22 @@
-import React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { mergeClasses } from '@/lib/tailwindUtils';
+import React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { mergeClasses } from "@/lib/tailwindUtils";
 
-const tagVariants = cva('inline-flex items-center rounded-full font-medium w-auto gap-2', {
+const tagVariants = cva("inline-flex items-center rounded-full font-medium w-auto gap-2", {
 	variants: {
 		variant: {
-			solid: 'bg-primary text-white',
-			outline: 'border border-primary text-primary bg-transparent',
+			solid: "bg-primary text-white",
+			outline: "border border-primary text-primary bg-transparent",
 		},
 		size: {
-			sm: 'px-3 py-1 text-xs',
-			md: 'px-4 py-1.5 text-sm',
-			lg: 'px-5 py-2 text-base',
+			sm: "px-3 py-1 text-xs",
+			md: "px-4 py-1.5 text-sm",
+			lg: "px-5 py-2 text-base",
 		},
 	},
 	defaultVariants: {
-		variant: 'solid',
-		size: 'md',
+		variant: "solid",
+		size: "md",
 	},
 });
 
@@ -47,6 +47,6 @@ function Tag({ text, variant, size, className, icon: Icon, ...rest }: TagProps) 
 	);
 }
 
-Tag.displayName = 'Tag';
+Tag.displayName = "Tag";
 
 export { Tag, type TagProps };

@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui';
+import { Button } from "@/components/ui";
 
 export default function HomePage() {
 	return (
@@ -11,7 +11,7 @@ export default function HomePage() {
 					chaos. Powered by advanced AI, it integrates with Gmail and Google Calendar to prioritize messages, automate
 					repetitive tasks, and streamline your day.
 				</p>
-				<Button text="Get Started" variant={'solid'} />
+				<Button text="Get Started" variant={"solid"} />
 			</div>
 			<div className="bg-section-background min-h-screen w-full rounded-lg p-8"></div>
 		</div>

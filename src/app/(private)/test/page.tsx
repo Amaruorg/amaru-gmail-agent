@@ -1,21 +1,21 @@
-import { auth } from '@/lib/auth';
-import { headers } from 'next/headers';
-import { redirect } from 'next/navigation';
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
-import { Button, Input, Switch, Tag, TabGroup } from '@/components/ui';
-import { Google, Settings, Book, List, CheckList, Amaru, AmaruOutline } from '@/components/Icons';
+import { Button, Input, Switch, Tag, TabGroup } from "@/components/ui";
+import { Google, Settings, Book, List, CheckList, Amaru, AmaruOutline } from "@/components/Icons";
 
 const tabsContent = [
-	{ href: 'home', label: 'Home' },
-	{ href: 'pricing', label: 'Pricing' },
-	{ href: 'about', label: 'About' },
+	{ href: "home", label: "Home" },
+	{ href: "pricing", label: "Pricing" },
+	{ href: "about", label: "About" },
 ];
 
 export default async function TestPage() {
 	const session = await auth.api.getSession({ headers: await headers() });
 
 	if (!session) {
-		redirect('/');
+		redirect("/");
 	}
 
 	return (
@@ -33,7 +33,7 @@ export default async function TestPage() {
 				<Button text="Google" icon={Google} variant="solid" size="lg" />
 			</div>
 			<div className="p-2">
-				<Input variant={'outline'} buttonVariant={'solid'} placeholder="Search..." />
+				<Input variant={"outline"} buttonVariant={"solid"} placeholder="Search..." />
 			</div>
 			<div className="flex items-center gap-5 p-2">
 				<Switch />

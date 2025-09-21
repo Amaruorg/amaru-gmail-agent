@@ -1,11 +1,11 @@
-'use server';
+"use server";
 
-import { auth } from '@/lib/auth';
-import { headers } from 'next/headers';
-import { redirect } from 'next/navigation';
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
-export const signInSocial = async (provider: 'google') => {
-	console.log('signInSocial called with provider:', provider);
+export const signInSocial = async (provider: "google") => {
+	console.log("signInSocial called with provider:", provider);
 	const { url } = await auth.api.signInSocial({
 		body: {
 			provider,
