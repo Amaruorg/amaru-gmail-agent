@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-	title: "Chat Gemini",
-	description: "Gemini IA Chat",
+	title: "Amaru",
+	description: "Amaru - Private AI Chat Application",
 };
 
 const sections = [
