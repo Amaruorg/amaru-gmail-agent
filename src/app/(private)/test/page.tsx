@@ -1,9 +1,9 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 import { Button, Input, Switch, Tag } from "@/components/ui/";
-import { TabGroup } from "@/components/layout/TabGroup";
+import { TabGroup } from "@/components/ui/TabGroup";
 import { Google, Settings, Book, List, CheckList, Amaru, AmaruOutline } from "@/components/Icons";
 
 const tabsContent = [
@@ -12,12 +12,12 @@ const tabsContent = [
 	{ href: "about", label: "About" },
 ];
 
-export default function TestPage() {
-	const [switchState, setSwitchState] = useState(false);
+export default async function TestPage() {
+	const session = await auth.api.getSession({ headers: await headers() });
 
-	useEffect(() => {
-		console.log("Switch state:", switchState);
-	}, [switchState]);
+	if (!session) {
+		redirect("/");
+	}
 
 	return (
 		<div className="flex-col">
@@ -34,17 +34,10 @@ export default function TestPage() {
 				<Button text="Google" icon={Google} variant="solid" size="lg" />
 			</div>
 			<div className="p-2">
-				<Input
-					variant={"outline"}
-					buttonVariant={"solid"}
-					placeholder="Search..."
-					onChange={() => {
-						console.log("Search...");
-					}}
-				/>
+				<Input variant={"outline"} buttonVariant={"solid"} placeholder="Search..." />
 			</div>
 			<div className="p-2 flex items-center gap-5">
-				<Switch checked={switchState} onChange={setSwitchState} />
+				<Switch />
 				<Switch checked />
 				<Switch disabled />
 			</div>
