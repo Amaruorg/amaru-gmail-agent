@@ -1,16 +1,16 @@
-import React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { mergeClasses } from "@/lib/tailwindUtils";
+import React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { mergeClasses } from '@/lib/tailwindUtils';
 
-const TabVariants = cva("relative text-lg transition-colors p-3 px-10", {
+const TabVariants = cva('relative text-lg transition-colors p-3 px-10', {
 	variants: {
 		variant: {
-			selected: "text-foreground hover:text-foreground cursor-default",
-			unselected: "text-muted hover:text-foreground/80 cursor-pointer active:text-foreground",
+			selected: 'text-foreground hover:text-foreground cursor-default',
+			unselected: 'text-muted hover:text-foreground/80 cursor-pointer active:text-foreground',
 		},
 	},
 	defaultVariants: {
-		variant: "unselected",
+		variant: 'unselected',
 	},
 });
 
@@ -32,7 +32,7 @@ type TabProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
  */
 function TabItem({ variant, children, ...rest }: TabProps) {
 	return (
-		<button className="w-full flex items-center justify-center" {...rest}>
+		<button className="flex w-full items-center justify-center" {...rest}>
 			<div className={mergeClasses(TabVariants({ variant }))}>{children}</div>
 		</button>
 	);

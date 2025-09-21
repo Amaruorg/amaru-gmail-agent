@@ -1,26 +1,26 @@
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-import { Button, Input, Switch, Tag, TabGroup } from "@/components/ui";
-import { Google, Settings, Book, List, CheckList, Amaru, AmaruOutline } from "@/components/Icons";
+import { Button, Input, Switch, Tag, TabGroup } from '@/components/ui';
+import { Google, Settings, Book, List, CheckList, Amaru, AmaruOutline } from '@/components/Icons';
 
 const tabsContent = [
-	{ href: "home", label: "Home" },
-	{ href: "pricing", label: "Pricing" },
-	{ href: "about", label: "About" },
+	{ href: 'home', label: 'Home' },
+	{ href: 'pricing', label: 'Pricing' },
+	{ href: 'about', label: 'About' },
 ];
 
 export default async function TestPage() {
 	const session = await auth.api.getSession({ headers: await headers() });
 
 	if (!session) {
-		redirect("/");
+		redirect('/');
 	}
 
 	return (
 		<div className="flex-col">
-			<div className="p-2 flex items-center">
+			<div className="flex items-center p-2">
 				<Button icon={Google} style="danger" variant="solid" size="sm" />
 
 				<Button text="Google" icon={Google} variant="outline" size="md" />
@@ -33,14 +33,14 @@ export default async function TestPage() {
 				<Button text="Google" icon={Google} variant="solid" size="lg" />
 			</div>
 			<div className="p-2">
-				<Input variant={"outline"} buttonVariant={"solid"} placeholder="Search..." />
+				<Input variant={'outline'} buttonVariant={'solid'} placeholder="Search..." />
 			</div>
-			<div className="p-2 flex items-center gap-5">
+			<div className="flex items-center gap-5 p-2">
 				<Switch />
 				<Switch checked />
 				<Switch disabled />
 			</div>
-			<div className="p-2 flex items-center gap-5">
+			<div className="flex items-center gap-5 p-2">
 				<Tag icon={Book} size="sm" className="bg-red-700" />
 				<Tag icon={List} size="sm" className="bg-red-700" />
 				<Tag icon={CheckList} size="sm" className="bg-red-700" />
@@ -49,7 +49,7 @@ export default async function TestPage() {
 				<Tag text="Example Tag" size="sm" className="bg-sky-700" />
 				<Tag text="Example Tag" icon={Google} size="sm" className="bg-green-700" />
 			</div>
-			<div className="p-2 flex items-center gap-5">
+			<div className="flex items-center gap-5 p-2">
 				<Tag text="Example Tag" size="sm" className="bg-purple-700" />
 				<Tag text="Example Tag" size="md" className="bg-purple-700" />
 				<Tag text="Example Tag" size="lg" className="bg-purple-700" />

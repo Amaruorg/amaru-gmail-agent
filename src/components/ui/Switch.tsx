@@ -1,29 +1,29 @@
-"use client";
+'use client';
 
-import { useState, ButtonHTMLAttributes } from "react";
-import { motion } from "motion/react";
-import { cva, VariantProps } from "class-variance-authority";
-import { mergeClasses } from "@/lib/tailwindUtils";
+import { useState, ButtonHTMLAttributes } from 'react';
+import { motion } from 'motion/react';
+import { cva, VariantProps } from 'class-variance-authority';
+import { mergeClasses } from '@/lib/tailwindUtils';
 
 const switchVariants = cva(
-	"relative inline-flex h-6 w-12 rounded-full transition-colors border-2 items-center focus:outline-none disabled:cursor-not-allowed",
+	'relative inline-flex h-6 w-12 rounded-full transition-colors border-2 items-center focus:outline-none disabled:cursor-not-allowed',
 	{
 		variants: {
 			state: {
-				checked: "bg-primary border-switch-thumb",
-				unchecked: "bg-muted border-switch-thumb",
-				disabled: "bg-muted border-switch-thumb opacity-60 cursor-not-allowed",
+				checked: 'bg-primary border-switch-thumb',
+				unchecked: 'bg-muted border-switch-thumb',
+				disabled: 'bg-muted border-switch-thumb opacity-60 cursor-not-allowed',
 			},
 		},
 		defaultVariants: {
-			state: "unchecked",
+			state: 'unchecked',
 		},
 	},
 );
 
 type switchVariants = VariantProps<typeof switchVariants>;
 
-type SwitchProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onChange"> &
+type SwitchProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> &
 	switchVariants & {
 		ref?: React.Ref<HTMLButtonElement>;
 		checked?: boolean;
@@ -33,7 +33,7 @@ type SwitchProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onChange"> &
 function Switch({ className, ref, checked = false, disabled, onChange, ...props }: SwitchProps) {
 	const [internalChecked, setInternalChecked] = useState(checked);
 
-	const state = disabled ? "disabled" : internalChecked ? "checked" : "unchecked";
+	const state = disabled ? 'disabled' : internalChecked ? 'checked' : 'unchecked';
 
 	const toggle = () => {
 		if (disabled) return;
@@ -55,14 +55,14 @@ function Switch({ className, ref, checked = false, disabled, onChange, ...props 
 				layout
 				transition={{ duration: 0.2 }}
 				className={mergeClasses(
-					"pointer-events-none block h-4 w-4 rounded-full shadow-lg ring-0 ml-0.5 bg-switch-thumb",
-					internalChecked ? "translate-x-6" : "translate-x-0",
+					'bg-switch-thumb pointer-events-none ml-0.5 block h-4 w-4 rounded-full shadow-lg ring-0',
+					internalChecked ? 'translate-x-6' : 'translate-x-0',
 				)}
 			/>
 		</button>
 	);
 }
 
-Switch.displayName = "Switch";
+Switch.displayName = 'Switch';
 
 export { Switch, type SwitchProps };

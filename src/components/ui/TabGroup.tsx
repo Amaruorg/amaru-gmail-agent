@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useRouter, usePathname } from "next/navigation";
-import { motion } from "motion/react";
-import { TabItem } from ".";
+import { useRouter, usePathname } from 'next/navigation';
+import { motion } from 'motion/react';
+import { TabItem } from '.';
 
 type TabGroupProps = {
 	tabs: {
@@ -25,25 +25,25 @@ type TabGroupProps = {
 function TabGroup({ tabs }: TabGroupProps) {
 	const router = useRouter();
 	const pathname = usePathname();
-	const segments = pathname.split("/").filter(Boolean);
-	const currentPage = segments.pop() ?? "";
+	const segments = pathname.split('/').filter(Boolean);
+	const currentPage = segments.pop() ?? '';
 
 	return (
-		<div className={`flex border-b-2 border-tab-underline gap-5`}>
+		<div className={`border-tab-underline flex gap-5 border-b-2`}>
 			{tabs.map((tab) => {
 				const isSelected = currentPage === tab.href;
-				const nextPath = segments.length > 0 ? `/${segments.join("/")}/${tab.href}` : `/${tab.href}`;
+				const nextPath = segments.length > 0 ? `/${segments.join('/')}/${tab.href}` : `/${tab.href}`;
 
 				return (
 					<TabItem
 						key={tab.href}
-						variant={isSelected ? "selected" : "unselected"}
+						variant={isSelected ? 'selected' : 'unselected'}
 						onClick={() => {
 							router.push(nextPath);
 						}}
 					>
 						{isSelected && (
-							<motion.div layoutId="active-tab" className="absolute inset-0 border-b-2 border-foreground" />
+							<motion.div layoutId="active-tab" className="border-foreground absolute inset-0 border-b-2" />
 						)}
 						<span className="relative">{tab.label}</span>
 					</TabItem>

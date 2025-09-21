@@ -1,9 +1,9 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
 	--color-background: #333333;
 	--color-background-secondary: #242424;
-    
+
 	--color-sidebar-background: #242424;
 	--color-input-background: #242424;
 	--color-card-background: #3a3a3a;

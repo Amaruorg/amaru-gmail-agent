@@ -29,8 +29,8 @@ Amaru helps users manage their inbox efficiently by:
 
 ## 🔑 Key Features
 
-- Secure Gmail connection via **OAuth 2.0**  
-- Email reading and storage in **PostgreSQL**  
+- Secure Gmail connection via **OAuth 2.0**
+- Email reading and storage in **PostgreSQL**
 - Automatic classification into categories:
   - Meetings
   - Newsletters
@@ -40,16 +40,16 @@ Amaru helps users manage their inbox efficiently by:
 - Minimal automatic actions:
   - Create calendar events
   - Archive irrelevant emails
-- Dashboard for reviewing and confirming suggested actions  
+- Dashboard for reviewing and confirming suggested actions
 
 ## 🛠 Technologies
 
-| Layer              | Tech Stack                          |
-|-------------------|-----------------------------------|
-| Frontend/Backend  | Next.js + TypeScript               |
-| UI                | Tailwind CSS + Shadcn UI           |
-| Database          | PostgreSQL (ACID + JSONB)         |
-| Authentication    | OAuth 2.0 with Better Auth        |
-| Task Queues       | BullMQ                             |
-| Containers        | Docker & Docker Compose            |
-| CI/CD             | GitHub Actions                     |
+| Layer            | Tech Stack                 |
+| ---------------- | -------------------------- |
+| Frontend/Backend | Next.js + TypeScript       |
+| UI               | Tailwind CSS + Shadcn UI   |
+| Database         | PostgreSQL (ACID + JSONB)  |
+| Authentication   | OAuth 2.0 with Better Auth |
+| Task Queues      | BullMQ                     |
+| Containers       | Docker & Docker Compose    |
+| CI/CD            | GitHub Actions             |
