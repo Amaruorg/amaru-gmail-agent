@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { mergeClasses } from "@/lib/tailwindUtils";
 
 const buttonVariants = cva(
-	"inline-flex items-center justify-center rounded-md transition-colors font-medium w-auto gap-2 m-2",
+	"inline-flex items-center justify-center rounded-md transition-colors font-medium w-fit gap-2 m-2 h-fit",
 	{
 		variants: {
 			size: {
