@@ -1,4 +1,5 @@
-// components/ui/switch.tsx
+"use client";
+
 import { useState, ButtonHTMLAttributes } from "react";
 import { motion } from "motion/react";
 import { cva, VariantProps } from "class-variance-authority";
