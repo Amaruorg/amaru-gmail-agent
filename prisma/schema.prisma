@@ -8,17 +8,18 @@ datasource db {
 }
 
 model User {
-  id            String    @id
+  id            String   @id
   name          String
-  email         String    @unique
-  emailVerified Boolean   @default(false)
+  email         String   @unique
+  emailVerified Boolean  @default(false)
   image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @default(now()) @updatedAt
-  accounts      Account[]
-  sessions      Session[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
 
-  @@map("user")
+  accounts Account[]
+  sessions Session[]
+
+  @@map("users")
 }
 
 model Session {
@@ -30,9 +31,10 @@ model Session {
   ipAddress String?
   userAgent String?
   userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@map("session")
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
 }
 
 model Account {
@@ -49,9 +51,11 @@ model Account {
   password              String?
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
-  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@map("account")
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  actions Action[]
+
+  @@map("accounts")
 }
 
 model Verification {
@@ -62,5 +66,54 @@ model Verification {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now()) @updatedAt
 
-  @@map("verification")
+  @@map("verifications")
+}
+
+model Email {
+  id        String   @id
+  threadId  String
+  userId    String
+  to        String
+  from      String
+  subject   String
+  indexedAt DateTime @default(now())
+
+  actions Action[]
+
+  @@map("emails")
+}
+
+model Action {
+  id           String    @id
+  accountUid   String
+  createdAt    DateTime  @default(now())
+  completedAt  DateTime?
+  modelVersion String
+
+  account Account        @relation(fields: [accountUid], references: [id])
+  emails  Email[]
+  event   ActionEvent?
+  summary ActionSummary?
+
+  @@map("actions")
+}
+
+model ActionEvent {
+  actionId  String   @id
+  eventId   String   @unique
+  startTime DateTime
+  endTime   DateTime
+
+  action Action @relation(fields: [actionId], references: [id], onDelete: Cascade)
+
+  @@map("action_events")
+}
+
+model ActionSummary {
+  actionId    String  @id
+  summaryText String?
+
+  action Action @relation(fields: [actionId], references: [id], onDelete: Cascade)
+
+  @@map("action_summaries")
 }
