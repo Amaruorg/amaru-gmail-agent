@@ -39,15 +39,15 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> &
 function Input({ variant = "solid", buttonVariant = "solid", ...rest }: InputProps) {
 	return (
 		<div className="flex w-full">
-			<div className={mergeClasses(inputVariants({ variant }), "px-4 flex-1 rounded-l-xl w-full")}>
+			<div className={mergeClasses(inputVariants({ variant }), "w-full flex-1 rounded-l-xl px-4")}>
 				<input
 					type="text"
-					className="bg-transparent outline-none text-foreground placeholder:text-muted w-full"
+					className="text-foreground placeholder:text-muted w-full bg-transparent outline-none"
 					{...rest}
 				/>
 			</div>
 			<div className={mergeClasses(inputVariants({ buttonVariant }), "rounded-r-xl")}>
-				<Button icon={Search} variant={buttonVariant} size="sm" className="rounded-r-xl rounded-l-none m-0" />
+				<Button icon={Search} variant={buttonVariant} size="sm" className="m-0 rounded-l-none rounded-r-xl" />
 			</div>
 		</div>
 	);

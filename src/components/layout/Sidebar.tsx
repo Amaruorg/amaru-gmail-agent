@@ -22,11 +22,11 @@ function Sidebar({ sections }: SidebarProps) {
 		router.push("/");
 	};
 	return (
-		<div className={`flex flex-col bg-sidebar-background h-full w-1/5`}>
+		<div className={`bg-sidebar-background flex h-full w-1/5 flex-col`}>
 			<div>
 				<Amaru className="text-foreground w-50" width={50} height={50} />
 			</div>
-			<div className="flex flex-col justify-start items-start p-5 gap-3">
+			<div className="flex flex-col items-start justify-start gap-3 p-5">
 				{sections.map((section) => (
 					<Link key={section.href} href={section.href}>
 						{section.label}

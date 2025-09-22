@@ -20,7 +20,7 @@ export default async function TestPage() {
 
 	return (
 		<div className="flex-col">
-			<div className="p-2 flex items-center">
+			<div className="flex items-center p-2">
 				<Button icon={Google} style="danger" variant="solid" size="sm" />
 
 				<Button text="Google" icon={Google} variant="outline" size="md" />
@@ -35,12 +35,12 @@ export default async function TestPage() {
 			<div className="p-2">
 				<Input variant={"outline"} buttonVariant={"solid"} placeholder="Search..." />
 			</div>
-			<div className="p-2 flex items-center gap-5">
+			<div className="flex items-center gap-5 p-2">
 				<Switch />
 				<Switch checked />
 				<Switch disabled />
 			</div>
-			<div className="p-2 flex items-center gap-5">
+			<div className="flex items-center gap-5 p-2">
 				<Tag icon={Book} size="sm" className="bg-red-700" />
 				<Tag icon={List} size="sm" className="bg-red-700" />
 				<Tag icon={CheckList} size="sm" className="bg-red-700" />
@@ -49,7 +49,7 @@ export default async function TestPage() {
 				<Tag text="Example Tag" size="sm" className="bg-sky-700" />
 				<Tag text="Example Tag" icon={Google} size="sm" className="bg-green-700" />
 			</div>
-			<div className="p-2 flex items-center gap-5">
+			<div className="flex items-center gap-5 p-2">
 				<Tag text="Example Tag" size="sm" className="bg-purple-700" />
 				<Tag text="Example Tag" size="md" className="bg-purple-700" />
 				<Tag text="Example Tag" size="lg" className="bg-purple-700" />

@@ -29,7 +29,7 @@ function TabGroup({ tabs }: TabGroupProps) {
 	const currentPage = segments.pop() ?? "";
 
 	return (
-		<div className={`flex border-b-2 border-tab-underline gap-5`}>
+		<div className={`border-tab-underline flex gap-5 border-b-2`}>
 			{tabs.map((tab) => {
 				const isSelected = currentPage === tab.href;
 				const nextPath = segments.length > 0 ? `/${segments.join("/")}/${tab.href}` : `/${tab.href}`;
@@ -43,7 +43,7 @@ function TabGroup({ tabs }: TabGroupProps) {
 						}}
 					>
 						{isSelected && (
-							<motion.div layoutId="active-tab" className="absolute inset-0 border-b-2 border-foreground" />
+							<motion.div layoutId="active-tab" className="border-foreground absolute inset-0 border-b-2" />
 						)}
 						<span className="relative">{tab.label}</span>
 					</TabItem>

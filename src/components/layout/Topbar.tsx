@@ -26,7 +26,7 @@ function Topbar({ tabs }: TabGroupProps) {
 				icon={Google}
 				variant="outline"
 				size="sm"
-				className="border-foreground hover:bg-foreground/5 bg-transparent active:bg-foreground/10"
+				className="border-foreground hover:bg-foreground/5 active:bg-foreground/10 bg-transparent"
 				onClick={handleSignIn}
 			/>
 		</div>

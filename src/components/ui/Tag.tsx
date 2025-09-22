@@ -41,7 +41,7 @@ type TagProps = React.HTMLAttributes<HTMLSpanElement> &
 function Tag({ text, variant, size, className, icon: Icon, ...rest }: TagProps) {
 	return (
 		<span className={mergeClasses(tagVariants({ variant, size }), className)} {...rest}>
-			{Icon && <Icon className="w-4 h-4" />}
+			{Icon && <Icon className="h-4 w-4" />}
 			{text && <span>{text}</span>}
 		</span>
 	);

@@ -32,7 +32,7 @@ type TabProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
  */
 function TabItem({ variant, children, ...rest }: TabProps) {
 	return (
-		<button className="w-full flex items-center justify-center" {...rest}>
+		<button className="flex w-full items-center justify-center" {...rest}>
 			<div className={mergeClasses(TabVariants({ variant }))}>{children}</div>
 		</button>
 	);
