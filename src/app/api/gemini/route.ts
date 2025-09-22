@@ -19,7 +19,11 @@ export async function POST(req: NextRequest) {
 		});
 
 		return NextResponse.json({ text: response.text });
-	} catch (error: any) {
-		return NextResponse.json({ error: error.message || "Algo salio mal..." }, { status: 500 });
+	} catch (error: unknown) {
+		if (error instanceof Error) {
+			return NextResponse.json({ error: error.message || "Algo salio mal..." }, { status: 500 });
+		} else {
+			return NextResponse.json({ error: "Algo salio mal..." }, { status: 500 });
+		}
 	}
 }
