@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-	--color-background: #333333;
-	--color-background-secondary: #242424;
+	--color-background: #0a0a0a;
+	--color-background-secondary: #1a1a1a;
 
-	--color-sidebar-background: #242424;
+	--color-sidebar-background: #1a1a1a;
 	--color-input-background: #242424;
 	--color-card-background: #3a3a3a;
 	--color-table-background: #3a3a3a;
@@ -24,4 +24,35 @@
 
 	--color-neutral-gray: #646464;
 	--color-table-border: #7e7e7e;
+}
+
+.marquee-container {
+	height: 30px;
+	overflow: hidden;
+	line-height: 30px;
+
+	.marquee {
+		top: 0;
+		left: 100%;
+		width: 100%;
+		position: absolute;
+		white-space: nowrap;
+		animation: marquee 30s linear infinite;
+	}
+
+	.marquee2 {
+		animation-delay: 15s;
+	}
+	b {
+		padding-left: 10px;
+	}
+}
+
+@keyframes marquee {
+	0% {
+		left: 100%;
+	}
+	100% {
+		left: -100%;
+	}
 }
