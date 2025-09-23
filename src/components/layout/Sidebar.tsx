@@ -21,15 +21,15 @@ function Sidebar({ sections }: SidebarProps) {
 	};
 	return (
 		<div className="w-1/5 p-2">
-			<div className={`bg-sidebar-background mr-5 flex h-full w-full flex-col rounded-xl`}>
-				<Amaru className="text-foreground w-50 mx-auto mt-5" width={50} height={50} />
+			<div className={`bg-sidebar-background mr-5 flex h-full flex-col rounded-xl`}>
+				<Amaru className="text-foreground mx-auto mt-5 w-50" width={50} height={50} />
 				<div className="flex flex-col items-start justify-start gap-3 p-5">
 					{sections.map((section) => (
 						<Link key={section.href} href={section.href}>
 							{section.label}
 						</Link>
 					))}
-					<button onClick={handleSignOut}>
+					<button onClick={handleSignOut} className="cursor-pointer">
 						<span>Sign Out</span>
 					</button>
 				</div>
