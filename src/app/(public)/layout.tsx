@@ -33,7 +33,7 @@ export default function PublicLayout({ children }: { children: ReactNode }) {
 				className={`${inter.className} from-background-secondary text-foreground bg-gradient-to-b from-20% to-black`}
 			>
 				<Marquee items={texts} />
-				<Topbar tabs={tabsContent} />
+				<Topbar basePath="/" tabs={tabsContent} />
 				{children}
 				<footer className="h-20 w-full bg-transparent"></footer>
 			</body>

@@ -19,7 +19,7 @@ function Topbar({ tabs }: TabGroupProps) {
 		<div className={`flex bg-transparent px-5 pt-5`}>
 			<Amaru className="text-foreground w-50" width={50} height={50} />
 			<div className="w-full" />
-			<TabGroup tabs={tabs} />
+			<TabGroup className="justify-center" tabs={tabs} />
 			<div className="w-full" />
 			<Button
 				text="Google"

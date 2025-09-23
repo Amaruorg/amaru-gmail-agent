@@ -3,12 +3,15 @@
 import { useRouter, usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { TabItem } from ".";
+import { base } from "motion/react-client";
 
 type TabGroupProps = {
+	basePath?: string; // opcional
 	tabs: {
 		href: string;
 		label: string;
 	}[];
+	className?: string;
 };
 
 /**
@@ -16,31 +19,28 @@ type TabGroupProps = {
  *
  * Props:
  * - tabs: Array of tab objects with `href` and `label` properties. href is relative path, label is display text.
+ * - basePath: Optional base path to prepend to each tab's href.
  *
  * Example:
  * ```tsx
- * <TabGroup tabs={[{ href: 'home', label: 'Home' }, { href: 'about', label: 'About' }]} />
+ * <TabGroup basePath="/settings" tabs={[{ href: 'profile', label: 'Profile' }, { href: 'notifications', label: 'Notifications' }]} />
  * ```
  */
-function TabGroup({ tabs }: TabGroupProps) {
+function TabGroup({ tabs, basePath = "", className }: TabGroupProps) {
 	const router = useRouter();
 	const pathname = usePathname();
-	const segments = pathname.split("/").filter(Boolean);
-	const currentPage = segments.pop() ?? "";
 
 	return (
-		<div className={`border-tab-underline flex gap-5 border-b-2`}>
+		<div className={`border-tab-underline flex w-full gap-5 border-b-2 ${className}`}>
 			{tabs.map((tab) => {
-				const isSelected = currentPage === tab.href;
-				const nextPath = segments.length > 0 ? `/${segments.join("/")}/${tab.href}` : `/${tab.href}`;
+				const fullHref = `${basePath}/${tab.href}`.replace(/\/+$/, "").replace(/\/{2,}/g, "/") || "/";
+				const isSelected = pathname === fullHref;
 
 				return (
 					<TabItem
 						key={tab.href}
 						variant={isSelected ? "selected" : "unselected"}
-						onClick={() => {
-							router.push(nextPath);
-						}}
+						onClick={() => router.push(fullHref)}
 					>
 						{isSelected && (
 							<motion.div layoutId="active-tab" className="border-foreground absolute inset-0 border-b-2" />
