@@ -8,5 +8,9 @@ export default async function WhitelistPage() {
 	if (!session) {
 		redirect("/");
 	}
-	return <div>Whitelist</div>;
+	return (
+		<>
+			<h1 className="text-3xl">Whitelist</h1>
+		</>
+	);
 }

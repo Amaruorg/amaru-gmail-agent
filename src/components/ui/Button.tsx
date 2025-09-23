@@ -40,7 +40,7 @@ const buttonVariants = cva(
 			{
 				variant: "ghost",
 				style: "default",
-				className: "hover:bg-primary/20 bg-transparent active:bg-primary/30",
+				className: "hover:text-primary/80 bg-transparent active:text-primary",
 			},
 			{
 				variant: "link",

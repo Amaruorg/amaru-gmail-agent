@@ -9,8 +9,8 @@ export default async function DashboardPage() {
 		redirect("/");
 	}
 	return (
-		<div className="">
-			<h1>Welcome to the Dashboard {session.user.name}</h1>
-		</div>
+		<>
+			<h1 className="text-3xl">Welcome to the Dashboard {session.user.name}</h1>
+		</>
 	);
 }
