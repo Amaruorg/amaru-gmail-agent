@@ -6,7 +6,7 @@
 
 	--color-sidebar-background: #1a1a1a;
 	--color-input-background: #242424;
-	--color-card-background: #3a3a3a;
+	--color-card-background: #1d1d1d;
 	--color-table-background: #3a3a3a;
 
 	--color-tab-underline: #3a3a3a;
@@ -24,6 +24,26 @@
 
 	--color-neutral-gray: #646464;
 	--color-table-border: #7e7e7e;
+}
+
+::-webkit-scrollbar {
+	width: 4px;
+	height: 4px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: white;
+	border-radius: 9999px;
+	border: 1px solid transparent;
+}
+
+* {
+	scrollbar-width: thin;
+	scrollbar-color: white transparent;
 }
 
 .marquee-container {
