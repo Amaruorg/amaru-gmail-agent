@@ -9,6 +9,7 @@ export default async function NotificationsPage() {
 	if (!session) {
 		redirect("/");
 	}
+
 	return (
 		<div className="flex flex-col">
 			<div className="bg-card-background flex w-full flex-col gap-10 rounded-xl p-10">

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 type MultiLineMarqueeProps = {
@@ -8,6 +9,16 @@ type MultiLineMarqueeProps = {
 };
 
 export default function MultiLineMarquee({ words, color = "text-white" }: MultiLineMarqueeProps) {
+	const [mounted, setMounted] = useState(false);
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	if (!mounted) {
+		return null;
+	}
+
 	const directions = Array.from({ length: 21 }, () => (Math.random() > 0.5 ? "ltr" : "rtl"));
 
 	const lines = Array.from({ length: 21 }, () => {

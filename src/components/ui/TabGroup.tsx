@@ -2,8 +2,8 @@
 
 import { useRouter, usePathname } from "next/navigation";
 import { motion } from "motion/react";
-import { TabItem } from ".";
-import { base } from "motion/react-client";
+import { TabItem } from "@/components/ui";
+import { normalizePath } from "@/lib/helpers";
 
 type TabGroupProps = {
 	basePath?: string; // opcional
@@ -33,7 +33,7 @@ function TabGroup({ tabs, basePath = "", className }: TabGroupProps) {
 	return (
 		<div className={`border-tab-underline flex w-full gap-5 border-b-2 ${className}`}>
 			{tabs.map((tab) => {
-				const fullHref = `${basePath}/${tab.href}`.replace(/\/+$/, "").replace(/\/{2,}/g, "/") || "/";
+				const fullHref = normalizePath(`${basePath}/${tab.href}`);
 				const isSelected = pathname === fullHref;
 
 				return (
