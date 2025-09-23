@@ -22,19 +22,21 @@ function Sidebar({ sections }: SidebarProps) {
 		router.push("/");
 	};
 	return (
-		<div className={`bg-sidebar-background flex h-full w-1/5 flex-col`}>
-			<div>
-				<Amaru className="text-foreground w-50" width={50} height={50} />
-			</div>
-			<div className="flex flex-col items-start justify-start gap-3 p-5">
-				{sections.map((section) => (
-					<Link key={section.href} href={section.href}>
-						{section.label}
-					</Link>
-				))}
-			</div>
-			<div>
-				<Button text="Sign Out" onClick={handleSignOut} variant={"solid"} size={"sm"} />
+		<div className="w-1/5 p-2">
+			<div className={`bg-sidebar-background w-full mr-5 flex h-full w-1/5 flex-col rounded-xl`}>
+				<div>
+					<Amaru className="text-foreground w-50" width={50} height={50} />
+				</div>
+				<div className="flex flex-col items-start justify-start gap-3 p-5">
+					{sections.map((section) => (
+						<Link key={section.href} href={section.href}>
+							{section.label}
+						</Link>
+					))}
+				</div>
+				<div>
+					<Button text="Sign Out" onClick={handleSignOut} variant={"ghost"} size={"sm"} />
+				</div>
 			</div>
 		</div>
 	);
