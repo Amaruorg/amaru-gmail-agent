@@ -1,7 +1,3 @@
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
-
 import { Button, Input, Switch, Tag, TabGroup } from "@/components/ui";
 import { Google, Settings, Book, List, CheckList, Amaru, AmaruOutline } from "@/components/Icons";
 
@@ -12,12 +8,6 @@ const tabsContent = [
 ];
 
 export default async function TestPage() {
-	const session = await auth.api.getSession({ headers: await headers() });
-
-	if (!session) {
-		redirect("/");
-	}
-
 	return (
 		<div className="flex-col">
 			<div className="flex items-center p-2">

@@ -13,17 +13,10 @@ export const metadata = {
 	description: "Amaru - Private AI Chat Application",
 };
 
-const sections = [
-	{ href: "/dashboard", label: "Dashboard" },
-	{ href: "/whitelist", label: "Whitelist" },
-	{ href: "/settings", label: "Settings" },
-];
-
 export default function PrivateLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang="en">
 			<body className={`${inter.className} bg-background text-foreground flex h-screen w-full overflow-hidden`}>
-				<Sidebar sections={sections} />
 				<div className="h-full flex-1 overflow-y-auto p-5">{children}</div>
 			</body>
 		</html>

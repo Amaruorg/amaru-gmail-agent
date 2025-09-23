@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui";
-import MultiLineMarquee from "@/utils/animations/MultiLineText";
+import MultiLineMarquee from "@/components/animations/MultiLineText";
 
 const wordsList = [
 	"Amaru",
@@ -33,7 +33,7 @@ const wordsList = [
 export default function HomePage() {
 	return (
 		<div className="flex min-h-screen flex-col">
-			<section className="flex flex-row items-center justify-center gap-10 pt-10 pr-10 lg:min-h-[calc(100vh-4rem)]">
+			<section className="flex flex-row items-center justify-center gap-10 pt-1 pr-10 lg:min-h-[calc(100vh-5rem)]">
 				<div className="flex w-full flex-col gap-4 pl-40">
 					<h1 className="text-left text-8xl">Amaru</h1>
 					<h2 className="text-left text-4xl font-bold">Gmail Agent</h2>
@@ -45,7 +45,6 @@ export default function HomePage() {
 					<Button text="Get Started" variant={"solid"} />
 				</div>
 
-				{/* Div rojo que ocupa toda la altura disponible */}
 				<div className="center mr-10 hidden flex-1 lg:block">
 					<div className="flex h-full items-center justify-center">
 						<div
@@ -66,9 +65,6 @@ export default function HomePage() {
 					</div>
 				</div>
 			</section>
-
-			{/* Contenido extra debajo, visible al hacer scroll */}
-			<section className="h-[600px] w-full bg-transparent"></section>
 		</div>
 	);
 }
