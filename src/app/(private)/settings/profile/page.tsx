@@ -1,4 +1,4 @@
-import { auth } from "@/lib/auth";
+import { auth } from "@/lib/authClient";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import Image from "next/image";
@@ -11,6 +11,7 @@ export default async function ProfilePage() {
 	if (!session) {
 		redirect("/");
 	}
+
 	return (
 		<div className="flex flex-col gap-10">
 			<div className="bg-card-background flex w-full flex-col gap-5 rounded-xl p-10">

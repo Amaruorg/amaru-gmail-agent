@@ -10,7 +10,7 @@ const tabsContent = [
 export default async function SettingsPage({ children }: { children: ReactNode }) {
 	return (
 		<div>
-			<h1 className="text-3xl mb-10">Settings</h1>
+			<h1 className="mb-10 text-3xl">Settings</h1>
 			<TabGroup basePath="/settings" tabs={tabsContent} />
 			<div className="p-10">{children}</div>
 		</div>

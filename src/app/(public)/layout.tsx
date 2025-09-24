@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { Topbar } from "@/components/layout/Topbar";
-import { auth } from "@/lib/auth";
+import { auth } from "@/lib/authClient";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import "@/style/globals.css";

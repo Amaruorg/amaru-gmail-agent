@@ -2,7 +2,7 @@
 
 import { useRouter, usePathname } from "next/navigation";
 import { motion } from "motion/react";
-import { TabItem } from ".";
+import { TabItem } from "@/components/ui";
 
 type TabGroupProps = {
 	basePath?: string; // opcional
@@ -14,7 +14,7 @@ type TabGroupProps = {
 };
 
 /**
- * Tab group component for navigation. Uses Next.js router for navigation.
+ * TabGroup component for navigation.
  *
  * Props:
  * - tabs: Array of tab objects with `href` and `label` properties. href is relative path, label is display text.
