@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { Sidebar } from "@/components/layout/sidebar/Sidebar";
 import { SidebarButtonProps } from "@/components/layout/sidebar/sidebarButton";
-import { auth } from "@/lib/auth";
+import { auth } from "@/lib/authClient";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import "@/style/globals.css";

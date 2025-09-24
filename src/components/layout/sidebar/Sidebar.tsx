@@ -1,6 +1,6 @@
 "use client";
 
-import { signOut } from "@/lib/actions/auth-actions";
+import { signOut } from "@/lib/actions/auth";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui";
 import Image from "next/image";
@@ -42,7 +42,7 @@ function Sidebar({ links, user }: SidebarProps) {
 						) : (
 							<div className="bg-accent-blue h-10 w-10 rounded-full" />
 						)}
-						<div className="flex-1 text-md">{user.name}</div>
+						<div className="text-md flex-1">{user.name}</div>
 						<Button
 							icon={Logout}
 							onClick={handleSignOut}
