@@ -3,11 +3,16 @@
 import { signOut } from "@/lib/actions/auth-actions";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui";
+import Image from "next/image";
 import { SidebarButton, type SidebarButtonProps } from "./sidebarButton";
 import { Logout } from "@/components/Icons";
 
 type SidebarProps = {
 	links: SidebarButtonProps[];
+	user: {
+		name: string;
+		imageUrl: string;
+	};
 };
 
 /**
@@ -15,7 +20,7 @@ type SidebarProps = {
  * @param {SidebarProps} sections - The sections to be displayed in the sidebar.
  * @return {JSX.Element} The rendered Sidebar component.
  */
-function Sidebar({ links }: SidebarProps) {
+function Sidebar({ links, user }: SidebarProps) {
 	const router = useRouter();
 	const handleSignOut = async () => {
 		await signOut();
@@ -26,14 +31,24 @@ function Sidebar({ links }: SidebarProps) {
 			<div className={`bg-sidebar-background mr-5 flex h-full w-full flex-col rounded-xl`}>
 				<section className="flex items-center px-7 py-5">
 					<div className="flex w-full items-center gap-5">
-						<div className="bg-accent-blue h-10 w-10 rounded-full" />
-						<div className="flex-1 text-lg">Joe Doe</div>
+						{user.imageUrl ? (
+							<Image
+								src={user.imageUrl}
+								alt="User Avatar"
+								className="rounded-full object-cover"
+								width={40}
+								height={40}
+							/>
+						) : (
+							<div className="bg-accent-blue h-10 w-10 rounded-full" />
+						)}
+						<div className="flex-1 text-md">{user.name}</div>
 						<Button
 							icon={Logout}
 							onClick={handleSignOut}
 							variant={"outline"}
 							size={"sm"}
-							className="m-0 border-0 p-2 hover:bg-foreground/10"
+							className="hover:bg-foreground/10 m-0 border-0 p-2"
 						/>
 					</div>
 				</section>

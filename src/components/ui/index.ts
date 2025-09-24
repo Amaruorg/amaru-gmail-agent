@@ -5,3 +5,5 @@ export * from "./Tag";
 export * from "./TabItem";
 export * from "./TabGroup";
 export * from "./Marquee";
+export * from "./Table";
+export * from "./DynamicTableColumns";

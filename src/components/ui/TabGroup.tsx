@@ -3,7 +3,6 @@
 import { useRouter, usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { TabItem } from ".";
-import { base } from "motion/react-client";
 
 type TabGroupProps = {
 	basePath?: string; // opcional
