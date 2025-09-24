@@ -17,7 +17,7 @@ export default async function DashboardPage() {
 		<>
 			<h1 className="text-3xl">Hello there, {session.user.name.split(" ")[0]}!</h1>
 			<h2 className="text-2xl text-gray-500">What's on your mind?</h2>
-			<ActionSummarize summary={`${result}`} className="pt-8"></ActionSummarize>
+			<ActionSummarize summary={result} className="pt-8"></ActionSummarize>
 		</>
 	);
 }
