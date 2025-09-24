@@ -1,0 +1,30 @@
+[
+	{
+		"hour": "04:55 PM",
+		"sender": "accounting@provider.com",
+		"subject": "Invoice #FAC-2025-08-912",
+		"category": "Invoice",
+		"status": "Processed"
+	},
+	{
+		"hour": "04:30 PM",
+		"sender": "rsvp@zoom.us",
+		"subject": "Invitation: Daily Stand-up",
+		"category": "Meeting",
+		"status": "Processed"
+	},
+	{
+		"hour": "03:50 PM",
+		"sender": "offers@online-store.com",
+		"subject": "Your summer discounts are waiting!",
+		"category": "N/A",
+		"status": "Ignored by rule"
+	},
+	{
+		"hour": "02:15 PM",
+		"sender": "no-reply@notion.so",
+		"subject": "Mariana has commented on 'Q4 Planning'",
+		"category": "Informative",
+		"status": "Processed"
+	}
+]
