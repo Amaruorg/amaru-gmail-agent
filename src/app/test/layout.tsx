@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
-import { Sidebar } from "@/components/layout/Sidebar";
 import "@/style/globals.css";
 
 const inter = Inter({

@@ -1,4 +1,5 @@
 import { betterAuth } from "better-auth";
+import { nextCookies } from "better-auth/next-js";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { PrismaClient } from "@prisma/client";
 
@@ -21,4 +22,5 @@ export const auth = betterAuth({
 			scope: ["profile", "https://www.googleapis.com/auth/gmail.readonly"],
 		},
 	},
+	plugins: [nextCookies()],
 });
