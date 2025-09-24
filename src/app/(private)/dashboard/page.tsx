@@ -8,6 +8,7 @@ export default async function DashboardPage() {
 	if (!session) {
 		redirect("/");
 	}
+
 	return (
 		<>
 			<h1 className="text-3xl">Welcome to the Dashboard {session.user.name}</h1>

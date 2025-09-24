@@ -8,8 +8,6 @@ type TopbarProps = TabGroupProps;
 
 /**
  * Topbar component that includes a logo, tab navigation, and a sign-in button.
- * @param {TabGroupProps} tabs - The tabs to be displayed in the tab group.
- * @return {JSX.Element} The rendered Topbar component.
  */
 function Topbar({ tabs }: TabGroupProps) {
 	const handleSignIn = async () => {
