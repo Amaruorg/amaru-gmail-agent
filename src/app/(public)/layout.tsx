@@ -31,9 +31,9 @@ const texts = [
 
 export default async function PublicLayout({ children }: { children: ReactNode }) {
 	const session = await auth.api.getSession({ headers: await headers() });
-	if (!session) {
-		redirect("/");
-	}
+	if (session) {
+		redirect("/dashboard");
+	} 
 	return (
 		<html lang="en">
 			<body
