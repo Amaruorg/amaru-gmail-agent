@@ -6,7 +6,7 @@ import { TabItem } from "@/components/ui";
 import { normalizePath } from "@/lib/helpers";
 
 type TabGroupProps = {
-	basePath?: string; // opcional
+	basePath?: string;
 	tabs: {
 		href: string;
 		label: string;
@@ -15,15 +15,21 @@ type TabGroupProps = {
 };
 
 /**
- * Tab group component for navigation. Uses Next.js router for navigation.
+ * TabGroup component for navigation.
  *
  * Props:
- * - tabs: Array of tab objects with `href` and `label` properties. href is relative path, label is display text.
- * - basePath: Optional base path to prepend to each tab's href.
+ * - `tabs`: Array of tab objects with href and label properties. href is relative path, label is display text.
+ * - `basePath`: Optional base path to prepend to each tab's href.
  *
  * Example:
  * ```tsx
- * <TabGroup basePath="/settings" tabs={[{ href: 'profile', label: 'Profile' }, { href: 'notifications', label: 'Notifications' }]} />
+ * <TabGroup
+ *   basePath="/settings"
+ *   tabs={[
+ *     { href: "profile", label: "Profile" },
+ *     { href: "notifications", label: "Notifications" },
+ *   ]}
+ * />
  * ```
  */
 function TabGroup({ tabs, basePath = "", className }: TabGroupProps) {

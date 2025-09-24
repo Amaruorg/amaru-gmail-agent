@@ -1,6 +1,6 @@
 "use client";
 
-import { signInSocial } from "@/lib/actions/auth-actions";
+import { signInSocial } from "@/lib/actions/auth";
 import { Amaru, Google } from "@/components/Icons";
 import { Button, TabGroup, type TabGroupProps } from "@/components/ui";
 
@@ -13,6 +13,7 @@ function Topbar({ tabs }: TabGroupProps) {
 	const handleSignIn = async () => {
 		await signInSocial("google");
 	};
+
 	return (
 		<div className={`flex bg-transparent px-5 pt-5`}>
 			<Amaru className="text-foreground w-50" width={50} height={50} />
