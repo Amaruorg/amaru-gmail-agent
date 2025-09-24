@@ -1,15 +1,6 @@
-import { auth } from "@/lib/authClient";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 import { Switch } from "@/components/ui";
 
 export default async function NotificationsPage() {
-	const session = await auth.api.getSession({ headers: await headers() });
-
-	if (!session) {
-		redirect("/");
-	}
-
 	return (
 		<div className="flex flex-col">
 			<div className="bg-card-background flex w-full flex-col gap-10 rounded-xl p-10">

@@ -18,6 +18,7 @@ model User {
 
   accounts Account[]
   sessions Session[]
+  logs     Log[]
 
   @@map("users")
 }
@@ -82,6 +83,22 @@ model Email {
 
   @@map("emails")
 }
+
+model Log {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  hour      String
+  sender    String
+  subject   String
+  category  String
+  status    String
+  createdAt DateTime @default(now())
+
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("logs")
+}
+
 
 model Action {
   id           String    @id

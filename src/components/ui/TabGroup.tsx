@@ -3,10 +3,9 @@
 import { useRouter, usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { TabItem } from "@/components/ui";
-import { normalizePath } from "@/lib/helpers";
 
 type TabGroupProps = {
-	basePath?: string;
+	basePath?: string; // opcional
 	tabs: {
 		href: string;
 		label: string;
@@ -18,18 +17,12 @@ type TabGroupProps = {
  * TabGroup component for navigation.
  *
  * Props:
- * - `tabs`: Array of tab objects with href and label properties. href is relative path, label is display text.
- * - `basePath`: Optional base path to prepend to each tab's href.
+ * - tabs: Array of tab objects with `href` and `label` properties. href is relative path, label is display text.
+ * - basePath: Optional base path to prepend to each tab's href.
  *
  * Example:
  * ```tsx
- * <TabGroup
- *   basePath="/settings"
- *   tabs={[
- *     { href: "profile", label: "Profile" },
- *     { href: "notifications", label: "Notifications" },
- *   ]}
- * />
+ * <TabGroup basePath="/settings" tabs={[{ href: 'profile', label: 'Profile' }, { href: 'notifications', label: 'Notifications' }]} />
  * ```
  */
 function TabGroup({ tabs, basePath = "", className }: TabGroupProps) {
@@ -39,7 +32,7 @@ function TabGroup({ tabs, basePath = "", className }: TabGroupProps) {
 	return (
 		<div className={`border-tab-underline flex w-full gap-5 border-b-2 ${className}`}>
 			{tabs.map((tab) => {
-				const fullHref = normalizePath(`${basePath}/${tab.href}`);
+				const fullHref = `${basePath}/${tab.href}`.replace(/\/+$/, "").replace(/\/{2,}/g, "/") || "/";
 				const isSelected = pathname === fullHref;
 
 				return (

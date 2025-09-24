@@ -44,7 +44,6 @@ export default function HomePage() {
 					</p>
 					<Button text="Get Started" variant={"solid"} />
 				</div>
-
 				<div className="center mr-10 hidden flex-1 lg:block">
 					<div className="flex h-full items-center justify-center">
 						<div
