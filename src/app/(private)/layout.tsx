@@ -4,7 +4,7 @@ import { Sidebar, SidebarButtonProps } from "@/components/layout";
 import { auth } from "@/lib/authClient";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import "@/style/globals.css";
+import "@/styles/globals.css";
 
 const inter = Inter({
 	subsets: ["latin"],
