@@ -201,6 +201,46 @@ const ArrowDown = (props: iconProps) => {
 	);
 };
 
+const ArrowsRight = (props: iconProps) => {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth="2"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			{...props}
+		>
+			<path d="m6 17 5-5-5-5" />
+			<path d="m13 17 5-5-5-5" />
+		</svg>
+	);
+};
+
+const ArrowsLeft = (props: iconProps) => {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			strokeWidth="2"
+			strokeLinecap="round"
+			strokeLinejoin="round"
+			{...props}
+		>
+			<path d="m18 17-5-5 5-5" />
+			<path d="m11 17-5-5 5-5" />
+		</svg>
+	);
+};
+
 const AmaruOutline = (props: iconProps) => {
 	return (
 		<svg
@@ -231,4 +271,18 @@ const AmaruOutline = (props: iconProps) => {
 	);
 };
 
-export { Amaru, Google, Logout, Search, Settings, Book, List, CheckList, AmaruOutline, ArrowUp, ArrowDown };
+export {
+	Amaru,
+	Google,
+	Logout,
+	Search,
+	Settings,
+	Book,
+	List,
+	CheckList,
+	AmaruOutline,
+	ArrowUp,
+	ArrowDown,
+	ArrowsLeft,
+	ArrowsRight,
+};
