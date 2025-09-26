@@ -85,12 +85,12 @@ export async function getSummary(userPrompt?: string) {
 	const cookieHeader = (await cookies()).toString();
 
 	try {
-		const geminiAPIURL = `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/gemini`
+		const geminiAPIURL = `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/gemini`;
 		const response = await fetch(geminiAPIURL, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
-				"Cookie": cookieHeader,
+				Cookie: cookieHeader,
 			},
 			body: JSON.stringify({ prompt: fullPrompt }),
 		});
