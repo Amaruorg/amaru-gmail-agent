@@ -57,10 +57,10 @@ function ActionSummarize({ summary: initialSummary, className }: ActionSummarize
 				</button>
 			</div>
 			<div className="mt-5 h-1/2 w-1/2 rounded-lg bg-neutral-900 p-5">
-            <div className="prose prose-invert max-w-none text-sm leading-relaxed overflow-auto h-full">
-                <ReactMarkdown>{summary}</ReactMarkdown>
-            </div>
-        </div>
+				<div className="prose prose-invert h-full max-w-none overflow-auto text-sm leading-relaxed">
+					<ReactMarkdown>{summary}</ReactMarkdown>
+				</div>
+			</div>
 		</div>
 	);
 }

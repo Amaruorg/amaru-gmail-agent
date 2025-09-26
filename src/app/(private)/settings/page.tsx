@@ -8,5 +8,6 @@ export default async function SettingIndexPage() {
 	if (!session) {
 		redirect("/");
 	}
-	redirect("settings/profile");
+
+	redirect("/settings/profile");
 }
