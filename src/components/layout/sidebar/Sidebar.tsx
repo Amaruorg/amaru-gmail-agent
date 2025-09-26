@@ -1,10 +1,10 @@
 "use client";
 
-import { signOut } from "@/lib/actions/auth";
-import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui";
 import Image from "next/image";
-import { SidebarButton, type SidebarButtonProps } from "./sidebarButton";
+import { useRouter } from "next/navigation";
+import { signOut } from "@/lib/actions/auth";
+import { Button } from "@/components/ui";
+import { SidebarButton, type SidebarButtonProps } from "@/components/layout";
 import { Logout } from "@/components/Icons";
 
 type SidebarProps = {
@@ -17,8 +17,6 @@ type SidebarProps = {
 
 /**
  * Sidebar component that includes a logo, navigation links, and a sign-out button.
- * @param {SidebarProps} sections - The sections to be displayed in the sidebar.
- * @return {JSX.Element} The rendered Sidebar component.
  */
 function Sidebar({ links, user }: SidebarProps) {
 	const router = useRouter();
@@ -26,6 +24,7 @@ function Sidebar({ links, user }: SidebarProps) {
 		await signOut();
 		router.push("/");
 	};
+
 	return (
 		<div className="w-1/5 p-4">
 			<div className={`bg-sidebar-background mr-5 flex h-full w-full flex-col rounded-xl`}>

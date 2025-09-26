@@ -9,7 +9,7 @@ const inter = Inter({
 
 export const metadata = {
 	title: "Amaru",
-	description: "Amaru - Private AI Chat Application",
+	description: "Amaru - Private AI Gmail Agent",
 };
 
 export default function PrivateLayout({ children }: { children: ReactNode }) {

@@ -32,7 +32,7 @@ export default async function ProfilePage() {
 					</div>
 					<div className="flex flex-1 flex-col justify-center">
 						<span className="text-xl">Gmail</span>
-						<span className="text-muted text-xl">JohnDoe@gmail.com</span>
+						<span className="text-muted text-xl">{session.user.email}</span>
 					</div>
 					<div className="flex items-center">
 						<Button text="Remove" variant={"solid"} style={"danger"} />

@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
-import { Sidebar } from "@/components/layout/sidebar/Sidebar";
-import { SidebarButtonProps } from "@/components/layout/sidebar/sidebarButton";
+import { Sidebar, SidebarButtonProps } from "@/components/layout";
 import { auth } from "@/lib/authClient";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -14,7 +13,7 @@ const inter = Inter({
 
 export const metadata = {
 	title: "Amaru",
-	description: "Amaru - Private AI Chat Application",
+	description: "Amaru - Private AI Gmail Agent",
 };
 
 const links: SidebarButtonProps[] = [

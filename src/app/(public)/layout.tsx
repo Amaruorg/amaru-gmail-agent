@@ -1,9 +1,6 @@
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { Topbar } from "@/components/layout/Topbar";
-import { auth } from "@/lib/authClient";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 import "@/style/globals.css";
 import { Marquee } from "@/components/ui";
 
@@ -14,7 +11,7 @@ const inter = Inter({
 
 export const metadata = {
 	title: "Amaru",
-	description: "Amaru - Gmail Agent",
+	description: "Amaru - Private AI Gmail Agent",
 };
 
 const tabsContent = [
@@ -30,12 +27,6 @@ const texts = [
 ];
 
 export default async function PublicLayout({ children }: { children: ReactNode }) {
-	const session = await auth.api.getSession({ headers: await headers() });
-
-	if (session) {
-		redirect("/dashboard");
-	}
-  
 	return (
 		<html lang="en">
 			<body

@@ -4,7 +4,7 @@ import { TabGroup } from "@/components/ui";
 const tabsContent = [
 	{ href: "profile", label: "Profile" },
 	{ href: "notifications", label: "Notifications" },
-	{ href: "data-privacy", label: "Data and Privacy" },
+	{ href: "privacy", label: "Data and Privacy" },
 ];
 
 export default async function SettingsPage({ children }: { children: ReactNode }) {
