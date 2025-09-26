@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { signOut } from "@/lib/actions/auth";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui";
 import Image from "next/image";
 import { SidebarButton, type SidebarButtonProps } from "@/components/layout";
@@ -18,16 +16,10 @@ type SidebarProps = {
 
 /**
  * Sidebar component that includes a logo, navigation links, and a sign-out button.
- * @param {SidebarProps} sections - The sections to be displayed in the sidebar.
- * @return {JSX.Element} The rendered Sidebar component.
  */
 function Sidebar({ links, user }: SidebarProps) {
 	const [isMinimized, setIsMinimized] = useState(false);
-	const router = useRouter();
-	const handleSignOut = async () => {
-		await signOut();
-		router.push("/");
-	};
+
 	const handleMinimize = () => {
 		console.log("Minimize button clicked: ", !isMinimized);
 		setIsMinimized((prev) => !prev);
@@ -55,7 +47,7 @@ function Sidebar({ links, user }: SidebarProps) {
 							</div>
 						)}
 
-						{/* Nombre y botón con transición */}
+						{/* Name and button with transition */}
 						<div
 							className={`flex items-center overflow-hidden transition-all duration-300 ${isMinimized ? "max-w-0 scale-95 opacity-0" : "w-full scale-100 opacity-100"}`}
 						>
@@ -90,7 +82,7 @@ function Sidebar({ links, user }: SidebarProps) {
 				</section>
 			</div>
 
-			{/* Botón expandir */}
+			{/* Expand button */}
 			{isMinimized && (
 				<div className="py-5">
 					<Button

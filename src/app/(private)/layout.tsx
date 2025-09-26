@@ -5,6 +5,7 @@ import { auth } from "@/lib/authClient";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import "@/styles/globals.css";
+import { signOut } from "@/lib/actions/auth";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -21,13 +22,16 @@ const links: SidebarButtonProps[] = [
 	{ href: "/logs", icon: "List", text: "Logs" },
 	{ href: "/whitelist", icon: "CheckList", text: "Whitelist" },
 	{ href: "/settings/profile", icon: "Settings", text: "Settings" },
+	{ href: "/", icon: "Logout", text: "Sign Out", onClick: signOut },
 ];
+
 
 export default async function PrivateLayout({ children }: { children: ReactNode }) {
 	const session = await auth.api.getSession({ headers: await headers() });
 	if (!session) {
 		redirect("/");
 	}
+
 	return (
 		<html lang="en">
 			<body className={`${inter.className} bg-background text-foreground flex h-screen w-full overflow-hidden`}>
