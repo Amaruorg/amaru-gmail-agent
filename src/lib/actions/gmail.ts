@@ -2,7 +2,7 @@
 
 import { auth } from "@/lib/authClient";
 import { google } from "googleapis";
-import { headers } from "next/headers";
+import { headers, cookies } from "next/headers";
 
 export async function getGoogleAccessToken() {
 	const res = await auth.api.getSession({ headers: await headers() });
@@ -82,11 +82,15 @@ export async function getSummary(userPrompt?: string) {
 	const customPrompt = userPrompt ? `\nUser prompt: ${userPrompt}` : "";
 	const fullPrompt = `${basePrompt}${customPrompt}\n\nEmails:\n${emailsString}\n\nPlease provide a clear and concise summary of these emails unless the User Prompt says otherwise.`;
 
+	const cookieHeader = (await cookies()).toString();
+
 	try {
-		const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/gemini`, {
+		const geminiAPIURL = `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/gemini`
+		const response = await fetch(geminiAPIURL, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
+				"Cookie": cookieHeader,
 			},
 			body: JSON.stringify({ prompt: fullPrompt }),
 		});
