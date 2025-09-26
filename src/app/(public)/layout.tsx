@@ -1,7 +1,10 @@
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { Topbar } from "@/components/layout/Topbar";
-import "@/style/globals.css";
+import { auth } from "@/lib/authClient";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import "@/styles/globals.css";
 import { Marquee } from "@/components/ui";
 
 const inter = Inter({
@@ -27,6 +30,15 @@ const texts = [
 ];
 
 export default async function PublicLayout({ children }: { children: ReactNode }) {
+	if (process.env.NODE_ENV === "development") {
+		console.log("Redirecting to /dashboard. NODE_ENV: ", process.env.NODE_ENV)
+		const session = await auth.api.getSession({ headers: await headers() });
+
+		if (session) {
+			redirect("/dashboard");
+		}
+	}
+
 	return (
 		<html lang="en">
 			<body

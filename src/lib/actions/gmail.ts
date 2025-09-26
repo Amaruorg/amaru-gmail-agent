@@ -72,7 +72,7 @@ export async function getSummary(userPrompt?: string) {
 	if (!accessToken) throw new Error("No access token available");
 	const messages = await fetchInbox(accessToken);
 
-	// Format the emails as strngs
+	// Format the emails as strings
 	const emailsString = messages
 		.map(
 			(msg, index) =>
