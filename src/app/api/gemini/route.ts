@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 import { auth } from "@/lib/authClient";
 import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 
 const ai = new GoogleGenAI({
 	apiKey: process.env.GEMINI_API_KEY,

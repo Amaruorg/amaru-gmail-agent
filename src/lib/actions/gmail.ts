@@ -8,10 +8,8 @@ export async function getGoogleAccessToken() {
 	const res = await auth.api.getSession({ headers: await headers() });
 	if (!res?.session || !res.user) throw new Error("Not authenticated");
 
-	const { session, user } = res;
-
 	const { accessToken } = await auth.api.getAccessToken({
-		body: { providerId: "google", userId: user.id },
+		body: { providerId: "google", userId: res.user.id },
 	});
 
 	console.log(accessToken);
