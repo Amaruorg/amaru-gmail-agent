@@ -31,7 +31,7 @@ const texts = [
 
 export default async function PublicLayout({ children }: { children: ReactNode }) {
 	if (process.env.NODE_ENV === "development") {
-		console.log("Redirecting to /dashboard. NODE_ENV: ", process.env.NODE_ENV)
+		console.log("Redirecting to /dashboard. NODE_ENV: ", process.env.NODE_ENV);
 		const session = await auth.api.getSession({ headers: await headers() });
 
 		if (session) {

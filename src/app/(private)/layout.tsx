@@ -25,7 +25,6 @@ const links: SidebarButtonProps[] = [
 	{ href: "/", icon: "Logout", text: "Sign Out", onClick: signOut },
 ];
 
-
 export default async function PrivateLayout({ children }: { children: ReactNode }) {
 	const session = await auth.api.getSession({ headers: await headers() });
 	if (!session) {
