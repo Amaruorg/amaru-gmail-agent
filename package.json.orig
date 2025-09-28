@@ -9,8 +9,11 @@
 		"lint": "eslint"
 	},
 	"dependencies": {
+<<<<<<< HEAD
 		"@ai-sdk/openai": "^2.0.38",
 		"@openrouter/ai-sdk-provider": "^1.2.0",
+=======
+>>>>>>> f90f018 (refactor(backend): change AI provider, fix Gmail API integration and JSON outputs)
 		"@prisma/client": "^6.16.1",
 		"@prisma/extension-accelerate": "^2.0.2",
 		"@tanstack/react-table": "^8.21.3",

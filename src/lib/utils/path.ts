@@ -5,7 +5,5 @@
  */
 export const normalizePath = (path: string = ""): string => {
 	if (!path) return "/";
-	return path
-		.replace(/\/{2,}/g, "/")
-		.replace(/(.+)\/$/, "$1");
+	return path.replace(/\/{2,}/g, "/").replace(/(.+)\/$/, "$1");
 };

@@ -13,7 +13,13 @@ export class GmailClient {
 		oAuth2Client.setCredentials({
 			access_token: tokenData.accessToken,
 			refresh_token: tokenData.refreshToken,
+<<<<<<< HEAD
+		};
+
+		oAuth2Client.setCredentials(credentials);
+=======
 		});
+>>>>>>> f90f018 (refactor(backend): change AI provider, fix Gmail API integration and JSON outputs)
 
 		return oAuth2Client;
 	}

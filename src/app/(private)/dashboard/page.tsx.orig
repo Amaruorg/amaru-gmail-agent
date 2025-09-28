@@ -1,9 +1,5 @@
+<<<<<<< HEAD
 "use client";
-
-import { authService } from "@/domains/auth/service";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
-import { ActionAnalyze } from "@/components/dashboard/ActionAnalyze";
 
 import { useUser } from "@/contexts/UserContext";
 import { useState } from "react";
@@ -11,6 +7,15 @@ import { getEmailsSummary } from "@/domains/ai/actions";
 import { Button } from "@/components/ui";
 import { type SummaryCardProps } from "@/components/SummaryComponents/SummaryCard";
 import { SummaryLayout } from "@/components/SummaryComponents/SummaryLayout";
+=======
+import { authService } from "@/domains/auth/service";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { ActionAnalyze } from "@/components/dashboard/ActionAnalyze";
+
+export default async function DashboardPage() {
+	const session = await authService.getSession(await headers());
+>>>>>>> f90f018 (refactor(backend): change AI provider, fix Gmail API integration and JSON outputs)
 
 export default function DashboardPage() {
 	const { user } = useUser();
@@ -46,12 +51,16 @@ export default function DashboardPage() {
 		<>
 			<h1 className="text-3xl">Hello there, {(user?.name ?? "Unknown").split(" ")[0]}!</h1>
 			<h2 className="text-2xl text-gray-500">What&apos;s on your mind?</h2>
+<<<<<<< HEAD
 
 			<div className="border-muted bg-card-background/30 mt-8 flex items-center rounded-md border px-5 py-2">
 				<p className="flex-1">{`You have ${10} new emails waiting for you.`}</p>
 				<Button text={isLoading ? "Loading..." : "Today summary"} size="sm" onClick={handleRun} disabled={isLoading} />
 			</div>
 			<SummaryLayout events={summaries} />
+=======
+			<ActionAnalyze summary={result} className="pt-8"></ActionAnalyze>
+>>>>>>> f90f018 (refactor(backend): change AI provider, fix Gmail API integration and JSON outputs)
 		</>
 	);
 }
