@@ -1,8 +1,7 @@
-import { auth } from "@/lib/authClient";
+import { auth } from "@/domains/auth/client";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { ActionSummarize } from "@/components/dashboard/ActionSummarize";
-import { getSummary } from "@/lib/actions/gmail";
 
 export default async function DashboardPage() {
 	const session = await auth.api.getSession({ headers: await headers() });

@@ -1,4 +1,4 @@
-import { auth } from "@/lib/authClient";
+import { auth } from "@/domains/auth/client";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -8,7 +8,7 @@ export default async function WhitelistPage() {
 	if (!session) {
 		redirect("/");
 	}
-	
+
 	return (
 		<>
 			<h1 className="text-3xl">Whitelist</h1>

@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { Sidebar, SidebarButtonProps } from "@/components/layout";
-import { auth } from "@/lib/authClient";
+import { auth } from "@/domains/auth/client";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import "@/styles/globals.css";
-import { signOut } from "@/lib/actions/auth";
+import { signOut } from "@/domains/auth/actions";
 
 const inter = Inter({
 	subsets: ["latin"],

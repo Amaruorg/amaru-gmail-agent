@@ -1,6 +1,6 @@
 "use client";
 
-import { signInSocial } from "@/lib/actions/auth";
+import { signInSocial } from "@/domains/auth/actions";
 import { Amaru, Google } from "@/components/Icons";
 import { Button, TabGroup, type TabGroupProps } from "@/components/ui";
 

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui";
 import Image from "next/image";
 import { SidebarButton, type SidebarButtonProps } from "@/components/layout";
 import { ArrowsLeft, ArrowsRight } from "@/components/Icons";
+import { signOut } from "@/domains/auth/actions";
 
 type SidebarProps = {
 	links: SidebarButtonProps[];
@@ -80,6 +81,7 @@ function Sidebar({ links, user }: SidebarProps) {
 						/>
 					))}
 				</section>
+				<button onClick={signOut}>Sign Out</button>
 			</div>
 
 			{/* Expand button */}
