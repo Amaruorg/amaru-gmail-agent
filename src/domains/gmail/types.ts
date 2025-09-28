@@ -1,4 +1,12 @@
-import { Email } from "@/shared/types/common";
+export interface Email {
+	id: string;
+	subject: string;
+	from: string;
+	snippet: string;
+	date?: string;
+	labels?: string[];
+	isRead?: boolean;
+}
 
 export interface EmailHeader {
 	name: string;

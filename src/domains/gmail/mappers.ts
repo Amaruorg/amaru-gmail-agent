@@ -1,6 +1,5 @@
 import type { gmail_v1 } from "googleapis";
-import type { EmailHeader } from "@/domains/gmail/types";
-import type { Email } from "@/shared/types/common";
+import type { Email, EmailHeader } from "@/domains/gmail/types";
 
 export class GmailMappers {
 	static toEmail(message: gmail_v1.Schema$Message): Email {

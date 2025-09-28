@@ -1,7 +1,6 @@
 import { gmailClient } from "@/domains/gmail/client";
 import { GmailMappers } from "@/domains/gmail/mappers";
-import type { EmailListParams, EmailListResponse, TokenData } from "@/domains/gmail/types";
-import type { Email } from "@/shared/types/common";
+import type { Email, EmailListParams, EmailListResponse, TokenData } from "@/domains/gmail/types";
 
 export class GmailService {
 	async fetchInbox(tokenData: TokenData, params: EmailListParams = {}): Promise<EmailListResponse> {
