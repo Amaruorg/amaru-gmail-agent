@@ -52,15 +52,16 @@ function Sidebar({ links, user }: SidebarProps) {
 						<div
 							className={`flex items-center overflow-hidden transition-all duration-300 ${isMinimized ? "max-w-0 scale-95 opacity-0" : "w-full scale-100 opacity-100"}`}
 						>
-							<div className="text-md flex-1 overflow-hidden text-ellipsis whitespace-nowrap first-letter:uppercase">
-								{`${user.name} cardona`}
+							<div className="text-md flex flex-1 flex-col overflow-hidden text-ellipsis whitespace-nowrap first-letter:uppercase">
+								<span>{user.name}</span>
+								<span className="text-primary text-xs">Pro</span>
 							</div>
 							<Button
 								icon={ArrowsLeft}
 								onClick={handleMinimize}
 								variant="outline"
 								size="sm"
-								className="text-foreground/40 hover:bg-foreground/10 hover:text-foreground/80 m-0 mr-2 cursor-all-scroll border-0 p-2"
+								className="text-foreground/40 hover:bg-foreground/10 hover:text-foreground/80 m-0 mr-2 cursor-e-resize border-0 p-2"
 							/>
 						</div>
 					</div>
@@ -81,7 +82,18 @@ function Sidebar({ links, user }: SidebarProps) {
 						/>
 					))}
 				</section>
-				<button onClick={signOut}>Sign Out</button>
+				<button className="flex flex-1" onClick={handleMinimize} />
+				<section className="mx-5 flex flex-col items-start justify-start overflow-hidden border-t border-gray-200 pt-5 pb-5">
+					<SidebarButton
+						key={"logout"}
+						href={"/"}
+						text={"Sign Out"}
+						icon={"Logout"}
+						onlyIcon={isMinimized}
+						type="button"
+						onClick={() => signOut()}
+					/>
+				</section>
 			</div>
 
 			{/* Expand button */}
@@ -92,7 +104,7 @@ function Sidebar({ links, user }: SidebarProps) {
 						onClick={handleMinimize}
 						variant={"outline"}
 						size={"sm"}
-						className="text-foreground/40 hover:text-foreground/80 m-0 border-0 p-2 hover:bg-transparent"
+						className="text-foreground/40 hover:text-foreground/80 m-0 cursor-e-resize border-0 p-2 hover:bg-transparent"
 					/>
 				</div>
 			)}

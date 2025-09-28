@@ -22,7 +22,6 @@ const links: SidebarButtonProps[] = [
 	{ href: "/logs", icon: "List", text: "Logs" },
 	{ href: "/whitelist", icon: "CheckList", text: "Whitelist" },
 	{ href: "/settings/profile", icon: "Settings", text: "Settings" },
-	{ href: "/", icon: "Logout", text: "Sign Out", onClick: signOut },
 ];
 
 export default async function PrivateLayout({ children }: { children: ReactNode }) {
