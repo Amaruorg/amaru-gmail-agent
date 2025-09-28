@@ -5,7 +5,6 @@ import { auth } from "@/domains/auth/client";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import "@/styles/globals.css";
-import { signOut } from "@/domains/auth/actions";
 
 const inter = Inter({
 	subsets: ["latin"],
