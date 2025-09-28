@@ -19,13 +19,18 @@ export async function getGoogleAccessToken() {
 export async function fetchInbox(accessToken: string) {
 	if (!accessToken) throw new Error("No access token provided to fetchInbox");
 
-	const oAuth2Client = new google.auth.OAuth2(
-		process.env.GOOGLE_CLIENT_ID,
-		process.env.GOOGLE_CLIENT_SECRET,
-		process.env.REDIRECT_URL,
-	);
+	const oAuth2Client = new google.auth.OAuth2({
+		clientId: process.env.GOOGLE_CLIENT_ID,
+		clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+		redirectUri: process.env.REDIRECT_URL,
+	});
 
-	oAuth2Client.setCredentials({ access_token: accessToken });
+	const url = oAuth2Client.generateAuthUrl({
+		access_type: 'offline',
+		scope: ["profile", "https://www.googleapis.com/auth/gmail.readonly"]
+	 });
+
+	// oAuth2Client.setCredentials(tokens);
 
 	const gmail = google.gmail({ version: "v1", auth: oAuth2Client });
 	const res = await gmail.users.messages.list({
