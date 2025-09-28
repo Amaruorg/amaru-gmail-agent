@@ -1,9 +1,0 @@
-<<<<<<< HEAD
-import type { ActionCollection } from "@/domains/gmail/schema";
-=======
-import type { ActionCollection } from "@/domains/gmail/types";
->>>>>>> f90f018 (refactor(backend): change AI provider, fix Gmail API integration and JSON outputs)
-
-export interface AIProvider {
-	summarize(prompt?: string): Promise<ActionCollection>;
-}
