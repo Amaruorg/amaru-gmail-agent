@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { Topbar } from "@/components/layout/Topbar";
-import { auth } from "@/domains/auth/client";
+import { authService } from "@/domains/auth/service";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import "@/styles/globals.css";
@@ -32,7 +32,8 @@ const texts = [
 export default async function PublicLayout({ children }: { children: ReactNode }) {
 	if (process.env.NODE_ENV === "development") {
 		console.log("Redirecting to /dashboard. NODE_ENV: ", process.env.NODE_ENV);
-		const session = await auth.api.getSession({ headers: await headers() });
+		const headersList = await headers();
+		const session = await authService.getSession(headersList);
 
 		if (session) {
 			redirect("/dashboard");

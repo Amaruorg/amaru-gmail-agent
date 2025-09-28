@@ -1,9 +1,10 @@
-import { auth } from "@/domains/auth/client";
+import { authService } from "@/domains/auth/service";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 export default async function WhitelistPage() {
-	const session = await auth.api.getSession({ headers: await headers() });
+	const headersList = await headers();
+	const session = await authService.getSession(headersList);
 
 	if (!session) {
 		redirect("/");

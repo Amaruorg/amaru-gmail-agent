@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { Sidebar, SidebarButtonProps } from "@/components/layout";
-import { auth } from "@/domains/auth/client";
+import { authService } from "@/domains/auth/service";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import "@/styles/globals.css";
@@ -24,7 +24,9 @@ const links: SidebarButtonProps[] = [
 ];
 
 export default async function PrivateLayout({ children }: { children: ReactNode }) {
-	const session = await auth.api.getSession({ headers: await headers() });
+	const headersList = await headers();
+	const session = await authService.getSession(headersList);
+
 	if (!session) {
 		redirect("/");
 	}
@@ -32,7 +34,7 @@ export default async function PrivateLayout({ children }: { children: ReactNode 
 	return (
 		<html lang="en">
 			<body className={`${inter.className} bg-background text-foreground flex h-screen w-full overflow-hidden`}>
-				<Sidebar links={links} user={{ name: session.user.name, imageUrl: session.user.image ?? "" }} />
+				<Sidebar links={links} user={{ name: session.user.name ?? "Unknown", imageUrl: session.user.image ?? "" }} />
 				<div className="h-full flex-1 overflow-y-auto p-5 pt-10">{children}</div>
 			</body>
 		</html>

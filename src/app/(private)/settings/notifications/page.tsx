@@ -1,17 +1,18 @@
-import { auth } from "@/domains/auth/client";
+import { authService } from "@/domains/auth/service";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { Switch } from "@/components/ui";
 
 export default async function NotificationsPage() {
-	const session = await auth.api.getSession({ headers: await headers() });
+	const headersList = await headers();
+	const session = await authService.getSession(headersList);
 
 	if (!session) {
 		redirect("/");
 	}
 
 	return (
-		<div className="flex flex-col">
+		<>
 			<div className="bg-card-background flex w-full flex-col gap-10 rounded-xl p-10">
 				<h2 className="text-lg">Email notifications</h2>
 				<div className="flex flex-col gap-5">
@@ -35,6 +36,6 @@ export default async function NotificationsPage() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
