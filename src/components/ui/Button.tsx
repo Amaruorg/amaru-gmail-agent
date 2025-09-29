@@ -1,6 +1,6 @@
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { mergeClasses } from "@/lib/tailwindUtils";
+import { mergeClasses } from "@/lib/utils/tailwind";
 
 const buttonVariants = cva(
 	"inline-flex items-center justify-center rounded-md transition-colors font-medium w-fit gap-2 m-2 h-fit",

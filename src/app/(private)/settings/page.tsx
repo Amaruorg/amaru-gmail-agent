@@ -1,4 +1,4 @@
-import { auth } from "@/lib/authClient";
+import { auth } from "@/domains/auth/client";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 

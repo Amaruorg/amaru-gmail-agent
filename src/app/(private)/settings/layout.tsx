@@ -12,7 +12,7 @@ export default async function SettingsPage({ children }: { children: ReactNode }
 		<div>
 			<h1 className="mb-10 text-3xl">Settings</h1>
 			<TabGroup basePath="/settings" tabs={tabsContent} />
-			<div className="p-10">{children}</div>
+			<div className="m-auto flex w-4/5 flex-col gap-10 p-10">{children}</div>
 		</div>
 	);
 }

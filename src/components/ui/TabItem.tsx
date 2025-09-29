@@ -1,6 +1,6 @@
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { mergeClasses } from "@/lib/tailwindUtils";
+import { mergeClasses } from "@/lib/utils/tailwind";
 
 const TabVariants = cva("relative text-lg transition-colors p-3 px-10", {
 	variants: {
