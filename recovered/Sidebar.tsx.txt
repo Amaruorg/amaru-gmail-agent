@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { signOut } from "@/lib/actions/auth";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui";
 import Image from "next/image";
 import { SidebarButton, type SidebarButtonProps } from "@/components/layout";
-import { ArrowsLeft, ArrowsRight } from "@/components/Icons";
-import { signOut } from "@/domains/auth/actions";
+import { Logout, ArrowsLeft, ArrowsRight } from "@/components/Icons";
+import { on } from "events";
 
 type SidebarProps = {
 	links: SidebarButtonProps[];
@@ -17,10 +19,16 @@ type SidebarProps = {
 
 /**
  * Sidebar component that includes a logo, navigation links, and a sign-out button.
+ * @param {SidebarProps} sections - The sections to be displayed in the sidebar.
+ * @return {JSX.Element} The rendered Sidebar component.
  */
 function Sidebar({ links, user }: SidebarProps) {
 	const [isMinimized, setIsMinimized] = useState(false);
-
+	const router = useRouter();
+	const handleSignOut = async () => {
+		await signOut();
+		router.push("/");
+	};
 	const handleMinimize = () => {
 		console.log("Minimize button clicked: ", !isMinimized);
 		setIsMinimized((prev) => !prev);
@@ -48,20 +56,19 @@ function Sidebar({ links, user }: SidebarProps) {
 							</div>
 						)}
 
-						{/* Name and minimize button with transition */}
+						{/* Nombre y botón con transición */}
 						<div
 							className={`flex items-center overflow-hidden transition-all duration-300 ${isMinimized ? "max-w-0 scale-95 opacity-0" : "w-full scale-100 opacity-100"}`}
 						>
-							<div className="text-md flex flex-1 flex-col overflow-hidden text-ellipsis whitespace-nowrap first-letter:uppercase">
-								<span>{user.name}</span>
-								<span className="text-primary text-xs">Pro</span>
+							<div className="text-md flex-1 overflow-hidden text-ellipsis whitespace-nowrap first-letter:uppercase">
+								{`${user.name} cardona`}
 							</div>
 							<Button
 								icon={ArrowsLeft}
 								onClick={handleMinimize}
 								variant="outline"
 								size="sm"
-								className="text-foreground/40 hover:bg-foreground/10 hover:text-foreground/80 m-0 mr-2 cursor-pointer border-0 p-2"
+								className="text-foreground/40 hover:bg-foreground/10 hover:text-foreground/80 m-0 mr-2 cursor-all-scroll border-0 p-2"
 							/>
 						</div>
 					</div>
@@ -82,21 +89,9 @@ function Sidebar({ links, user }: SidebarProps) {
 						/>
 					))}
 				</section>
-				<button className="flex flex-1" onClick={handleMinimize} />
-				<section className="mx-5 flex flex-col items-start justify-start overflow-hidden border-t border-gray-200 pt-5 pb-5">
-					<SidebarButton
-						key={"logout"}
-						href={"/"}
-						text={"Sign Out"}
-						icon={"Logout"}
-						onlyIcon={isMinimized}
-						type="button"
-						onClick={() => signOut()}
-					/>
-				</section>
 			</div>
 
-			{/* Expand button */}
+			{/* Botón expandir */}
 			{isMinimized && (
 				<div className="py-5">
 					<Button
@@ -104,7 +99,7 @@ function Sidebar({ links, user }: SidebarProps) {
 						onClick={handleMinimize}
 						variant={"outline"}
 						size={"sm"}
-						className="text-foreground/40 hover:text-foreground/80 m-0 cursor-pointer border-0 p-2 hover:bg-transparent"
+						className="text-foreground/40 hover:text-foreground/80 m-0 border-0 p-2 hover:bg-transparent"
 					/>
 				</div>
 			)}
