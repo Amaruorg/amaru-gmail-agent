@@ -1,6 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Tag } from "@/components/ui";
-import { mergeClasses } from "@/lib/tailwindUtils";
+import { mergeClasses } from "@/lib/utils/tailwind";
 
 const statusColors: Record<string, string> = {
 	Processed: "bg-status-success/20 text-status-success",

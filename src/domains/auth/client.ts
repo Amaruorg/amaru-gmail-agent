@@ -1,7 +1,8 @@
 import { betterAuth } from "better-auth";
 import { nextCookies } from "better-auth/next-js";
 import { prismaAdapter } from "better-auth/adapters/prisma";
-import prisma from "@/lib/prisma";
+import prisma from "@/shared/db/prisma";
+import { authConfig } from "@/lib/config";
 
 export const auth = betterAuth({
 	database: prismaAdapter(prisma, {
@@ -15,9 +16,12 @@ export const auth = betterAuth({
 	},
 	socialProviders: {
 		google: {
-			clientId: process.env.GOOGLE_CLIENT_ID as string,
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-			scope: ["profile", "https://www.googleapis.com/auth/gmail.readonly"],
+			clientId: authConfig.google.clientId,
+			clientSecret: authConfig.google.clientSecret,
+			scope: authConfig.google.scopes,
+			accessType: "offline",
+			prompt: "consent",
+			approvalPrompt: "force",
 		},
 	},
 	plugins: [nextCookies()],

@@ -1,20 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
-import { auth } from "@/lib/authClient";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 
-const ai = new GoogleGenAI({
-	apiKey: process.env.GEMINI_API_KEY,
-});
+// Initialize Gemini AI client
+const initGeminiAI = () => {
+	if (!process.env.GEMINI_API_KEY) {
+		throw new Error("GEMINI_API_KEY is not configured in environment variables");
+	}
+	return new GoogleGenAI({
+		apiKey: process.env.GEMINI_API_KEY,
+	});
+};
 
 export async function POST(req: NextRequest) {
-	const session = await auth.api.getSession({ headers: await headers() });
-
-	if (!session) {
-		return NextResponse.json({ error: "Unauthorized access. Please, log in." }, { status: 401 });
-	}
-
 	try {
 		const { prompt } = await req.json();
 
@@ -22,17 +19,19 @@ export async function POST(req: NextRequest) {
 			return NextResponse.json({ error: "A message is required" }, { status: 400 });
 		}
 
-		const response = await ai.models.generateContent({
+		const genAI = initGeminiAI();
+
+		// Generate content using the GoogleGenAI client
+		const response = await genAI.models.generateContent({
 			model: "gemini-2.5-flash",
 			contents: prompt,
 		});
 
-		return NextResponse.json({ text: response.text });
-	} catch (error: unknown) {
-		if (error instanceof Error) {
-			return NextResponse.json({ error: error.message || "Something went wrong..." }, { status: 500 });
-		} else {
-			return NextResponse.json({ error: "Something went wrong..." }, { status: 500 });
-		}
+		const text = response.text || "No response generated";
+
+		return NextResponse.json({ text });
+	} catch (error) {
+		console.error("Gemini API Error Details:", error);
+		return NextResponse.json({ error: "Failed to generate summary" }, { status: 500 });
 	}
 }

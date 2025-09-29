@@ -45,12 +45,12 @@ function SidebarButton({
 							<div className="flex flex-1 gap-3 px-2">
 								<span className="whitespace-nowrap">{text}</span>
 								{Tag && (
-									<div id="tag" className="bg-status-success/20 rounded-lg px-2 py-1 text-xs">
+									<div id="tag" className="bg-sidebar-tag-background rounded-lg px-2 py-1 text-xs">
 										{Tag}
 									</div>
 								)}
 							</div>
-							{notification && <div className="bg-status-alert mr-2 h-2 w-2 shrink-0 rounded-full"></div>}
+							{notification && <div className="bg-sidebar-notification mr-2 h-2 w-2 shrink-0 rounded-full"></div>}
 						</div>
 					</div>
 				</Link>

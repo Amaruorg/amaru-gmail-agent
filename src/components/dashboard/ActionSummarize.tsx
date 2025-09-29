@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { getSummary } from "@/lib/actions/gmail";
+import { getEmailsSummary } from "@/domains/ai/actions";
 
 type ActionSummarizeProps = {
 	summary: string;
@@ -19,7 +19,7 @@ function ActionSummarize({ summary: initialSummary, className }: ActionSummarize
 
 		setIsLoading(true);
 		try {
-			const newSummary = await getSummary(userPrompt || undefined);
+			const newSummary = await getEmailsSummary(userPrompt || undefined);
 			setSummary(newSummary);
 		} catch (error) {
 			console.error("Error getting summary:", error);

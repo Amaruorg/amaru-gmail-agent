@@ -3,7 +3,7 @@
 import { useState, ButtonHTMLAttributes } from "react";
 import { motion } from "motion/react";
 import { cva, VariantProps } from "class-variance-authority";
-import { mergeClasses } from "@/lib/tailwindUtils";
+import { mergeClasses } from "@/lib/utils/tailwind";
 
 const switchVariants = cva(
 	"relative inline-flex h-6 w-12 rounded-full transition-colors border-2 items-center focus:outline-none disabled:cursor-not-allowed",
