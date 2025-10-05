@@ -17,23 +17,23 @@ export async function POST(req: NextRequest) {
 		if (emails.length === 0) {
 			return NextResponse.json({ error: "At least one email is required" }, { status: 400 });
 		}
-		
+
 		const openrouter = createOpenRouter({
 			apiKey: config.OPENROUTER_API_KEY,
 			baseURL: "https://openrouter.ai/api/v1",
 		});
 
 		const summaryActions: SummaryAction[] = [];
-		
+
 		for (let i = 0; i < emails.length; i++) {
 			const email = emails[i];
 			const startTime = Date.now();
-			
-			const emailPrompt = `${promptText}\n\nEmail to summarize:\nID: ${email.id}\nSubject: ${email.subject || 'N/A'}\nFrom: ${email.from || 'N/A'}\nThread ID: ${email.threadId || 'N/A'}`;
+
+			const emailPrompt = `${promptText}\n\nEmail to summarize:\nID: ${email.id}\nSubject: ${email.subject || "N/A"}\nFrom: ${email.from || "N/A"}\nThread ID: ${email.threadId || "N/A"}`;
 
 			const response = streamText({
 				model: openrouter("qwen/qwen3-235b-a22b:free"),
-				prompt: emailPrompt
+				prompt: emailPrompt,
 			});
 
 			const text = await response.text;
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
 				metadata: {
 					emailCount: 1,
 					processingTime,
-					model: "x-ai/grok-4-fast:free",
+					model: "qwen/qwen3-4b-04-28:free",
 				},
 			};
 

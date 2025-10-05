@@ -2,7 +2,7 @@ import { betterAuth } from "better-auth";
 import { nextCookies } from "better-auth/next-js";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import prisma from "@/shared/db/prisma";
-import { authConfig } from "@/lib/config";
+import { authShared } from "@/lib/config";
 
 export const auth = betterAuth({
 	database: prismaAdapter(prisma, {
@@ -16,12 +16,11 @@ export const auth = betterAuth({
 	},
 	socialProviders: {
 		google: {
-			clientId: authConfig.google.clientId,
-			clientSecret: authConfig.google.clientSecret,
-			scope: authConfig.google.scopes,
+			clientId: authShared.clientId,
+			clientSecret: authShared.clientSecret,
+			scope: authShared.scope,
 			accessType: "offline",
-			prompt: "consent",
-			approvalPrompt: "force",
+			prompt: "select_account consent",
 		},
 	},
 	plugins: [nextCookies()],

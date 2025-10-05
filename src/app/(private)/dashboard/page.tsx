@@ -17,7 +17,8 @@ export default function DashboardPage() {
 		setIsLoading(true);
 		try {
 			const newSummaries = summaries.slice();
-			const content = await getEmailsSummary();
+			const actionCollection = await getEmailsSummary();
+			const content = `# Daily Email Summary\n\n${actionCollection.actions.map((action, index) => `## Email ${index + 1}\n${action.summary}`).join("\n\n")}`;
 			//TODO: replace with real summary data from backend
 			const newSummary = {
 				title: `Email from ${user?.name}`,
