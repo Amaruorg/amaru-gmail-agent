@@ -55,7 +55,7 @@ function SidebarButton({
 					</div>
 				</Link>
 			) : (
-				<button onClick={onClick} className="flex w-full items-center">
+				<button onClick={onClick} className="flex w-full cursor-pointer items-center">
 					<div className="flex shrink-0 items-center justify-center p-2">
 						<Icon />
 					</div>

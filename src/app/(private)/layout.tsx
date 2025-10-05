@@ -4,6 +4,7 @@ import { Sidebar, SidebarButtonProps } from "@/components/layout";
 import { authService } from "@/domains/auth/service";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { UserContextProvider } from "@/contexts/UserContext";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -17,10 +18,10 @@ export const metadata = {
 };
 
 const links: SidebarButtonProps[] = [
-	{ href: "/dashboard", icon: "Book", text: "Dashboard", notification: true, Tag: "New" },
+	{ href: "/dashboard", icon: "Book", text: "Dashboard", notification: true },
+	{ href: "/collections", icon: "Collections", text: "Collections" },
 	{ href: "/logs", icon: "List", text: "Logs" },
-	{ href: "/whitelist", icon: "CheckList", text: "Whitelist" },
-	{ href: "/settings/profile", icon: "Settings", text: "Settings" },
+	{ href: "/settings", icon: "Settings", text: "Settings" },
 ];
 
 export default async function PrivateLayout({ children }: { children: ReactNode }) {
@@ -31,11 +32,15 @@ export default async function PrivateLayout({ children }: { children: ReactNode 
 		redirect("/");
 	}
 
+	const user = session?.user;
+
 	return (
 		<html lang="en">
 			<body className={`${inter.className} bg-background text-foreground flex h-screen w-full overflow-hidden`}>
 				<Sidebar links={links} user={{ name: session.user.name ?? "Unknown", imageUrl: session.user.image ?? "" }} />
-				<div className="h-full flex-1 overflow-y-auto p-5 pt-10">{children}</div>
+				<UserContextProvider user={user}>
+					<div className="mt-10 h-full flex-1 overflow-y-auto px-5">{children}</div>
+				</UserContextProvider>
 			</body>
 		</html>
 	);

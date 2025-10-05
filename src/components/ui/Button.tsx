@@ -83,6 +83,7 @@ type ButtonVariants = VariantProps<typeof buttonVariants>;
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
 	ButtonVariants & {
 		text?: string;
+		left?: boolean;
 		icon?: React.ElementType;
 	};
 
@@ -107,6 +108,7 @@ function Button({
 	disabled,
 	className,
 	type = "button",
+	left = true,
 	...rest
 }: ButtonProps) {
 	return (
@@ -116,9 +118,10 @@ function Button({
 			className={mergeClasses(buttonVariants({ size, variant, style, disabled }), className)}
 			{...rest}
 		>
-			{Icon && <Icon />}
+			{Icon && left && <Icon />}
 			{text && <span>{text}</span>}
 			{!text && !Icon ? <span>Button</span> : null}
+			{Icon && !left && <Icon />} 
 		</button>
 	);
 }

@@ -1,50 +1,53 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { TabItem } from "@/components/ui";
 
 type TabGroupProps = {
-	basePath?: string; // opcional
+	basePath?: string;
 	tabs: {
 		href: string;
 		label: string;
 	}[];
 	className?: string;
+	onTabClick?: (href: string) => void;
+	activeTab?: string;
 };
 
 /**
- * TabGroup component for navigation.
+ * TabGroup component
  *
- * Props:
- * - tabs: Array of tab objects with `href` and `label` properties. href is relative path, label is display text.
- * - basePath: Optional base path to prepend to each tab's href.
- *
- * Example:
- * ```tsx
- * <TabGroup basePath="/settings" tabs={[{ href: 'profile', label: 'Profile' }, { href: 'notifications', label: 'Notifications' }]} />
- * ```
+ * - Si se pasa `activeTab`, el estado activo viene del padre (modo controlado)
+ * - Si no se pasa, puede navegar con router.push normalmente
  */
-function TabGroup({ tabs, basePath = "", className }: TabGroupProps) {
-	const router = useRouter();
-	const pathname = usePathname();
-
+function TabGroup({ tabs, className, onTabClick, activeTab }: TabGroupProps) {
 	return (
-		<div className={`border-tab-underline flex w-full gap-5 border-b-2 ${className}`}>
+		<div className={`border-tab-underline relative flex w-full gap-5 border-b-2 ${className || ""}`}>
 			{tabs.map((tab) => {
-				const fullHref = `${basePath}/${tab.href}`.replace(/\/+$/, "").replace(/\/{2,}/g, "/") || "/";
-				const isSelected = pathname === fullHref;
+				const isSelected = activeTab === tab.href; // 👈 compara con el estado activo
+
+				const handleClick = () => {
+					if (onTabClick) {
+						onTabClick(tab.href);
+					}
+				};
 
 				return (
 					<TabItem
 						key={tab.href}
 						variant={isSelected ? "selected" : "unselected"}
-						onClick={() => router.push(fullHref)}
+						onClick={handleClick}
+						className="relative"
 					>
+						{/* ✅ Animación de borde inferior */}
 						{isSelected && (
-							<motion.div layoutId="active-tab" className="border-foreground absolute inset-0 border-b-2" />
+							<motion.div
+								layoutId="active-tab"
+								className="border-foreground absolute inset-0 border-b-2"
+								transition={{ type: "spring", stiffness: 300, damping: 25 }}
+							/>
 						)}
-						<span className="relative">{tab.label}</span>
+						<span className="relative z-10">{tab.label}</span>
 					</TabItem>
 				);
 			})}

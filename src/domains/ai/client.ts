@@ -1,10 +1,11 @@
 import { apiConfig } from "@/lib/config";
 import type { AIProvider } from "@/domains/ai/types";
+import type { ActionCollection } from "@/domains/gmail/schema";
 
-export class GeminiClient implements AIProvider {
-	async summarize(prompt?: string): Promise<string> {
+export class OpenRouterClient implements AIProvider {
+	async summarize(prompt?: string): Promise<ActionCollection> {
 		try {
-			const response = await fetch(`${apiConfig.baseUrl}${apiConfig.endpoints.gemini}`, {
+			const response = await fetch(`${apiConfig.baseUrl}${apiConfig.endpoints.openrouter}`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -29,10 +30,9 @@ export class GeminiClient implements AIProvider {
 				throw new Error(errorMessage);
 			}
 
-			const data = await response.json();
-			const summary = data.text || "No summary available";
+			const actionCollection: ActionCollection = await response.json();
 
-			return summary;
+			return actionCollection;
 		} catch (error) {
 			if (error instanceof Error) {
 				throw error;
@@ -42,5 +42,4 @@ export class GeminiClient implements AIProvider {
 	}
 }
 
-// Singleton instance
-export const geminiClient = new GeminiClient();
+export const openRouterClient = new OpenRouterClient();

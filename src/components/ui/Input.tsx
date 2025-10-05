@@ -26,6 +26,8 @@ type InputVariants = VariantProps<typeof inputVariants>;
 type InputProps = InputHTMLAttributes<HTMLInputElement> &
 	InputVariants & {
 		buttonVariant?: ButtonProps["variant"];
+	} & {
+		SearchButton?: boolean;
 	};
 
 /**
@@ -36,19 +38,26 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> &
  * Props:
  * - Inherits all native <input> props.
  */
-function Input({ variant = "solid", buttonVariant = "solid", ...rest }: InputProps) {
+function Input({ variant = "solid", buttonVariant = "solid", SearchButton = false, ...rest }: InputProps) {
 	return (
 		<div className="flex w-full">
-			<div className={mergeClasses(inputVariants({ variant }), "w-full flex-1 rounded-l-xl px-4")}>
+			<div
+				className={mergeClasses(
+					inputVariants({ variant }),
+					`${SearchButton ? "rounded-l-md" : "rounded-md py-2"} border-input-border w-full flex-1 border px-4 shadow-sm`,
+				)}
+			>
 				<input
 					type="text"
-					className="text-foreground placeholder:text-muted w-full bg-transparent outline-none"
+					className="text-foreground placeholder:text-muted w-full appearance-none border-none outline-none focus:border-transparent focus:shadow-none focus:ring-0 focus:outline-none"
 					{...rest}
 				/>
 			</div>
-			<div className={mergeClasses(inputVariants({ buttonVariant }), "rounded-r-xl")}>
-				<Button icon={Search} variant={buttonVariant} size="sm" className="m-0 rounded-l-none rounded-r-xl" />
-			</div>
+			{SearchButton && (
+				<div className={mergeClasses(inputVariants({ buttonVariant }), "rounded-r-xl")}>
+					<Button icon={Search} variant={buttonVariant} size="sm" className="m-0 rounded-l-none rounded-r-xl" />
+				</div>
+			)}
 		</div>
 	);
 }

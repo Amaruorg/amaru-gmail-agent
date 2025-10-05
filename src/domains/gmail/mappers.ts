@@ -2,6 +2,10 @@ import type { gmail_v1 } from "googleapis";
 import type { Email, EmailHeader } from "@/domains/gmail/types";
 
 export class GmailMappers {
+	static extractHeader(headers: EmailHeader[], name: string): string | undefined {
+		return headers.find((h) => h.name.toLowerCase() === name.toLowerCase())?.value;
+	}
+
 	static toEmail(message: gmail_v1.Schema$Message): Email {
 		const payload = message.payload;
 		const headers: EmailHeader[] = (payload?.headers || []).map((h) => ({
@@ -23,10 +27,6 @@ export class GmailMappers {
 			labels: message.labelIds || [],
 			isRead: !message.labelIds?.includes("UNREAD"),
 		};
-	}
-
-	static extractHeader(headers: EmailHeader[], name: string): string | undefined {
-		return headers.find((h) => h.name.toLowerCase() === name.toLowerCase())?.value;
 	}
 
 	static formatEmailsForAI(emails: Email[]): string {
