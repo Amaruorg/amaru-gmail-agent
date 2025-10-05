@@ -1,18 +1,18 @@
 import { google } from "googleapis";
-import { authConfig } from "@/lib/config";
+import { authShared } from "@/lib/config";
 import type { TokenData } from "@/domains/gmail/types";
 
 export class GmailClient {
 	private createOAuth2Client(tokenData: TokenData) {
-		const oAuth2Client = new google.auth.OAuth2(
-			authConfig.google.clientId,
-			authConfig.google.clientSecret,
-			"postmessage",
-		);
+		const oAuth2Client = new google.auth.OAuth2({
+			clientId: authShared.clientId,
+			clientSecret: authShared.clientSecret,
+			redirectUri: authShared.redirectUrl,
+		});
 
 		const credentials = {
 			access_token: tokenData.accessToken,
-			token_type: "Bearer",
+			refresh_token: tokenData.refreshToken,
 		};
 
 		oAuth2Client.setCredentials(credentials);
@@ -53,5 +53,4 @@ export class GmailClient {
 	}
 }
 
-// Singleton instance
 export const gmailClient = new GmailClient();

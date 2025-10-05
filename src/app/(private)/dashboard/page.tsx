@@ -11,7 +11,6 @@ export default function DashboardPage() {
 	const { user } = useUser();
 	const [summaries, setSummaries] = useState<SummaryCardProps[]>([]);
 	const [isLoading, setIsLoading] = useState(false);
-
 	const handleRun = async () => {
 		if (isLoading) return;
 
@@ -47,7 +46,6 @@ export default function DashboardPage() {
 				<Button text={isLoading ? "Loading..." : "Today summary"} size="sm" onClick={handleRun} disabled={isLoading} />
 			</div>
 			<SummaryLayout events={summaries} />
-			{/* <ActionSummarize summary={result} className="pt-8" /> */}
 		</>
 	);
 }

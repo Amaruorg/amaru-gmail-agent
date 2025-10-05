@@ -1,5 +1,6 @@
-import { geminiClient } from "@/domains/ai/client";
+import { openRouterClient } from "@/domains/ai/client";
 import type { AIProvider } from "@/domains/ai/types";
+import type { ActionCollection } from "@/domains/gmail/schema";
 
 export class AIService {
 	private aiProvider: AIProvider;
@@ -8,18 +9,17 @@ export class AIService {
 		this.aiProvider = aiProvider;
 	}
 
-	async getSummary(context: string, prompt?: string): Promise<string> {
+	async getSummary(context: string, prompt?: string): Promise<ActionCollection> {
 		const fullPrompt = `${prompt}\n\n${context}\n`;
 
 		try {
 			if (!context) {
-				return "No context to summarize";
+				throw new Error("No context to summarize");
 			}
 
-			// Generate summary using AI provider
-			const summary = await this.aiProvider.summarize(fullPrompt);
+			const actionCollection = await this.aiProvider.summarize(fullPrompt);
 
-			return summary;
+			return actionCollection;
 		} catch (error) {
 			throw error;
 		}
@@ -31,5 +31,4 @@ export class AIService {
 	}
 }
 
-// Singleton instance
-export const aiService = new AIService(geminiClient);
+export const aiService = new AIService(openRouterClient);

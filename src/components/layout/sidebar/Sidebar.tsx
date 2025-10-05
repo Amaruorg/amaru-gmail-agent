@@ -60,7 +60,7 @@ function Sidebar({ links, user }: SidebarProps) {
 							</div>
 						)}
 
-						{/* Name and button with transition */}
+						{/* Name and minimize button with transition */}
 						<div
 							className={`flex items-center overflow-hidden transition-all duration-300 ${isMinimized ? "max-w-0 scale-95 opacity-0" : "w-full scale-100 opacity-100"}`}
 						>

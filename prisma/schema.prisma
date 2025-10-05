@@ -72,11 +72,11 @@ model Verification {
 
 model Email {
   id        String   @id
-  threadId  String
+  threadId  String?
   userId    String
-  to        String
-  from      String
-  subject   String
+  to        String?
+  from      String?
+  subject   String?
   indexedAt DateTime @default(now())
 
   actions Action[]
@@ -100,36 +100,30 @@ model Log {
 }
 
 model Action {
-  id           String    @id
-  accountUid   String
-  createdAt    DateTime  @default(now())
-  completedAt  DateTime?
-  modelVersion String
+  id             String    @id
+  name           String
+  type           String
+  status         String    @default("pending") // "pending", "processing", "completed", "failed"
+  userPrompt     String?
+  accountUid     String
+  createdAt      DateTime  @default(now())
+  completedAt    DateTime?
+  modelVersion   String?
+  processingTime Int? // milliseconds
 
-  account Account        @relation(fields: [accountUid], references: [id])
+  account Account @relation(fields: [accountUid], references: [id])
   emails  Email[]
-  event   ActionEvent?
-  summary ActionSummary?
+
+  summaryAction SummaryAction?
 
   @@map("actions")
 }
 
-model ActionEvent {
-  actionId  String   @id
-  eventId   String   @unique
-  startTime DateTime
-  endTime   DateTime
+model SummaryAction {
+  actionId    String @id
+  summaryText String
 
   action Action @relation(fields: [actionId], references: [id], onDelete: Cascade)
 
-  @@map("action_events")
-}
-
-model ActionSummary {
-  actionId    String  @id
-  summaryText String?
-
-  action Action @relation(fields: [actionId], references: [id], onDelete: Cascade)
-
-  @@map("action_summaries")
+  @@map("summary_actions")
 }
