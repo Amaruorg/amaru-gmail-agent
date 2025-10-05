@@ -13,8 +13,12 @@
 	--color-sidebar-tag-background: #62ff7732;
 	--color-sidebar-notification: #ff6262;
 
+	/* modal */
+	--color-modal-background: #1a1a1a;
+
 	/* ui components */
 	--color-input-background: #242424;
+	--color-input-border: #3f3f46;
 	--color-card-background: #1d1d1d;
 	--color-table-background: #3a3a3a;
 	--color-tab-underline: #3a3a3a;
@@ -48,7 +52,7 @@
 }
 
 * {
-	scrollbar-width: thin;
+	scrollbar-width: none;
 	scrollbar-color: white transparent;
 }
 
