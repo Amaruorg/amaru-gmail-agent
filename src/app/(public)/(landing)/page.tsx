@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui";
-import MultiLineMarquee from "@/components/animations/MultiLineText";
+import { Button, Carousel } from "@/components/ui";
+import MultiLineMarquee from "@/components/animations/MultiLineText"
 
 const wordsList = [
 	"Amaru",
@@ -30,6 +30,30 @@ const wordsList = [
 	"Integrate",
 	"Optimize",
 	"Google",
+];
+
+const slides = [
+	{
+		src: "/images/dashboard.png",
+		alt: "Dashboard Screenshot",
+		title: "Dashboard Overview",
+		description:
+			"Experience the core of Amaru: an intelligent dashboard that uses advanced AI to organize your emails, generate precise summaries, and manage tasks efficiently.",
+	},
+	{
+		src: "/images/Collections.png",
+		alt: "Collections Screenshot",
+		title: "Smart Collections",
+		description:
+			"Build dynamic collections. Amaru automates the classification of your emails, articles, and projects, transforming digital chaos into an organized and productive system.",
+	},
+	{
+		src: "/images/logs.png",
+		alt: "Logs Screenshot",
+		title: "Detailed History",
+		description:
+			"Access a complete activity history. Every interaction with Amaru is meticulously recorded, providing detailed tracking of your productivity and performance.",
+	},
 ];
 
 export default function HomePage() {
@@ -74,10 +98,9 @@ export default function HomePage() {
 			</section>
 
 			{/* 🔹 Sección Features */}
-			<section id="features" className="mt-20 flex w-full flex-col px-20">
-				<div className="from-background text-foreground h-[600px] w-full rounded-2xl bg-gradient-to-b to-black p-10">
-					<h1 className="text-4xl font-bold">What It Does Amaru</h1>
-				</div>
+			<section id="features" className="flex w-full flex-col px-20">
+				<h1 className="mt-15 mb-10 text-center text-4xl">What It Does Amaru</h1>
+				<Carousel slides={slides} autoPlay={true} interval={7000} />
 			</section>
 		</div>
 	);
