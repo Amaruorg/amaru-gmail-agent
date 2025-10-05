@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui";
 import Image from "next/image";
 import { SidebarButton, type SidebarButtonProps } from "@/components/layout";
@@ -20,11 +21,22 @@ type SidebarProps = {
  */
 function Sidebar({ links, user }: SidebarProps) {
 	const [isMinimized, setIsMinimized] = useState(false);
+	const router = useRouter();
 
 	const handleMinimize = () => {
 		console.log("Minimize button clicked: ", !isMinimized);
 		setIsMinimized((prev) => !prev);
 	};
+
+	const handleSignOut = async () => {
+		try {
+			await signOut();
+			router.push("/");
+		} catch (error) {
+			console.error("Error during sign-out:", error);
+		}
+	};
+
 	return (
 		<nav className={`mr-5 flex transition-all duration-300 ease-in-out ${isMinimized ? "w-32" : "w-80"} p-4`}>
 			<div
@@ -53,7 +65,7 @@ function Sidebar({ links, user }: SidebarProps) {
 							className={`flex items-center overflow-hidden transition-all duration-300 ${isMinimized ? "max-w-0 scale-95 opacity-0" : "w-full scale-100 opacity-100"}`}
 						>
 							<div className="text-md flex flex-1 flex-col overflow-hidden text-ellipsis whitespace-nowrap first-letter:uppercase">
-								<span>{user.name}</span>
+								<span className="truncate capitalize">{user.name}</span>
 								<span className="text-primary text-xs">Pro</span>
 							</div>
 							<Button
@@ -91,7 +103,7 @@ function Sidebar({ links, user }: SidebarProps) {
 						icon={"Logout"}
 						onlyIcon={isMinimized}
 						type="button"
-						onClick={() => signOut()}
+						onClick={handleSignOut}
 					/>
 				</section>
 			</div>

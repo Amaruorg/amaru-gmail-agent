@@ -7,3 +7,6 @@ export * from "./TabGroup";
 export * from "./Marquee";
 export * from "./Table";
 export * from "./DynamicTableColumns";
+export * from "./Modal";
+export * from "./Select";
+export * from "./TextArea";

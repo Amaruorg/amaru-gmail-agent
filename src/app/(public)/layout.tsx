@@ -1,16 +1,12 @@
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
-import { Topbar } from "@/components/layout/Topbar";
 import { authService } from "@/domains/auth/service";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import "@/styles/globals.css";
-import { Marquee } from "@/components/ui";
+import { PublicLayoutClient } from "@/app/(public)/PublicLayoutClient";
 
-const inter = Inter({
-	subsets: ["latin"],
-	weight: ["400"],
-});
+const inter = Inter({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata = {
 	title: "Amaru",
@@ -18,8 +14,8 @@ export const metadata = {
 };
 
 const tabsContent = [
-	{ href: "", label: "Home" },
-	{ href: "pricing", label: "Pricing" },
+	{ href: "#home", label: "Home" },
+	{ href: "#features", label: "What It Does" },
 ];
 
 const texts = [
@@ -27,17 +23,15 @@ const texts = [
 	"Focus on What Matters",
 	"Work Smarter, Not Harder",
 	"Boost Your Workflow with AI",
+    "Transform Your Inbox",
+    "Automate Repetitive Tasks",
 ];
 
 export default async function PublicLayout({ children }: { children: ReactNode }) {
 	if (process.env.NODE_ENV === "development") {
-		console.log("Redirecting to /dashboard. NODE_ENV: ", process.env.NODE_ENV);
 		const headersList = await headers();
 		const session = await authService.getSession(headersList);
-
-		if (session) {
-			redirect("/dashboard");
-		}
+		if (session) redirect("/dashboard");
 	}
 
 	return (
@@ -45,10 +39,9 @@ export default async function PublicLayout({ children }: { children: ReactNode }
 			<body
 				className={`${inter.className} from-background-secondary text-foreground bg-gradient-to-b from-20% to-black`}
 			>
-				<Marquee items={texts} />
-				<Topbar basePath="/" tabs={tabsContent} />
-				{children}
-				<footer className="h-20 w-full bg-transparent"></footer>
+				<PublicLayoutClient tabs={tabsContent} texts={texts}>
+					{children}
+				</PublicLayoutClient>
 			</body>
 		</html>
 	);

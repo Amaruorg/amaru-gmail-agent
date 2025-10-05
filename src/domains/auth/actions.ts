@@ -21,7 +21,6 @@ export const signOut = async () => {
 	try {
 		const headersList = await headers();
 		await authService.signOut(headersList);
-		redirect("/");
 	} catch (error) {
 		console.error("Error during sign-out:", error);
 	}
