@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Input, Switch, Tag, TabGroup } from "@/components/ui";
 import { Google, Settings, Book, List, CheckList, Amaru, AmaruOutline } from "@/components/Icons";
 
@@ -7,7 +9,7 @@ const tabsContent = [
 	{ href: "about", label: "About" },
 ];
 
-export default async function TestPage() {
+export default function TestPage() {
 	return (
 		<div className="flex-col">
 			<div className="flex items-center p-2">
