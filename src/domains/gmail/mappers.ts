@@ -13,7 +13,7 @@ export class GmailMappers {
 		let messageBuffer: Buffer;
 		try {
 			messageBuffer = Buffer.from(message.raw, "base64url");
-		} catch (e) {
+		} catch {
 			messageBuffer = Buffer.from(message.raw, "base64");
 		}
 

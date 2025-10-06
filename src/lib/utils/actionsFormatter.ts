@@ -1,3 +1,5 @@
+import type { Action } from "@/domains/gmail/types";
+
 export function formatDate(dateStr?: string | null): string {
 	if (!dateStr) return "(no date)";
 	try {
@@ -7,18 +9,21 @@ export function formatDate(dateStr?: string | null): string {
 	}
 }
 
-export function formatSummariesMarkdown(actions: any[]): string {
+export function formatSummariesMarkdown(actions: Action[]): string {
 	return actions
 		.filter((a) => a?.type === "summarize")
-		.map((action: any) => {
-			return [(action.emailSummary || "").trim()].join("\n\n");
+		.map((action) => {
+			if (action.type === "summarize") {
+				return [(action.emailSummary || "").trim()].join("\n\n");
+			}
+			return "";
 		})
 		.join("\n\n---\n\n");
 }
 
-export function formatActionsMarkdown(actions: any[]): string {
+export function formatActionsMarkdown(actions: Action[]): string {
 	return actions
-		.map((action: any, index: number) => {
+		.map((action, index: number) => {
 			if (action.type === "summarize") {
 				return [
 					`### Email ${index + 1} — Summary (emailId: ${action.emailId})`,
@@ -38,9 +43,9 @@ export function formatActionsMarkdown(actions: any[]): string {
 					"",
 					(ev.description || "").trim(),
 				].join("\n");
-			} else {
-				return `### Email ${index + 1} — Unknown action type (${action.type})`;
 			}
+			// Unknown action type
+			return `### Email ${index + 1} — Unknown action type`;
 		})
 		.join("\n\n---\n\n");
 }
