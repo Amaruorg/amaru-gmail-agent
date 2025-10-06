@@ -76,13 +76,6 @@ export async function getEmailAnalysis(userPrompt?: string): Promise<ActionColle
 
 		let data: any = await response.json();
 
-		// The OpenRouter route returns structured actions referencing email IDs.
-		// We populated the email cache earlier in this same request when calling
-		// `gmailService.fetchInbox`. The /api/openrouter handler is a separate
-		// HTTP request and cannot access our in-memory cache. To ensure the
-		// final actions include the email title, enrich them here using the
-		// cache that is valid in this execution context.
-
 		const actions: ActionCollection = data;
 
 		for (const action of actions) {
@@ -100,33 +93,6 @@ export async function getEmailAnalysis(userPrompt?: string): Promise<ActionColle
 				//console.debug("getEmailAnalysis: failed to enrich action with title", e);
 			}
 		}
-
-/* 		const structuredString = actions
-			.map((action: Action, index: number) => {
-				if (action.type === "summarize") {
-					const a = action as any;
-					return [
-						`### Email ${index + 1} — Summary (emailId: ${a.emailId})`,
-						`- Category: **${a.category || "Unspecified"}**`,
-						"", // blank line
-						"> " + a.emailSummary.replace(/\n/g, "\n> "),
-					].join("\n");
-				} else if (action.type === "schedule_google_calendar") {
-					const a = action as any;
-					const ev = a.event || {};
-					return [
-						`### Email ${index + 1} — Calendar Event (emailId: ${a.emailId})`,
-						`- Title: **${ev.eventTitle || "(no title)"}**`,
-						`- When: ${ev.start || "(no start)"} — ${ev.end || "(no end)"}`,
-						`- Location: ${ev.location || "(none)"}`,
-						"",
-						"> " + (ev.description || "(no description)").replace(/\n/g, "\n> "),
-					].join("\n");
-				} else {
-					return `### Email ${index + 1} — Unknown action type (${(action as any).type})`;
-				}
-			})
-			.join("\n\n---\n\n"); */
 
 		return actions;
 	} catch (error) {
