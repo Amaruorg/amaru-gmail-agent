@@ -10,24 +10,23 @@ export class GmailClient {
 			redirectUri: authShared.redirectUrl,
 		});
 
-		const credentials = {
+		oAuth2Client.setCredentials({
 			access_token: tokenData.accessToken,
 			refresh_token: tokenData.refreshToken,
-		};
-
-		oAuth2Client.setCredentials(credentials);
+		});
 
 		return oAuth2Client;
 	}
 
-	async listEmails(tokenData: TokenData, maxResults: number = 10) {
+	async listMessages(tokenData: TokenData, maxResults: number = 10, pageToken?: string) {
 		try {
 			const oAuth2Client = this.createOAuth2Client(tokenData);
 			const gmail = google.gmail({ version: "v1", auth: oAuth2Client });
 
 			const response = await gmail.users.messages.list({
 				userId: "me",
-				maxResults,
+				pageToken: pageToken,
+				maxResults: maxResults,
 			});
 
 			return response.data;
@@ -44,6 +43,7 @@ export class GmailClient {
 			const response = await gmail.users.messages.get({
 				userId: "me",
 				id: messageId,
+				format: "raw",
 			});
 
 			return response.data;

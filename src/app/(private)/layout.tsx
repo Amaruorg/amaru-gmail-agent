@@ -25,8 +25,7 @@ const links: SidebarButtonProps[] = [
 ];
 
 export default async function PrivateLayout({ children }: { children: ReactNode }) {
-	const headersList = await headers();
-	const session = await authService.getSession(headersList);
+	const session = await authService.getSession(await headers());
 
 	if (!session) {
 		redirect("/");

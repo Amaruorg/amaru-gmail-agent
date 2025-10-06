@@ -46,7 +46,7 @@ export class AuthService {
 		}
 	}
 
-	async getAccessToken(provider: SocialProvider, headers: Headers): Promise<ProviderToken> {
+	async getAccessToken(headers: Headers): Promise<ProviderToken> {
 		try {
 			const sessionData = await this.getSession(headers);
 			if (!sessionData?.session || !sessionData.user) {
@@ -54,7 +54,7 @@ export class AuthService {
 			}
 			const { user } = sessionData;
 			const tokenResponse = await auth.api.getAccessToken({
-				body: { providerId: provider, userId: user.id },
+				body: { providerId: "google", userId: user.id },
 			});
 
 			if (!tokenResponse?.accessToken) {
@@ -70,5 +70,4 @@ export class AuthService {
 	}
 }
 
-// Singleton instance
 export const authService = new AuthService();
