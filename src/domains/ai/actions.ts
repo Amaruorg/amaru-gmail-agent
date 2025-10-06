@@ -74,23 +74,23 @@ export async function getEmailAnalysis(userPrompt?: string): Promise<ActionColle
 			throw new Error(`API call failed: ${response.status} ${response.statusText} - ${shortBody}`);
 		}
 
-		let data: any = await response.json();
+		const data = await response.json() as ActionCollection;
 
 		const actions: ActionCollection = data;
 
 		for (const action of actions) {
 			try {
-				if (action.type === "summarize" && (action as any).emailId) {
-					const id = (action as any).emailId;
-					// Get truncated title (max 60 chars by default)
+				if (action.type === "summarize" && "emailId" in action && action.emailId) {
+					const id = action.emailId;
 					const title = getCachedEmailTitle(id, 60);
 					//console.log("getEmailAnalysis: enriching action with title", { emailId: id, title });
 					if (title) {
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any
 						(action as any).emailTitle = title;
 					}
 				}
-			} catch (e) {
-				//console.debug("getEmailAnalysis: failed to enrich action with title", e);
+			} catch {
+				//console.debug("getEmailAnalysis: failed to enrich action with title");
 			}
 		}
 
@@ -177,23 +177,24 @@ export async function getCollectionAnalysis(
 			throw new Error(`API call failed: ${response.status} ${response.statusText} - ${shortBody}`);
 		}
 
-		let data: any = await response.json();
+		const data = await response.json() as ActionCollection;
 
 		const actions: ActionCollection = data;
 
 		// Enrich actions with email titles from cache
 		for (const action of actions) {
 			try {
-				if (action.type === "summarize" && (action as any).emailId) {
-					const id = (action as any).emailId;
+				if (action.type === "summarize" && "emailId" in action && action.emailId) {
+					const id = action.emailId;
 					const title = getCachedEmailTitle(id, 60);
 					//console.log("getCollectionAnalysis: enriching action with title", { emailId: id, title });
 					if (title) {
+						// eslint-disable-next-line @typescript-eslint/no-explicit-any
 						(action as any).emailTitle = title;
 					}
 				}
-			} catch (e) {
-				//console.debug("getCollectionAnalysis: failed to enrich action with title", e);
+			} catch {
+				//console.debug("getCollectionAnalysis: failed to enrich action with title");
 			}
 		}
 

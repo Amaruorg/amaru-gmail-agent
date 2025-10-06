@@ -98,9 +98,10 @@ export class GmailLabelsClient {
 				messageListVisibility: response.data.messageListVisibility,
 				labelListVisibility: response.data.labelListVisibility,
 			};
-		} catch (error: any) {
+		} catch (error: unknown) {
 			// Check if label already exists
-			if (error?.code === 409 || error?.message?.includes("already exists")) {
+			const err = error as { code?: number; message?: string };
+			if (err?.code === 409 || err?.message?.includes("already exists")) {
 				// Try to find the existing label
 				const labels = await this.listLabels();
 				const existingLabel = labels.find((label) => label.name.toLowerCase() === labelName.toLowerCase());
@@ -111,7 +112,8 @@ export class GmailLabelsClient {
 			}
 
 			console.error("Error creating Gmail label:", error);
-			throw new Error(`Failed to create label: ${error.message}`);
+			const errorMessage = error instanceof Error ? error.message : "Unknown error";
+			throw new Error(`Failed to create label: ${errorMessage}`);
 		}
 	}
 
