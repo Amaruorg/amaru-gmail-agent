@@ -1,5 +1,5 @@
 import { auth } from "@/domains/auth/client";
-import { authConfig } from "@/lib/config";
+import { authShared } from "@/lib/config";
 import type { User, SocialProvider, SessionData, ProviderToken } from "@/domains/auth/types";
 
 export class AuthService {
@@ -8,7 +8,7 @@ export class AuthService {
 			const { url } = await auth.api.signInSocial({
 				body: {
 					provider,
-					callbackURL: callbackURL || authConfig.callbackUrl,
+					callbackURL: callbackURL || authShared.callbackUrl,
 				},
 			});
 

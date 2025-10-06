@@ -1,16 +1,24 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Button } from "@/components/ui";
 import { Plus } from "@/components/Icons";
 import { CreateCollectionModal, CollectionData } from "./CreateCollectionModal";
 import { CollectionLayout } from "@/components/CollectionsComponents/CollectionsLayout";
 import { type CollectionCardProps } from "@/components/CollectionsComponents/CollectionCard";
 import { CollectionDetails } from "@/components/CollectionsComponents/CollectionDetails";
+import { getCollectionAnalysis } from "@/domains/ai/actions";
+import type { ActionCollection } from "@/domains/gmail/types";
+
+type CollectionWithData = CollectionCardProps & {
+	filterData: CollectionData;
+	actions?: ActionCollection;
+	isLoading?: boolean;
+};
 
 export default function CollectionsPage() {
 	const [open, setOpen] = useState(false);
-	const [collections, setCollections] = useState<CollectionCardProps[]>([]);
+	const [collections, setCollections] = useState<CollectionWithData[]>([]);
 	const [selectedCollectionId, setSelectedCollectionId] = useState<string | null>(null);
 
 	const closeSidebar = () => setSelectedCollectionId(null);
@@ -20,16 +28,85 @@ export default function CollectionsPage() {
 		setSelectedCollectionId((prevId) => (prevId === id ? null : id));
 	};
 
+	useEffect(() => {
+		const savedCollections = localStorage.getItem("collections");
+		if (savedCollections) {
+			try {
+				const parsed = JSON.parse(savedCollections);
+				const restored = parsed.map((c: CollectionWithData) => ({
+					...c,
+					onClick: handleSelectCollection,
+				}));
+				setCollections(restored);
+			} catch (error) {
+				console.error("Error loading saved collections:", error);
+			}
+		}
+	}, []);
+
+	useEffect(() => {
+		if (collections.length > 0) {
+			const toSave = collections.map(({ onClick, ...rest }) => rest);
+			localStorage.setItem("collections", JSON.stringify(toSave));
+		}
+	}, [collections]);
+
+	const handleRunCollection = async (id: string) => {
+		const collection = collections.find((c) => c.id === id);
+		if (!collection || collection.isLoading) return;
+
+		setCollections((prev) =>
+			prev.map((c) => (c.id === id ? { ...c, isLoading: true } : c))
+		);
+
+		try {
+			const actions = await getCollectionAnalysis(
+				{
+					filterType: collection.filterData.filter,
+					filterValues: collection.filterData.filterValues,
+					interval: collection.filterData.interval,
+				},
+				collection.filterData.prompt
+			);
+
+			setCollections((prev) =>
+				prev.map((c) =>
+					c.id === id ? { ...c, actions, isLoading: false } : c
+				)
+			);
+
+		} catch (error) {
+			console.error("Error running collection analysis:", error);
+			setCollections((prev) =>
+				prev.map((c) => (c.id === id ? { ...c, isLoading: false } : c))
+			);
+		}
+	};
+
+	const handleDeleteCollection = (id: string) => {
+		setCollections((prev) => prev.filter((c) => c.id !== id));
+		// Close the sidebar if the deleted collection was selected
+		if (selectedCollectionId === id) {
+			setSelectedCollectionId(null);
+		}
+	};
+
 	const handleCreateCollection = (newCollectionData: CollectionData) => {
-		const newCollection: CollectionCardProps = {
-			title: newCollectionData.filterValue,
-			description: `Collection based on ${newCollectionData.filter} "${newCollectionData.filterValue}" for the last ${newCollectionData.interval || "all"} days.`,
+		const displayValues = newCollectionData.filterValues.join(", ");
+		const truncatedDisplay =
+			displayValues.length > 40
+				? displayValues.substring(0, 40) + "..."
+				: displayValues;
+
+		const newCollection: CollectionWithData = {
+			title: truncatedDisplay,
+			description: `Collection based on ${newCollectionData.filter} for the last ${newCollectionData.interval || "all"} days.`,
 			id: Date.now().toString(),
-			// La función onClick de la tarjeta ahora llama al manejador de la página
 			onClick: handleSelectCollection,
+			filterData: newCollectionData,
 		};
 
-		setCollections((prevCollections) => [newCollection, ...prevCollections]); // Añade al inicio (reverse)
+		setCollections((prevCollections) => [newCollection, ...prevCollections]);
 		setOpen(false);
 	};
 
@@ -40,7 +117,6 @@ export default function CollectionsPage() {
 
 	return (
 		<div className="flex min-h-screen w-full">
-			{/* Panel Principal de la Lista */}
 			{/* Panel Principal de la Lista */}
 			<div className="flex w-full flex-col p-6">
 				{/* Encabezado */}
@@ -68,7 +144,14 @@ export default function CollectionsPage() {
 			<div
 				className={`fixed inset-y-0 right-0 z-30 shadow-2xl bg-background transition-all duration-300 ${selectedCollectionId ? "border-muted w-full translate-x-0 border-l lg:w-full" : "w-0 translate-x-full"} lg:relative lg:translate-x-0`}
 			>
-				{selectedCollection && <CollectionDetails collection={selectedCollection} onClose={closeSidebar} />}
+				{selectedCollection && (
+					<CollectionDetails
+						collection={selectedCollection}
+						onClose={closeSidebar}
+						onRun={handleRunCollection}
+						onDelete={handleDeleteCollection}
+					/>
+				)}
 			</div>
 
 			{/* Modal de Creación */}

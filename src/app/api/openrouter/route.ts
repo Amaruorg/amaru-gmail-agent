@@ -274,14 +274,14 @@ export async function POST(req: NextRequest) {
 			try {
 				const summary = makeSummary(action);
 				if (summary) {
-					console.log("Summary Action detected: ", JSON.stringify(action));
+					//console.log("Summary Action detected: ", JSON.stringify(action));
 					actions.push(summary);
 					continue;
 				}
 
 				const schedule = makeSchedule(action);
 				if (schedule) {
-					console.log("Schedule Action detected: ", JSON.stringify(action));
+					//console.log("Schedule Action detected: ", JSON.stringify(action));
 					actions.push(schedule);
 					continue;
 				}

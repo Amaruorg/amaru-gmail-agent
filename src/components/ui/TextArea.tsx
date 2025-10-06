@@ -1,5 +1,5 @@
 "use client";
-import React, { TextareaHTMLAttributes } from "react";
+import React, { TextareaHTMLAttributes, useRef, useEffect } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { mergeClasses } from "@/lib/utils/tailwind";
 
@@ -16,7 +16,10 @@ const textareaVariants = cva("flex items-center", {
 });
 
 type TextAreaVariants = VariantProps<typeof textareaVariants>;
-type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & TextAreaVariants;
+type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & 
+	TextAreaVariants & {
+		autoResize?: boolean;
+	};
 
 /**
  * Variants:
@@ -24,8 +27,32 @@ type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & TextAreaVaria
  *
  * Props:
  * - Inherits all native <textarea> props.
+ * - autoResize: Enable automatic height adjustment based on content
  */
-function TextArea({ variant = "solid", className = "", ...rest }: TextAreaProps) {
+function TextArea({ variant = "solid", className = "", autoResize = false, ...rest }: TextAreaProps) {
+	const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+	useEffect(() => {
+		if (autoResize && textareaRef.current) {
+			const adjustHeight = () => {
+				const textarea = textareaRef.current;
+				if (textarea) {
+					textarea.style.height = "auto";
+					textarea.style.height = `${textarea.scrollHeight}px`;
+				}
+			};
+
+			adjustHeight();
+			
+			const textarea = textareaRef.current;
+			textarea.addEventListener("input", adjustHeight);
+			
+			return () => {
+				textarea.removeEventListener("input", adjustHeight);
+			};
+		}
+	}, [autoResize, rest.value]);
+
 	return (
 		<div
 			className={mergeClasses(
@@ -34,11 +61,13 @@ function TextArea({ variant = "solid", className = "", ...rest }: TextAreaProps)
 			)}
 		>
 			<textarea
+				ref={textareaRef}
 				className={mergeClasses(
-					"text-foreground placeholder:text-muted w-full resize-none bg-transparent outline-none",
+					"text-foreground placeholder:text-muted w-full bg-transparent outline-none",
+					autoResize ? "resize-none overflow-hidden" : "resize-y",
 					className,
 				)}
-				rows={4}
+				rows={autoResize ? 1 : 4}
 				{...rest}
 			/>
 		</div>

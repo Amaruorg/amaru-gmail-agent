@@ -8,18 +8,37 @@ export class GmailMappers {
 			throw new Error("Message raw content is missing");
 		}
 
-		const messageBuffer = Buffer.from(message.raw, "base64url");
+		// Gmail sometimes returns raw payload encoded with base64 or base64url.
+		// Try decoding as base64url first, then fall back to base64 to be resilient.
+		let messageBuffer: Buffer;
+		try {
+			messageBuffer = Buffer.from(message.raw, "base64url");
+		} catch (e) {
+			messageBuffer = Buffer.from(message.raw, "base64");
+		}
 
 		const mail = await simpleParser(messageBuffer, {
 			skipTextToHtml: true,
 			skipTextLinks: true,
 		});
 
-		for (const [key, value] of Object.entries(mail)) {
+/* 		try {
+			console.debug("GmailMappers.toEmail parsed mail", {
+				messageId: message.id,
+				subject: mail.subject,
+				// mail.headers is a Map in mailparser; try to read raw subject header too
+				rawSubjectHeader: (mail.headers && (mail.headers as any).get ? (mail.headers as any).get("subject") : undefined),
+				keys: Object.keys(mail),
+			});
+		} catch (e) {
+			console.debug("GmailMappers.toEmail: failed to log mail debug info", e);
+		} */
+
+/* 		for (const [key, value] of Object.entries(mail)) {
 			if (!value) {
 				console.warn(`${key} isn't defined`);
 			}
-		}
+		} */
 
 		if (mail.html === false) {
 			throw new Error("Message html content is missing");

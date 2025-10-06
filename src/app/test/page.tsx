@@ -44,6 +44,36 @@ export default async function TestPage() {
 				<Tag text="Example Tag" size="md" className="bg-purple-700" />
 				<Tag text="Example Tag" size="lg" className="bg-purple-700" />
 			</div>
+			<div className="flex items-center gap-5 p-2">
+				<Tag
+					text="Invoice"
+					size="sm"
+					className="bg-purple-700"
+					showPlusOnHover
+					onApply={async () => {
+						console.log("Label applied!");
+					}}
+				/>
+				<Tag
+					text="Meeting"
+					size="sm"
+					className="bg-blue-700"
+					showPlusOnHover
+					onApply={async () => {
+						console.log("Label applied!");
+					}}
+				/>
+				<Tag
+					text="Informative"
+					size="sm"
+					className="bg-green-700"
+					showPlusOnHover
+					onApply={async () => {
+						console.log("Label applied!");
+					}}
+				/>
+				<Tag text="N/A" size="sm" className="bg-gray-700" />
+			</div>
 			<div className="flex">
 				<TabGroup tabs={tabsContent} />
 			</div>
