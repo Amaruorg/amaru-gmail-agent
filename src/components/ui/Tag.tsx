@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { mergeClasses } from "@/lib/utils/tailwind";
