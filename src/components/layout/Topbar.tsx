@@ -16,7 +16,7 @@ function Topbar({ tabs, activeTab, onTabClick, className }: TopbarProps) {
 
 	return (
 		<div className={`relative flex items-center bg-transparent px-5 pt-5`}>
-			<div className="flex-1 items-center pl-15 pr-10">
+			<div className="flex-1 items-center pr-10 pl-15">
 				<Amaru className="text-foreground" width={50} height={50} />
 			</div>
 

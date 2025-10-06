@@ -14,7 +14,7 @@ export default function DashboardPage() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [unreadCount, setUnreadCount] = useState<number>(0);
 	const [userPrompt, setUserPrompt] = useState("");
-	
+
 	useEffect(() => {
 		const savedSummaries = localStorage.getItem("dashboard-summaries");
 		if (savedSummaries) {
@@ -32,7 +32,7 @@ export default function DashboardPage() {
 			localStorage.setItem("dashboard-summaries", JSON.stringify(summaries));
 		}
 	}, [summaries]);
-	
+
 	useEffect(() => {
 		const fetchUnreadCount = async () => {
 			try {
@@ -110,7 +110,7 @@ export default function DashboardPage() {
 				newSummaries.push(newSummary);
 			}
 			setSummaries(newSummaries.reverse());
-			
+
 			const count = await getUnreadEmailCount();
 			setUnreadCount(count);
 		} catch (error) {
@@ -130,9 +130,14 @@ export default function DashboardPage() {
 					<p className="flex-1">
 						{`You have ${unreadCount} ${unreadCount === 1 ? "new email" : "new emails"} waiting for you.`}
 					</p>
-					<Button text={isLoading ? "Loading..." : "Today summary"} size="sm" onClick={handleRun} disabled={isLoading} />
+					<Button
+						text={isLoading ? "Loading..." : "Today summary"}
+						size="sm"
+						onClick={handleRun}
+						disabled={isLoading}
+					/>
 				</div>
-				
+
 				<div className="flex flex-col gap-2">
 					<label htmlFor="userPrompt" className="text-muted text-sm">
 						Custom Prompt (optional)

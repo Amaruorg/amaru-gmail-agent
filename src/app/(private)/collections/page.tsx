@@ -55,9 +55,7 @@ export default function CollectionsPage() {
 		const collection = collections.find((c) => c.id === id);
 		if (!collection || collection.isLoading) return;
 
-		setCollections((prev) =>
-			prev.map((c) => (c.id === id ? { ...c, isLoading: true } : c))
-		);
+		setCollections((prev) => prev.map((c) => (c.id === id ? { ...c, isLoading: true } : c)));
 
 		try {
 			const actions = await getCollectionAnalysis(
@@ -66,20 +64,13 @@ export default function CollectionsPage() {
 					filterValues: collection.filterData.filterValues,
 					interval: collection.filterData.interval,
 				},
-				collection.filterData.prompt
+				collection.filterData.prompt,
 			);
 
-			setCollections((prev) =>
-				prev.map((c) =>
-					c.id === id ? { ...c, actions, isLoading: false } : c
-				)
-			);
-
+			setCollections((prev) => prev.map((c) => (c.id === id ? { ...c, actions, isLoading: false } : c)));
 		} catch (error) {
 			console.error("Error running collection analysis:", error);
-			setCollections((prev) =>
-				prev.map((c) => (c.id === id ? { ...c, isLoading: false } : c))
-			);
+			setCollections((prev) => prev.map((c) => (c.id === id ? { ...c, isLoading: false } : c)));
 		}
 	};
 
@@ -93,10 +84,7 @@ export default function CollectionsPage() {
 
 	const handleCreateCollection = (newCollectionData: CollectionData) => {
 		const displayValues = newCollectionData.filterValues.join(", ");
-		const truncatedDisplay =
-			displayValues.length > 40
-				? displayValues.substring(0, 40) + "..."
-				: displayValues;
+		const truncatedDisplay = displayValues.length > 40 ? displayValues.substring(0, 40) + "..." : displayValues;
 
 		const newCollection: CollectionWithData = {
 			title: truncatedDisplay,
@@ -142,7 +130,7 @@ export default function CollectionsPage() {
 
 			{/* Panel Lateral (Sidebar) */}
 			<div
-				className={`fixed inset-y-0 right-0 z-30 shadow-2xl bg-background transition-all duration-300 ${selectedCollectionId ? "border-muted w-full translate-x-0 border-l lg:w-full" : "w-0 translate-x-full"} lg:relative lg:translate-x-0`}
+				className={`bg-background fixed inset-y-0 right-0 z-30 shadow-2xl transition-all duration-300 ${selectedCollectionId ? "border-muted w-full translate-x-0 border-l lg:w-full" : "w-0 translate-x-full"} lg:relative lg:translate-x-0`}
 			>
 				{selectedCollection && (
 					<CollectionDetails

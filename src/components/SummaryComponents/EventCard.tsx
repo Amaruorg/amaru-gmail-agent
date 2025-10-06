@@ -30,7 +30,7 @@ function EventCard({ title, subtitle, content, eventData }: EventProps) {
 
 		try {
 			const result = await createCalendarEvent(eventData);
-			
+
 			if (result.success) {
 				setIsCreated(true);
 				console.log("Event created successfully:", result.link);
@@ -48,11 +48,11 @@ function EventCard({ title, subtitle, content, eventData }: EventProps) {
 	return (
 		<div className="bg-background/30 w-full rounded-xl p-6 shadow-lg">
 			<h3 className="mb-1 text-xl text-white">{title}</h3>
-			{subtitle ? <p className="mb-2 text-sm md:text-sm text-gray-400">{subtitle}</p> : null}
-			<div className="mb-4 text-gray-300 whitespace-pre-wrap text-sm md:text-base">{content}</div>
-			
-			{error && <p className="mb-2 text-status-alert text-sm">{error}</p>}
-			
+			{subtitle ? <p className="mb-2 text-sm text-gray-400 md:text-sm">{subtitle}</p> : null}
+			<div className="mb-4 text-sm whitespace-pre-wrap text-gray-300 md:text-base">{content}</div>
+
+			{error && <p className="text-status-alert mb-2 text-sm">{error}</p>}
+
 			<Button
 				text={isCreated ? "Event Created" : isCreating ? "Creating..." : "Schedule"}
 				variant={"solid"}

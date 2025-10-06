@@ -4,7 +4,12 @@ import type { Email, EmailInboxResponse, TokenData } from "@/domains/gmail/types
 import { getCachedEmail, setCachedEmail, clearEmailCache } from "@/shared/emailCache";
 
 export class GmailService {
-	async fetchInbox(tokenData: TokenData, maxResults: number = 10, customQuery?: string, clearCache: boolean = true): Promise<EmailInboxResponse> {
+	async fetchInbox(
+		tokenData: TokenData,
+		maxResults: number = 10,
+		customQuery?: string,
+		clearCache: boolean = true,
+	): Promise<EmailInboxResponse> {
 		if (!tokenData?.accessToken) {
 			throw new Error("No access token provided to fetchInbox");
 		}

@@ -36,12 +36,12 @@ Amaru se conecta a tu cuenta de Gmail y analiza tus mensajes no leídos. Te ofre
 
 ## Stack Tecnológico
 
-| Componente      | Tecnología                     |
-| --------------- | ------------------------------ |
-| Framework       | Next.js 15 + TypeScript        |
-| UI              | Tailwind CSS + Motion          |
-| Base de Datos   | PostgreSQL + Prisma ORM        |
-| Autenticación   | Better Auth (OAuth 2.0)        |
-| IA              | OpenRouter + AI SDK            |
-| Parsing Email   | googleapis + mailparser        |
-| Tablas          | @tanstack/react-table          |
+| Componente    | Tecnología              |
+| ------------- | ----------------------- |
+| Framework     | Next.js 15 + TypeScript |
+| UI            | Tailwind CSS + Motion   |
+| Base de Datos | PostgreSQL + Prisma ORM |
+| Autenticación | Better Auth (OAuth 2.0) |
+| IA            | OpenRouter + AI SDK     |
+| Parsing Email | googleapis + mailparser |
+| Tablas        | @tanstack/react-table   |

@@ -16,7 +16,7 @@ const textareaVariants = cva("flex items-center", {
 });
 
 type TextAreaVariants = VariantProps<typeof textareaVariants>;
-type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & 
+type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> &
 	TextAreaVariants & {
 		autoResize?: boolean;
 	};
@@ -43,10 +43,10 @@ function TextArea({ variant = "solid", className = "", autoResize = false, ...re
 			};
 
 			adjustHeight();
-			
+
 			const textarea = textareaRef.current;
 			textarea.addEventListener("input", adjustHeight);
-			
+
 			return () => {
 				textarea.removeEventListener("input", adjustHeight);
 			};

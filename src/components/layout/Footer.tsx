@@ -4,15 +4,13 @@ import Link from "next/link";
 
 export default function Footer() {
 	return (
-		<footer className="bg-background-secondary mt-20 w-full border-t border-neutral-gray/20">
+		<footer className="bg-background-secondary border-neutral-gray/20 mt-20 w-full border-t">
 			<div className="mx-auto max-w-7xl px-8 py-12">
 				<div className="grid grid-cols-1 gap-8 md:grid-cols-4">
 					{/* Brand Section */}
 					<div className="space-y-4">
-						<h3 className="text-2xl font-bold text-foreground">Amaru</h3>
-						<p className="text-muted text-sm">
-							Your intelligent email assistant, bringing order to digital chaos.
-						</p>
+						<h3 className="text-foreground text-2xl font-bold">Amaru</h3>
+						<p className="text-muted text-sm">Your intelligent email assistant, bringing order to digital chaos.</p>
 					</div>
 
 					{/* Product Links */}
@@ -98,7 +96,7 @@ export default function Footer() {
 				</div>
 
 				{/* Bottom Bar */}
-				<div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-neutral-gray/20 pt-8 md:flex-row">
+				<div className="border-neutral-gray/20 mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 md:flex-row">
 					<p className="text-muted text-sm">© 2025 Amaru. All rights reserved.</p>
 					<div className="flex gap-6">
 						<a href="#" className="text-muted hover:text-primary transition-colors" aria-label="Twitter">

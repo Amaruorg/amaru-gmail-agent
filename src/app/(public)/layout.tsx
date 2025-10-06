@@ -26,8 +26,8 @@ const texts = [
 	"Focus on What Matters",
 	"Work Smarter, Not Harder",
 	"Boost Your Workflow with AI",
-    "Transform Your Inbox",
-    "Automate Repetitive Tasks",
+	"Transform Your Inbox",
+	"Automate Repetitive Tasks",
 ];
 
 export default async function PublicLayout({ children }: { children: ReactNode }) {

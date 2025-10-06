@@ -121,7 +121,7 @@ function Button({
 			{Icon && left && <Icon />}
 			{text && <span>{text}</span>}
 			{!text && !Icon ? <span>Button</span> : null}
-			{Icon && !left && <Icon />} 
+			{Icon && !left && <Icon />}
 		</button>
 	);
 }

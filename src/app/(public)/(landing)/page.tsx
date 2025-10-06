@@ -67,16 +67,16 @@ export default function HomePage() {
 			>
 				<div className="flex w-full max-w-4xl flex-col gap-8">
 					<div className="space-y-6">
-						<h1 
-							className="text-left text-6xl font-bold leading-tight lg:text-8xl" 
+						<h1
+							className="text-left text-6xl leading-tight font-bold lg:text-8xl"
 							style={{ fontFamily: "'Outfit', sans-serif" }}
 						>
 							Stop Wasting <br />
 							<span className="text-primary">Your Time</span>
 						</h1>
 					</div>
-					<p 
-						className="text-muted max-w-2xl text-left text-lg leading-relaxed lg:text-xl" 
+					<p
+						className="text-muted max-w-2xl text-left text-lg leading-relaxed lg:text-xl"
 						style={{ fontFamily: "'DM Sans', sans-serif" }}
 					>
 						An intelligent email assistant inspired by the legendary Andean serpent, designed to bring order to digital
@@ -112,10 +112,7 @@ export default function HomePage() {
 
 			{/* 🔹 Features Section */}
 			<section id="features" className="mt-24 flex w-full flex-col px-10 lg:px-20">
-				<h1 
-					className="mb-16 text-center text-5xl font-bold pt-10 pb-20" 
-					style={{ fontFamily: "'Outfit', sans-serif" }}
-				>
+				<h1 className="mb-16 pt-10 pb-20 text-center text-5xl font-bold" style={{ fontFamily: "'Outfit', sans-serif" }}>
 					What Amaru Does
 				</h1>
 				<Carousel slides={slides} autoPlay={true} interval={7000} />
