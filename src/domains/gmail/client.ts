@@ -18,15 +18,20 @@ export class GmailClient {
 		return oAuth2Client;
 	}
 
-	async listMessages(tokenData: TokenData, maxResults: number = 10, pageToken?: string) {
+	async listMessages(tokenData: TokenData, maxResults: number = 10, pageToken?: string, customQuery?: string) {
 		try {
 			const oAuth2Client = this.createOAuth2Client(tokenData);
 			const gmail = google.gmail({ version: "v1", auth: oAuth2Client });
+
+			// Use custom query if provided, otherwise default to inbox
+			const query = customQuery || "in:inbox";
 
 			const response = await gmail.users.messages.list({
 				userId: "me",
 				pageToken: pageToken,
 				maxResults: maxResults,
+				q: query,
+				// Gmail API orders by internalDate desc by default, but we explicitly rely on it
 			});
 
 			return response.data;

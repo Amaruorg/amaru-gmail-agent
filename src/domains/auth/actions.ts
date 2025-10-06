@@ -39,7 +39,7 @@ export const signInSocial = async (provider: SocialProvider) => {
 };
 
 export const signOut = async () => {
-	console.log("HIT sing");
+	//console.log("Hit SignOut");
 	try {
 		await signOutInternal();
 	} catch (error) {

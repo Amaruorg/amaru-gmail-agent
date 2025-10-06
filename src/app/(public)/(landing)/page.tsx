@@ -1,7 +1,8 @@
 "use client";
 
 import { Button, Carousel } from "@/components/ui";
-import MultiLineMarquee from "@/components/animations/MultiLineText"
+import MultiLineMarquee from "@/components/animations/MultiLineText";
+import Footer from "@/components/layout/Footer";
 
 const wordsList = [
 	"Amaru",
@@ -59,27 +60,39 @@ const slides = [
 export default function HomePage() {
 	return (
 		<div className="flex min-h-screen flex-col">
-			{/* 🔹 Sección Home */}
+			{/* 🔹 Hero Section */}
 			<section
 				id="home"
-				className="flex flex-row items-center justify-center gap-10 pt-1 pr-10 lg:min-h-[calc(100vh-5rem)]"
+				className="flex flex-row items-center justify-between gap-12 px-8 pt-8 lg:min-h-[calc(100vh-5rem)] lg:gap-16 lg:px-24"
 			>
-				<div className="flex w-full flex-col gap-4 pl-40">
-					<h1 className="text-left text-8xl">Amaru</h1>
-					<h2 className="text-left text-4xl font-bold">Gmail Agent</h2>
-					<p className="text-muted text-left">
+				<div className="flex w-full max-w-4xl flex-col gap-8">
+					<div className="space-y-6">
+						<h1 
+							className="text-left text-6xl font-bold leading-tight lg:text-8xl" 
+							style={{ fontFamily: "'Outfit', sans-serif" }}
+						>
+							Stop Wasting <br />
+							<span className="text-primary">Your Time</span>
+						</h1>
+					</div>
+					<p 
+						className="text-muted max-w-2xl text-left text-lg leading-relaxed lg:text-xl" 
+						style={{ fontFamily: "'DM Sans', sans-serif" }}
+					>
 						An intelligent email assistant inspired by the legendary Andean serpent, designed to bring order to digital
 						chaos. Powered by advanced AI, it integrates with Gmail and Google Calendar to prioritize messages, automate
 						repetitive tasks, and streamline your day.
 					</p>
-					<Button text="Get Started" variant="solid" />
+					<div className="mt-6">
+						<Button text="Get Started" variant="solid" />
+					</div>
 				</div>
 
-				{/* Animación del logo */}
-				<div className="center mr-10 hidden flex-1 lg:block">
+				{/* Logo Animation */}
+				<div className="hidden flex-shrink-0 lg:block">
 					<div className="flex h-full items-center justify-center">
 						<div
-							className="h-[570px] w-[570px] -rotate-6 bg-transparent"
+							className="h-[600px] w-[600px] -rotate-6 bg-transparent"
 							style={{
 								WebkitMaskImage: "url('/svgs/amaru.svg')",
 								WebkitMaskRepeat: "no-repeat",
@@ -97,11 +110,19 @@ export default function HomePage() {
 				</div>
 			</section>
 
-			{/* 🔹 Sección Features */}
-			<section id="features" className="flex w-full flex-col px-20">
-				<h1 className="mt-15 mb-10 text-center text-4xl">What It Does Amaru</h1>
+			{/* 🔹 Features Section */}
+			<section id="features" className="mt-24 flex w-full flex-col px-10 lg:px-20">
+				<h1 
+					className="mb-16 text-center text-5xl font-bold pt-10 pb-20" 
+					style={{ fontFamily: "'Outfit', sans-serif" }}
+				>
+					What Amaru Does
+				</h1>
 				<Carousel slides={slides} autoPlay={true} interval={7000} />
 			</section>
+
+			{/* 🔹 Footer */}
+			<Footer />
 		</div>
 	);
 }

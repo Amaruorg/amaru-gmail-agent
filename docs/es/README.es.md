@@ -2,54 +2,46 @@
   <img src="../../assets/amaru-logo.png" alt="Logotipo de Amaru" width="200"/>
 </p>
 
-<h1 align="center">Amaru – Agente de Correo AI</h1>
+<h1 align="center">Amaru</h1>
+
 <p align="center">
-  <strong>Idioma:</strong> 
   <a href="../../README.md">🇬🇧 English</a> | 
   <a href="./README.es.md">🇪🇸 Español</a>
 </p>
 
-<p align="center">
-  <strong>Amaru</strong> es un asistente de correo inteligente inspirado en la serpiente mitológica andina. Optimiza la gestión del correo electrónico usando IA, integrándose con Gmail y Google Calendar para automatizar tareas y mejorar la productividad.
-</p>
+**Amaru** es un asistente inteligente que te ayuda a mantener tu bandeja de Gmail bajo control. Inspirado en la deidad serpiente andina, lee tus correos, resume lo importante y sugiere acciones que puedes revisar antes de ejecutar.
 
 ---
 
-## 📌 Resumen
+## ¿Qué hace?
 
-Amaru ayuda a los usuarios a gestionar su bandeja de entrada de manera eficiente mediante:
+Amaru se conecta a tu cuenta de Gmail y analiza tus mensajes no leídos. Te ofrece:
 
-- Leer correos electrónicos y clasificarlos en categorías
-- Sugerir acciones que los usuarios pueden confirmar, modificar o ignorar
-- Proporcionar un panel intuitivo para una revisión rápida
+- **Resúmenes rápidos** de cada correo con categorización automática
+- **Sugerencias inteligentes** como crear eventos de calendario cuando detecta información de reuniones
+- **Un panel simple** donde puedes revisar todo antes de actuar
 
 <p align="center">
   <img src="../../assets/dashboard.png" alt="Panel de control" width="600"/>
 </p>
 
-## 🔑 Funcionalidades
+## Funcionalidades
 
-- Conexión segura a Gmail mediante **OAuth 2.0**
-- Lectura y almacenamiento de correos en **PostgreSQL**
-- Clasificación automática en categorías:
-  - Reuniones
-  - Boletines
-  - Spam
-  - General
-  - Y mucho más...
-- Acciones automáticas mínimas:
-  - Crear eventos en el calendario
-  - Archivar correos irrelevantes
-- Panel para revisar y confirmar las acciones sugeridas
+- **Gmail OAuth 2.0** – Autenticación segura con Google
+- **Análisis de correos** – Resúmenes y categorización con IA (Trabajo, Personal, Eventos, Finanzas, etc.)
+- **Integración con Calendar** – Detecta eventos automáticamente y ofrece agregarlos a Google Calendar
+- **Registro de acciones** – Rastrea lo que Amaru sugiere y lo que apruebas
+- **Prompts personalizados** – Agrega tus propias instrucciones para influir en cómo se analizan los correos
+- **Colecciones y listas blancas** – Organiza correos y gestiona remitentes de confianza
 
-## 🛠 Tecnologías
+## Stack Tecnológico
 
-| Capa             | Tecnologías               |
-| ---------------- | ------------------------- |
-| Frontend/Backend | Next.js + TypeScript      |
-| UI               | Tailwind CSS + Shadcn UI  |
-| Base de Datos    | PostgreSQL (ACID + JSONB) |
-| Autenticación    | OAuth 2.0 con Better Auth |
-| Colas de Tareas  | BullMQ                    |
-| Contenedores     | Docker & Docker Compose   |
-| CI/CD            | GitHub Actions            |
+| Componente      | Tecnología                     |
+| --------------- | ------------------------------ |
+| Framework       | Next.js 15 + TypeScript        |
+| UI              | Tailwind CSS + Motion          |
+| Base de Datos   | PostgreSQL + Prisma ORM        |
+| Autenticación   | Better Auth (OAuth 2.0)        |
+| IA              | OpenRouter + AI SDK            |
+| Parsing Email   | googleapis + mailparser        |
+| Tablas          | @tanstack/react-table          |

@@ -15,12 +15,12 @@ function Topbar({ tabs, activeTab, onTabClick, className }: TopbarProps) {
 	};
 
 	return (
-		<div className={`flex items-center bg-transparent px-5 pt-5`}>
-			<div className="flex-1 items-center pr-10">
+		<div className={`relative flex items-center bg-transparent px-5 pt-5`}>
+			<div className="flex-1 items-center pl-15 pr-10">
 				<Amaru className="text-foreground" width={50} height={50} />
 			</div>
 
-			<div className="flex flex-1 justify-center">
+			<div className="absolute left-1/2 -translate-x-1/2">
 				<TabGroup
 					className={className || "justify-center"}
 					tabs={tabs}

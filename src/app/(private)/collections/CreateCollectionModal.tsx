@@ -18,7 +18,7 @@ const IntervalOptions = [
 
 const collectionSchema = z.object({
 	filter: z.enum(["domain", "email"]),
-	filterValue: z.string().min(1, "Field cannot be empty"),
+	filterValues: z.array(z.string()).min(1, "At least one value is required"),
 	interval: z.string().min(1, "Interval is required"),
 	prompt: z.string().optional(),
 });
@@ -27,17 +27,16 @@ export type CollectionData = z.infer<typeof collectionSchema>;
 
 const validateCollection = (data: {
 	filter: "domain" | "email";
-	filterValue: string;
+	filterValues: string[];
 	interval: string;
 	prompt?: string;
 }) => {
 	if (data.filter === "domain") {
 		return collectionSchema
 			.extend({
-				filterValue: z
-					.string()
-					.min(1)
-					.regex(/\.[a-z]{2,}$/, "Domain must include a valid TLD (e.g., .com)"),
+				filterValues: z
+					.array(z.string().min(1).regex(/\.[a-z]{2,}$/, "Domain must include a valid TLD (e.g., .com)"))
+					.min(1, "At least one domain is required"),
 			})
 			.safeParse(data);
 	}
@@ -45,10 +44,9 @@ const validateCollection = (data: {
 	if (data.filter === "email") {
 		return collectionSchema
 			.extend({
-				filterValue: z
-					.string()
-					.email("Invalid email format")
-					.regex(/\.com$/, "Email must end with .com"),
+				filterValues: z
+					.array(z.email("Invalid email format"))
+					.min(1, "At least one email is required"),
 			})
 			.safeParse(data);
 	}
@@ -64,13 +62,38 @@ type CreateCollectionModalProps = {
 
 export function CreateCollectionModal({ isOpen, onClose, onCreate }: CreateCollectionModalProps) {
 	const [filter, setFilter] = useState<"domain" | "email">("domain");
-	const [filterValue, setFilterValue] = useState("");
+	const [filterValues, setFilterValues] = useState<string[]>([]);
+	const [currentInput, setCurrentInput] = useState("");
 	const [interval, setInterval] = useState("");
 	const [prompt, setPrompt] = useState("");
 	const [errors, setErrors] = useState<Record<string, string>>({});
 
+	const handleAddValue = () => {
+		const trimmed = currentInput.trim();
+		if (trimmed && !filterValues.includes(trimmed)) {
+			setFilterValues([...filterValues, trimmed]);
+			setCurrentInput("");
+			setErrors((prev) => {
+				const newErrors = { ...prev };
+				delete newErrors.filterValues;
+				return newErrors;
+			});
+		}
+	};
+
+	const handleRemoveValue = (value: string) => {
+		setFilterValues(filterValues.filter((v) => v !== value));
+	};
+
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		if (e.key === "Enter") {
+			e.preventDefault();
+			handleAddValue();
+		}
+	};
+
 	const handleCreate = () => {
-		const result = validateCollection({ filter, filterValue, interval, prompt });
+		const result = validateCollection({ filter, filterValues, interval, prompt });
 
 		if (!result.success) {
 			const newErrors: Record<string, string> = {};
@@ -83,10 +106,17 @@ export function CreateCollectionModal({ isOpen, onClose, onCreate }: CreateColle
 
 		setErrors({});
 		onCreate(result.data);
+
+		setFilterValues([]);
+		setCurrentInput("");
+		setInterval("");
+		setPrompt("");
 	};
 
 	const handleClose = () => {
 		setErrors({});
+		setFilterValues([]);
+		setCurrentInput("");
 		onClose();
 	};
 
@@ -98,12 +128,35 @@ export function CreateCollectionModal({ isOpen, onClose, onCreate }: CreateColle
 				<div className="flex gap-2">
 					<Select options={FilterOptions} value={filter} onChange={(val) => setFilter(val as "domain" | "email")} />
 					<div className="flex w-full flex-col">
-						<Input
-							placeholder={`Introduce un ${filter}`}
-							value={filterValue}
-							onChange={(e) => setFilterValue(e.target.value)}
-						/>
-						{errors.filterValue && <span className="text-status-alert mt-1 text-xs">{errors.filterValue}</span>}
+						<div className="flex flex-col gap-2">
+							{/* Display added values as tags */}
+							{filterValues.length > 0 && (
+								<div className="flex flex-wrap gap-1">
+									{filterValues.map((value) => (
+										<span
+											key={value}
+											className="bg-accent/20 text-accent flex items-center gap-1 rounded px-2 py-1 text-sm"
+										>
+											{value}
+											<button
+												onClick={() => handleRemoveValue(value)}
+												className="hover:text-status-alert ml-1 text-xs"
+											>
+												×
+											</button>
+										</span>
+									))}
+								</div>
+							)}
+							{/* Input for new value */}
+							<Input
+								placeholder={`Add ${filter} and press Enter`}
+								value={currentInput}
+								onChange={(e) => setCurrentInput(e.target.value)}
+								onKeyDown={handleKeyDown}
+							/>
+						</div>
+						{errors.filterValues && <span className="text-status-alert mt-1 text-xs">{errors.filterValues}</span>}
 					</div>
 				</div>
 

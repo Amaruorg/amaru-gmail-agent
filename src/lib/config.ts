@@ -36,7 +36,11 @@ const parseEnv = () => {
 
 export const config = {
 	...parseEnv(),
-	GOOGLE_SCOPE: ["profile", "https://www.googleapis.com/auth/gmail.readonly"] as string[],
+	GOOGLE_SCOPE: [
+		"profile",
+		"https://www.googleapis.com/auth/gmail.modify",
+		"https://www.googleapis.com/auth/calendar.events",
+	] as string[],
 };
 
 export const isDevelopment = config.NODE_ENV === "development";
