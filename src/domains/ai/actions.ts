@@ -6,7 +6,7 @@ import { headers } from "next/headers";
 import { authService } from "../auth/service";
 import { apiConfig } from "@/lib/config";
 import { getCachedEmailTitle } from "@/shared/emailCache";
-import type { Action, ActionCollection } from "@/domains/gmail/types";
+import type { ActionCollection } from "@/domains/gmail/types";
 import { buildGmailQuery, type GmailQueryOptions } from "@/lib/utils/gmailQuery";
 
 export async function getEmailAnalysis(userPrompt?: string): Promise<ActionCollection> {

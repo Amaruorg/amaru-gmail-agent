@@ -82,8 +82,8 @@ export default function DashboardPage() {
 					.filter((a: any) => a.type === "schedule_google_calendar")
 					.map((a: any) => {
 						const ev = a.event || {};
-						let startStr = ev.start ? formatDate(ev.start) : "(no start)";
-						let endStr = ev.end ? formatDate(ev.end) : "(no end)";
+						const startStr = ev.start ? formatDate(ev.start) : "(no start)";
+						const endStr = ev.end ? formatDate(ev.end) : "(no end)";
 						return {
 							title: ev.eventTitle || "Scheduled event",
 							subtitle: `${startStr} — ${endStr}`,

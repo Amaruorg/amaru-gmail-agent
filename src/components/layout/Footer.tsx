@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 export default function Footer() {
 	return (
 		<footer className="bg-background-secondary border-neutral-gray/20 mt-20 w-full border-t">
