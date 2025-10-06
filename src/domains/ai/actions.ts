@@ -51,8 +51,8 @@ export async function getEmailAnalysis(userPrompt?: string): Promise<ActionColle
 		- Do not include any text outside the JSON.
 		
 		If the user prompt includes extra instructions, adapt your behavior accordingly while maintaining valid JSON output.
-		`
-		
+		`;
+
 		const formattedEmails = GmailMappers.formatEmailsForAI(emails);
 		const prompt = `${basePrompt}${userPrompt ? `\n\nUser prompt: ${userPrompt}` : ""}\n\nEmails: ${formattedEmails}`;
 
@@ -103,11 +103,11 @@ export async function getEmailAnalysis(userPrompt?: string): Promise<ActionColle
 
 export async function getCollectionAnalysis(
 	queryOptions: GmailQueryOptions,
-	userPrompt?: string
+	userPrompt?: string,
 ): Promise<ActionCollection> {
 	try {
 		const tokenData = await authService.getAccessToken(await headers());
-		
+
 		// Build the Gmail query from filter options
 		const gmailQuery = buildGmailQuery(queryOptions);
 		//console.log("getCollectionAnalysis: built query", { queryOptions, gmailQuery });
@@ -209,11 +209,11 @@ export async function getUnreadEmailCount(): Promise<number> {
 		const tokenData = await authService.getAccessToken(await headers());
 		// Fetch latest 10 emails without clearing cache (optimize for frequent polling)
 		const result = await gmailService.fetchInbox(tokenData, 10, "in:inbox", false);
-		
+
 		// Count unread emails
-		const unreadCount = result.emails.filter(email => !email.isRead).length;
+		const unreadCount = result.emails.filter((email) => !email.isRead).length;
 		//console.log(`getUnreadEmailCount: ${unreadCount} unread out of ${result.emails.length} emails`);
-		
+
 		return unreadCount;
 	} catch (error) {
 		console.error("Error getting unread count:", error);

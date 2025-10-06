@@ -53,7 +53,7 @@ export default function SettingsPage() {
 										<Tag text="Pro" className="border-primary bg-primary/20" variant={"outline"} />
 									</div>
 								</div>
-								<div className="mt-10 flex flex-col gap-5 mx-10">
+								<div className="mx-10 mt-10 flex flex-col gap-5">
 									<h2 className="text-lg">Active connections</h2>
 									<div className="bg-background/50 flex gap-5 rounded-xl p-5">
 										<div className="bg-foreground flex size-13 items-center justify-center rounded-full">

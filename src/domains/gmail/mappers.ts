@@ -22,7 +22,7 @@ export class GmailMappers {
 			skipTextLinks: true,
 		});
 
-/* 		try {
+		/* 		try {
 			console.debug("GmailMappers.toEmail parsed mail", {
 				messageId: message.id,
 				subject: mail.subject,
@@ -34,7 +34,7 @@ export class GmailMappers {
 			console.debug("GmailMappers.toEmail: failed to log mail debug info", e);
 		} */
 
-/* 		for (const [key, value] of Object.entries(mail)) {
+		/* 		for (const [key, value] of Object.entries(mail)) {
 			if (!value) {
 				console.warn(`${key} isn't defined`);
 			}

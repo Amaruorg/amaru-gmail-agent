@@ -103,9 +103,7 @@ export class GmailLabelsClient {
 			if (error?.code === 409 || error?.message?.includes("already exists")) {
 				// Try to find the existing label
 				const labels = await this.listLabels();
-				const existingLabel = labels.find(
-					(label) => label.name.toLowerCase() === labelName.toLowerCase()
-				);
+				const existingLabel = labels.find((label) => label.name.toLowerCase() === labelName.toLowerCase());
 
 				if (existingLabel) {
 					return existingLabel;

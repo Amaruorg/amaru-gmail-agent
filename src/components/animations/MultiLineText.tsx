@@ -41,11 +41,11 @@ export default function MultiLineMarquee({ words, color = "text-white" }: MultiL
 					<div key={i} className="relative flex h-10 w-full items-center overflow-hidden">
 						<motion.div
 							className={`flex whitespace-nowrap ${color}`}
-							style={{ 
-								fontFamily: "'VT323', 'Press Start 2P', 'Courier New', monospace", 
-								fontSize: "1.5rem", 
+							style={{
+								fontFamily: "'VT323', 'Press Start 2P', 'Courier New', monospace",
+								fontSize: "1.5rem",
 								fontWeight: "700",
-								letterSpacing: "0.05em"
+								letterSpacing: "0.05em",
 							}}
 							initial={{ x: isLTR ? "0%" : "-50%" }}
 							animate={{

@@ -35,7 +35,12 @@ const validateCollection = (data: {
 		return collectionSchema
 			.extend({
 				filterValues: z
-					.array(z.string().min(1).regex(/\.[a-z]{2,}$/, "Domain must include a valid TLD (e.g., .com)"))
+					.array(
+						z
+							.string()
+							.min(1)
+							.regex(/\.[a-z]{2,}$/, "Domain must include a valid TLD (e.g., .com)"),
+					)
 					.min(1, "At least one domain is required"),
 			})
 			.safeParse(data);
@@ -44,9 +49,7 @@ const validateCollection = (data: {
 	if (data.filter === "email") {
 		return collectionSchema
 			.extend({
-				filterValues: z
-					.array(z.email("Invalid email format"))
-					.min(1, "At least one email is required"),
+				filterValues: z.array(z.email("Invalid email format")).min(1, "At least one email is required"),
 			})
 			.safeParse(data);
 	}
@@ -138,10 +141,7 @@ export function CreateCollectionModal({ isOpen, onClose, onCreate }: CreateColle
 											className="bg-accent/20 text-accent flex items-center gap-1 rounded px-2 py-1 text-sm"
 										>
 											{value}
-											<button
-												onClick={() => handleRemoveValue(value)}
-												className="hover:text-status-alert ml-1 text-xs"
-											>
+											<button onClick={() => handleRemoveValue(value)} className="hover:text-status-alert ml-1 text-xs">
 												×
 											</button>
 										</span>

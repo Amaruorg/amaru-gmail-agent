@@ -9,10 +9,10 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				'grotesk': ['"Space Grotesk"', 'sans-serif'],
-				'dm': ['"DM Sans"', 'sans-serif'],
-				'outfit': ['"Outfit"', 'sans-serif'],
-				'retro': ['"VT323"', '"Press Start 2P"', '"Courier New"', 'monospace'],
+				grotesk: ['"Space Grotesk"', "sans-serif"],
+				dm: ['"DM Sans"', "sans-serif"],
+				outfit: ['"Outfit"', "sans-serif"],
+				retro: ['"VT323"', '"Press Start 2P"', '"Courier New"', "monospace"],
 			},
 		},
 	},

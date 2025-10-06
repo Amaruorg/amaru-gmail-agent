@@ -48,13 +48,13 @@ function SummaryCard({ title, content, subtitle, eventList, category, emailId }:
 			"bg-indigo-700",
 			"bg-teal-700",
 		];
-		
+
 		// Simple hash function to consistently assign colors
 		let hash = 0;
 		for (let i = 0; i < cat.length; i++) {
 			hash = cat.charCodeAt(i) + ((hash << 5) - hash);
 		}
-		
+
 		return colors[Math.abs(hash) % colors.length];
 	};
 
@@ -80,29 +80,19 @@ function SummaryCard({ title, content, subtitle, eventList, category, emailId }:
 				remarkPlugins={[remarkGfm as any, remarkBreaks as any]}
 				components={{
 					p: ({ node, ...props }: any) => (
-						<p className="mb-3 whitespace-pre-wrap leading-relaxed text-sm md:text-base" {...props} />
+						<p className="mb-3 text-sm leading-relaxed whitespace-pre-wrap md:text-base" {...props} />
 					),
-					li: ({ node, ...props }: any) => (
-						<li className="mb-1 ml-4 list-disc" {...props} />
-					),
+					li: ({ node, ...props }: any) => <li className="mb-1 ml-4 list-disc" {...props} />,
 					pre: ({ node, ...props }: any) => (
-						<pre className="bg-neutral-800 p-3 rounded-md overflow-auto text-[0.85rem]" {...props} />
+						<pre className="overflow-auto rounded-md bg-neutral-800 p-3 text-[0.85rem]" {...props} />
 					),
-					h3: ({ node, ...props }: any) => (
-						<h3 className="text-base md:text-lg font-semibold mt-4 mb-2" {...props} />
-					),
-					hr: ({ node, ...props }: any) => (
-						<hr className="my-4 border-neutral-800" {...props} />
-					),
+					h3: ({ node, ...props }: any) => <h3 className="mt-4 mb-2 text-base font-semibold md:text-lg" {...props} />,
+					hr: ({ node, ...props }: any) => <hr className="my-4 border-neutral-800" {...props} />,
 					blockquote: ({ node, ...props }: any) => (
-						<blockquote className="border-l-2 border-neutral-700 pl-4 italic text-neutral-300 my-3" {...props} />
+						<blockquote className="my-3 border-l-2 border-neutral-700 pl-4 text-neutral-300 italic" {...props} />
 					),
-					ul: ({ node, ...props }: any) => (
-						<ul className="ml-4 mb-3 list-disc space-y-1" {...props} />
-					),
-					ol: ({ node, ...props }: any) => (
-						<ol className="ml-4 mb-3 list-decimal space-y-1" {...props} />
-					),
+					ul: ({ node, ...props }: any) => <ul className="mb-3 ml-4 list-disc space-y-1" {...props} />,
+					ol: ({ node, ...props }: any) => <ol className="mb-3 ml-4 list-decimal space-y-1" {...props} />,
 				}}
 			>
 				{content}

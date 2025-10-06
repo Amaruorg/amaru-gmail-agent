@@ -36,12 +36,12 @@ Amaru connects to your Gmail account and analyzes your unread messages. It gives
 
 ## Tech Stack
 
-| Component       | Technology                     |
-| --------------- | ------------------------------ |
-| Framework       | Next.js 15 + TypeScript        |
-| UI              | Tailwind CSS + Motion          |
-| Database        | PostgreSQL + Prisma ORM        |
-| Authentication  | Better Auth (OAuth 2.0)        |
-| AI              | OpenRouter + AI SDK            |
-| Email Parsing   | googleapis + mailparser        |
-| Tables          | @tanstack/react-table          |
+| Component      | Technology              |
+| -------------- | ----------------------- |
+| Framework      | Next.js 15 + TypeScript |
+| UI             | Tailwind CSS + Motion   |
+| Database       | PostgreSQL + Prisma ORM |
+| Authentication | Better Auth (OAuth 2.0) |
+| AI             | OpenRouter + AI SDK     |
+| Email Parsing  | googleapis + mailparser |
+| Tables         | @tanstack/react-table   |

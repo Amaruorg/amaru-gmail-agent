@@ -49,7 +49,7 @@ export interface ActionBase {
 export interface SummarizeAction extends ActionBase {
 	type: "summarize";
 	emailId: string;
-	emailTitle?: string; 
+	emailTitle?: string;
 	emailSummary: string;
 	category: string;
 }

@@ -81,8 +81,8 @@ function Tag({
 		<span
 			className={mergeClasses(
 				tagVariants({ variant, size, clickable: isClickable }),
-				isLoading && "opacity-60 cursor-wait",
-				className
+				isLoading && "cursor-wait opacity-60",
+				className,
 			)}
 			onClick={handleClick}
 			onMouseEnter={() => setIsHovered(true)}
@@ -91,9 +91,7 @@ function Tag({
 		>
 			{Icon && <Icon className="h-4 w-4" />}
 			{text && <span>{isLoading ? "Applying..." : text}</span>}
-			{showPlusOnHover && isHovered && !isLoading && (
-				<span className="ml-1 text-lg font-bold leading-none">+</span>
-			)}
+			{showPlusOnHover && isHovered && !isLoading && <span className="ml-1 text-lg leading-none font-bold">+</span>}
 		</span>
 	);
 }

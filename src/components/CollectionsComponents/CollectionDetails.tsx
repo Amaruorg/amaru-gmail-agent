@@ -45,7 +45,7 @@ const CollectionDetails = ({ collection, onClose, onRun, onDelete }: CollectionD
 	useEffect(() => {
 		if (collection.actions && collection.actions.length > 0) {
 			const newSummaries: SummaryCardProps[] = [];
-			
+
 			// Group actions by emailId
 			const groups = new Map<string, any[]>();
 			for (const action of collection.actions) {
@@ -138,9 +138,7 @@ const CollectionDetails = ({ collection, onClose, onRun, onDelete }: CollectionD
 					className="m-0"
 				/>
 			</div>
-			<div className="mt-4">
-				{summaries.length > 0 && <SummaryLayout events={summaries} />}
-			</div>
+			<div className="mt-4">{summaries.length > 0 && <SummaryLayout events={summaries} />}</div>
 		</div>
 	);
 };

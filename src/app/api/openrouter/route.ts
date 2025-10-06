@@ -222,7 +222,7 @@ export async function POST(req: NextRequest) {
 		//console.log("\n\nRESPONSE: ", JSON.stringify(res));
 		//console.log("\n\nTEXT: ", res.text);
 
-		let parsedResult: ActionsResponse = JSON.parse(res.text)
+		let parsedResult: ActionsResponse = JSON.parse(res.text);
 
 		const actionsResult = parsedResult?.actions;
 

@@ -10,7 +10,7 @@ import { authService } from "../auth/service";
  */
 export async function applyLabelToEmail(
 	emailId: string,
-	labelName: string
+	labelName: string,
 ): Promise<{ success: boolean; message: string; labelId?: string }> {
 	try {
 		// Get the access token from headers

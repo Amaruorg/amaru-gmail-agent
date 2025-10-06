@@ -4,12 +4,14 @@ import { headers } from "next/headers";
 import { authService } from "../auth/service";
 import { calendarClient, type CalendarEventInput } from "./client";
 
-export async function createCalendarEvent(eventInput: CalendarEventInput): Promise<{ success: boolean; message: string; link?: string }> {
+export async function createCalendarEvent(
+	eventInput: CalendarEventInput,
+): Promise<{ success: boolean; message: string; link?: string }> {
 	try {
 		const tokenData = await authService.getAccessToken(await headers());
-		
+
 		const link = await calendarClient.createEvent(tokenData, eventInput);
-		
+
 		return {
 			success: true,
 			message: "Event created successfully",
