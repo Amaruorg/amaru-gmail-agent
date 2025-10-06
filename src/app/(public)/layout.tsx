@@ -11,6 +11,9 @@ const inter = Inter({ subsets: ["latin"], weight: ["400"] });
 export const metadata = {
 	title: "Amaru",
 	description: "Amaru - Private AI Gmail Agent",
+	icons: {
+		icon: "/favicon.png",
+	},
 };
 
 const tabsContent = [

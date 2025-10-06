@@ -15,6 +15,9 @@ const inter = Inter({
 export const metadata = {
 	title: "Amaru",
 	description: "Amaru - Private AI Gmail Agent",
+	icons: {
+		icon: "/favicon.png",
+	},
 };
 
 const links: SidebarButtonProps[] = [
