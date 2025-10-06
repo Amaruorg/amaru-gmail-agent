@@ -1,10 +1,5 @@
 "use client";
 
-import { authService } from "@/domains/auth/service";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
-import { ActionAnalyze } from "@/components/dashboard/ActionAnalyze";
-
 import { useUser } from "@/contexts/UserContext";
 import { useState, useEffect } from "react";
 import { getEmailAnalysis, getUnreadEmailCount } from "@/domains/ai/actions";
